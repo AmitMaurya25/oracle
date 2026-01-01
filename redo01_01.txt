@@ -1,0 +1,140 @@
+select NAME,OPEN_MODE,LOG_MODE,DATABASE_ROLE FROM V$database;
+
+
+
+
+
+SQL> select SID,SERIAL#,OSUSER,TERMINAL,USERNAME,STATUS from v$session where username='DOLPHIN';
+SID SERIAL# OSUSER TERMINAL USERNAM STATUS
+---------- ---------- -------------------- ------------------------------ ------- --------
+
+104 63325 oracle pts/2 DOLPHIN INACTIVE
+
+SQL> alter system kill session '104,63325' immediate;
+System altered.
+
+----------------------------------------------------------------
+SQL> select GROUP# ,MEMBERS,BYTES/1024/1024 from v$log;
+GROUP# MEMBERS BYTES/1024/1024
+---------- ---------- ---------------
+1 2 100
+2 2 100
+3 2 100
+GROUP# MEMBER
+---------- ------------------------------------------------------------
+1 /u01/oradata/prod/datafile/redo01_01.log
+1 /u01/oradata/prod/datafile/redo01_02.log
+2 /u01/oradata/prod/datafile/redo02_01.log
+2 /u01/oradata/prod/datafile/redo02_02.log
+3 /u01/oradata/prod/datafile/redo03_01.log
+3 /u01/oradata/prod/datafile/redo03_02.log
+
+---------------------------------------------------------------
+SQL> archive log list
+Database log mode No Archive Mode
+Automatic archival Disabled
+Archive destination /u01/app/ARCHIVE
+Oldest online log sequence 14
+Current log sequence 16
+
+SQL> alter system switch logfile;
+System altered.
+SQL> select thread#,GROUP# ,MEMBERS,BYTES/1024/1024,status from v$log;
+THREAD# GROUP# MEMBERS BYTES/1024/1024 STATUS
+---------- ---------- ---------- --------------- ----------------
+1 1 2 100 CURRENT
+1 2 2 100 INACTIVE
+1 3 2 100 ACTIVE
+
+=---------------------------------------------------------------------------
+
+SQL> startup mount
+ORACLE instance started.
+Total System Global Area 2936008968 bytes
+Fixed Size 8900872 bytes
+Variable Size 1157627904 bytes
+Database Buffers 1761607680 bytes
+Redo Buffers 7872512 bytes
+Database mounted.
+SQL>
+SQL>
+SQL> archive log list
+Database log mode No Archive Mode
+Automatic archival Disabled
+Archive destination /u01/app/ARCHIVE
+Oldest online log sequence 17
+Current log sequence 19
+SQL>
+SQL>
+SQL>
+SQL> alter database archivelog ;
+Database altered.
+SQL>
+SQL>
+SQL> archive log list
+Database log mode Archive Mode
+Automatic archival Enabled
+Archive destination /u01/app/ARCHIVE
+Oldest online log sequence 17
+Next log sequence to archive 19
+Current log sequence 19
+
+----------------------------------------------------
+
+SQL> select thread#,GROUP# ,MEMBERS,BYTES/1024/1024,status,sequence# from v$log;
+SQL> ALTER DATABASE ADD LOGFILE GROUP 4 ('/u01/oradata/prod/datafile/redo04_01.log','/u01/oradata/prod/datafile/redo04_02.log') size 300M;
+Database altered.
+
+SQL> ALTER DATABASE DROP LOGFILE GROUP 3;
+Database altered.
+
+SQL> alter system switch logfile;
+System altered.
+
+SQL> alter system checkpoint;
+System altered.
+
+-----------------------------------------------------------------------------------
+
+SQL> ALTER DATABASE ADD LOGFILE MEMBER '/u01/oradata/prod/datafile/redo06_03.log' TO ('/u01/oradata/prod/datafile/redo06_01.log',
+'/u01/oradata/prod/datafile/redo06_02.log');
+Database altered.
+SQL>
+SQL> ALTER DATABASE ADD LOGFILE member '/u01/oradata/prod/datafile/redo05_03.log' reuse to GROUP 5;
+Database altered.
+SQL>
+
+------------------------------------------------------------------------------------------
+
+SQL> ALTER DATABASE RENAME FILE '/u01/oradata/prod/datafile/redo05_01.log',
+'/u01/oradata/prod/datafile/redo05_02.log','/u01/oradata/prod/datafile/redo05_03.log' TO
+2 '/u01/oradata/redolog/redo05_01.log', '/u01/oradata/redolog/redo05_02.log','/u01/oradata/redolog/redo05_03.log';
+Database altered.
+SQL>
+
+----------------------------------------------------------------------------------------
+
+vi log.sql
+
+cat set linesize 150
+set lines 200 pages 200
+column name format a80
+set pages 1000
+column member format a80
+col DBID for 9999999
+Prompt "************************** Online Logfile status **********************"
+select * from v$log order by thread#;
+Prompt "************************** Logile group Type and Path **********************"
+select * from v$logfile;
+Prompt "**************************Number of Stabdby Logfile Per Thread# **********************"
+select Thread#,count(group#) from v$standby_log group by thread#;
+Prompt "************************** Standby Logfile Details **********************
+select GROUP#,thread#,bytes from v$standby_log;
+-------------------------------------------------------------------------
+SQL> archive log list
+Database log mode              Archive Mode
+Automatic archival             Enabled
+Archive destination            /u01/app/ARCHIVE
+Oldest online log sequence     9
+Next log sequence to archive   12
+Current log sequence           12
