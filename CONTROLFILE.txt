@@ -1,0 +1,87 @@
+CREATE CONTROLFILE
+SET DATABASE "PROD" RESETLOGS  ARCHIVELOG
+LOGFILE
+  GROUP 4 ('/u01/oradata/prod/datafile/redo04_01.log','/u01/oradata/prod/datafile/redo04_02.log','/u01/oradata/prod/datafile/redo04_03.log') SIZE 300M BLOCKSIZE 512,
+  GROUP 5 ('/u01/oradata/redolog/redo05_01.log','/u01/oradata/redolog/redo05_02.log','/u01/oradata/redolog/redo05_03.log') SIZE 300M BLOCKSIZE 512,
+  GROUP 6 ('/u01/oradata/prod/datafile/redo06_01.log','/u01/oradata/prod/datafile/redo06_02.log','/u01/oradata/prod/datafile/redo06_03.log') SIZE 300M BLOCKSIZE 512
+DATAFILE '/u01/oradata/prod/datafile/system01.dbf',
+         '/u01/oradata/prod/datafile/sysaux01.dbf',
+         '/u01/oradata/prod/datafile/undotbs01.dbf',
+         '/u01/oradata/prod/datafile/users01.dbf'
+    MAXLOGFILES 10
+    MAXLOGMEMBERS 5
+    MAXDATAFILES 100
+    MAXINSTANCES 5
+    MAXLOGHISTORY 292
+    CHARACTER SET US7ASCII
+	;
+
+
+-------------------------------------------------------------------------------
+
+SQL> set lines 200 pages 200
+SQL> show parameter control_file
+NAME TYPE VALUE
+------------------------------------ ----------- ------------------------------
+control_file_record_keep_time integer 7
+control_files string /u01/app/oracle/oradata/prod/c
+ontrolfile/control_01.ctl, /u0
+1/app/FRA/prod/controlfile/con
+trol_02.ctl
+
+
+SQL> show parameter spfile
+NAME TYPE VALUE
+------------------------------------ ----------- ------------------------------
+spfile string /u01/app/oracle/product/19c/db
+_1/dbs/spfileprod.ora
+
+SQL> alter system set control_files='/u01/app/oracle/oradata/prod/controlfile/control_01.ctl','/u01/app/FRA/prod/controlfile/control_02.ctl','/u01/app/oracle/oradata/prod/controlfile/control_03.ctl'
+scope=spfile;
+System altered.
+
+SQL> SELECT VALUE FROM V$PARAMETER WHERE NAME = 'control_files';
+VALUE
+--------------------------------------------------------------------------------
+/home/oracle/controlfile/control_01.ctl, /home/oracle/controlfile/control_02.ctl
+, /u01/app/oracle/oradata/prod/controlfile/control_03.ctl
+SQL> SELECT VALUE FROM V$PARAMETER WHERE NAME = 'db_name';
+VALUE
+--------------------------------------------------------------------------------
+prod
+
+
+SQL> select name,open_mode from v$database;
+NAME OPEN_MODE
+--------- --------------------
+PROD MOUNTED
+
+
+SQL> select name,open_mode from v$database;
+NAME OPEN_MODE
+--------- --------------------
+PROD READ WRITE
+
+=------------------------------------------------
+SQL> !vi create_control.sql
+SQL> !cat create_control.sql
+CREATE CONTROLFILE
+SET DATABASE "PROD" RESETLOGS ARCHIVELOG
+LOGFILE
+GROUP 4 ('/u01/oradata/prod/datafile/redo04_01.log','/u01/oradata/prod/datafile/redo04_02.log','/u01/oradata/prod/datafile/redo04_03.log') SIZE 300M BLOCKSIZE 512,
+GROUP 5 ('/u01/oradata/redolog/redo05_01.log','/u01/oradata/redolog/redo05_02.log','/u01/oradata/redolog/redo05_03.log') SIZE 300M BLOCKSIZE 512,
+GROUP 6 ('/u01/oradata/prod/datafile/redo06_01.log','/u01/oradata/prod/datafile/redo06_02.log','/u01/oradata/prod/datafile/redo06_03.log') SIZE 300M BLOCKSIZE 512
+DATAFILE '/u01/oradata/prod/datafile/system01.dbf',
+'/u01/oradata/prod/datafile/sysaux01.dbf',
+'/u01/oradata/prod/datafile/undotbs01.dbf',
+'/u01/oradata/prod/datafile/users01.dbf'
+MAXLOGFILES 10
+MAXLOGMEMBERS 5
+MAXDATAFILES 100
+MAXINSTANCES 5
+MAXLOGHISTORY 292
+CHARACTER SET US7ASCII
+;
+SQL> @create_control.sql
+Control file created.
+SQL>
