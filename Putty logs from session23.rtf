@@ -1,0 +1,644 @@
+{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fmodern Consolas;}{\f1\fmodern\fcharset0 Consolas;}{\f2\fnil\fcharset129 Courier New;}}
+{\colortbl ;\red20\green20\blue20;\red142\green142\blue142;\red16\green158\blue98;\red148\green146\blue12;\red170\green51\blue170;\red56\green136\blue159;}
+\viewkind4\uc1\pard\f0\fs20     \u9484?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9488?\cf1\highlight2 
+\par \cf0\highlight0     \u9474?                 \cf3\f1\bullet  MobaXterm Personal Edition v22.2 \bullet\cf0\f0                  \u9474?\cf1\highlight2 
+\par \cf0\highlight0     \u9474?               \cf4 (SSH client, X server and network tools)\cf0                \u9474?\cf1\highlight2 
+\par \cf0\highlight0     \u9474?                                                                      \u9474?\cf1\highlight2 
+\par \cf0\highlight0     \u9474? \u11166? SSH session to \cf5 root@192.168.1.40                         \cf0           \u9474?\cf1\highlight2 
+\par \cf0\highlight0     \u9474?\f1    \bullet  Direct SSH      :  \cf3\f0\u10003?\cf0                                              \u9474?\cf1\highlight2 
+\par \cf0\highlight0     \u9474?\f1    \bullet  SSH compression :  \cf3\f0\u10003?\cf0                                              \u9474?\cf1\highlight2 
+\par \cf0\highlight0     \u9474?\f1    \bullet  SSH-browser     :  \cf3\f0\u10003?\cf0                                              \u9474?\cf1\highlight2 
+\par \cf0\highlight0     \u9474?\f1    \bullet  X11-forwarding  :  \cf3\f0\u10003?\cf0   (remote display is forwarded through SSH)  \u9474?\cf1\highlight2 
+\par \cf0\highlight0     \u9474?                                                                      \u9474?\cf1\highlight2 
+\par \cf0\highlight0     \u9474? \u11166? For more info, ctrl+click on \cf6\ul help\cf0\ulnone  or visit our \cf6\ul website\cf0\ulnone .            \u9474?\cf1\highlight2 
+\par \cf0\highlight0     \u9492?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9496?\cf1\highlight2 
+\par 
+\par \cf0\highlight0 Last login: Fri Feb 24 07:07:08 2023\cf1\highlight2 
+\par \cf0\highlight0 [root@oracledbaonlinetraining ~]# su - oracle\cf1\highlight2 
+\par \cf0\highlight0 Last login: Mon Feb 20 12:07:42 IST 2023 on pts/0\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining ~]$ sqlplus / as sysdba\cf1\highlight2 
+\par 
+\par \cf0\highlight0 SQL*Plus: Release 19.0.0.0.0 - Production on Fri Feb 24 07:08:48 2023\cf1\highlight2 
+\par \cf0\highlight0 Version 19.11.0.0.0\cf1\highlight2 
+\par 
+\par \cf0\highlight0 Copyright (c) 1982, 2020, Oracle.  All rights reserved.\cf1\highlight2 
+\par 
+\par \cf0\highlight0 Connected to an idle instance.\cf1\highlight2 
+\par 
+\par \cf0\highlight0 SQL>\cf1\highlight2 
+\par \cf0\highlight0 SQL> startup\cf1\highlight2 
+\par \cf0\highlight0 ORACLE instance started.\cf1\highlight2 
+\par 
+\par \cf0\highlight0 Total System Global Area 2634022304 bytes\cf1\highlight2 
+\par \cf0\highlight0 Fixed Size                  8900000 bytes\cf1\highlight2 
+\par \cf0\highlight0 Variable Size             553648128 bytes\cf1\highlight2 
+\par \cf0\highlight0 Database Buffers         2063597568 bytes\cf1\highlight2 
+\par \cf0\highlight0 Redo Buffers                7876608 bytes\cf1\highlight2 
+\par \cf0\highlight0 Database mounted.\cf1\highlight2 
+\par \cf0\highlight0 Database opened.\cf1\highlight2 
+\par \cf0\highlight0 SQL>\cf1\highlight2 
+\par \cf0\highlight0 SQL> show parameter control_files\cf1\highlight2 
+\par 
+\par \cf0\highlight0 NAME                                 TYPE        VALUE\cf1\highlight2 
+\par \cf0\highlight0 ------------------------------------ ----------- ------------------------------\cf1\highlight2 
+\par \cf0\highlight0 control_files                        string      /u01/app/oracle/oradata/TEST/c\cf1\highlight2 
+\par \cf0\highlight0                                                  ontrolfile/o1_mf_jf6dy46v_.ctl\cf1\highlight2 
+\par \cf0\highlight0                                                  , /u01/app/FRA/TEST/controlfil\cf1\highlight2 
+\par \cf0\highlight0                                                  e/o1_mf_jf6dy4b4_.ctl\cf1\highlight2 
+\par \cf0\highlight0 SQL>\cf1\highlight2 
+\par \cf0\highlight0 SQL>\cf1\highlight2 
+\par \cf0\highlight0 SQL> shut immediate\cf1\highlight2 
+\par \cf0\highlight0 Database closed.\cf1\highlight2 
+\par \cf0\highlight0 Database dismounted.\cf1\highlight2 
+\par \cf0\highlight0 ORACLE instance shut down.\cf1\highlight2 
+\par \cf0\highlight0 SQL> exit\cf1\highlight2 
+\par \cf0\highlight0 Disconnected from Oracle Database 19c Enterprise Edition Release 19.0.0.0.0 - Production\cf1\highlight2 
+\par \cf0\highlight0 Version 19.11.0.0.0\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining ~]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining ~]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining ~]$ cd /u01/app/FRA/TEST/controlfile/\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining controlfile]$ ls -lrth\cf1\highlight2 
+\par \cf0\highlight0 total 11M\cf1\highlight2 
+\par \cf0\highlight0 -rw-r-----. 1 oracle oinstall 11M Feb 24 07:11 o1_mf_jf6dy4b4_.ctl\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining controlfile]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining controlfile]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining controlfile]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining controlfile]$ mv o1_mf_jf6dy4b4_.ctl o1_mf_jf6dy4b4_.ctl_old\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining controlfile]$ ls -lrth\cf1\highlight2 
+\par \cf0\highlight0 total 11M\cf1\highlight2 
+\par \cf0\highlight0 -rw-r-----. 1 oracle oinstall 11M Feb 24 07:11 o1_mf_jf6dy4b4_.ctl_old\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining controlfile]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining controlfile]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining controlfile]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining controlfile]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining controlfile]$ sqlplus / as sysdba\cf1\highlight2 
+\par 
+\par \cf0\highlight0 SQL*Plus: Release 19.0.0.0.0 - Production on Fri Feb 24 07:12:26 2023\cf1\highlight2 
+\par \cf0\highlight0 Version 19.11.0.0.0\cf1\highlight2 
+\par 
+\par \cf0\highlight0 Copyright (c) 1982, 2020, Oracle.  All rights reserved.\cf1\highlight2 
+\par 
+\par \cf0\highlight0 Connected to an idle instance.\cf1\highlight2 
+\par 
+\par \cf0\highlight0 SQL> startup\cf1\highlight2 
+\par \cf0\highlight0 ORACLE instance started.\cf1\highlight2 
+\par 
+\par \cf0\highlight0 Total System Global Area 2634022304 bytes\cf1\highlight2 
+\par \cf0\highlight0 Fixed Size                  8900000 bytes\cf1\highlight2 
+\par \cf0\highlight0 Variable Size             553648128 bytes\cf1\highlight2 
+\par \cf0\highlight0 Database Buffers         2063597568 bytes\cf1\highlight2 
+\par \cf0\highlight0 Redo Buffers                7876608 bytes\cf1\highlight2 
+\par \cf0\highlight0 ORA-00205: error in identifying control file, check alert log for more info\cf1\highlight2 
+\par 
+\par 
+\par \cf0\highlight0 SQL> show parameter control_files\cf1\highlight2 
+\par 
+\par \cf0\highlight0 NAME                                 TYPE        VALUE\cf1\highlight2 
+\par \cf0\highlight0 ------------------------------------ ----------- ------------------------------\cf1\highlight2 
+\par \cf0\highlight0 control_files                        string      /u01/app/oracle/oradata/TEST/c\cf1\highlight2 
+\par \cf0\highlight0                                                  ontrolfile/o1_mf_jf6dy46v_.ctl\cf1\highlight2 
+\par \cf0\highlight0                                                  , /u01/app/FRA/TEST/controlfil\cf1\highlight2 
+\par \cf0\highlight0                                                  e/o1_mf_jf6dy4b4_.ctl\cf1\highlight2 
+\par \cf0\highlight0 SQL>\cf1\highlight2 
+\par \cf0\highlight0 SQL> shut immediate\cf1\highlight2 
+\par \cf0\highlight0 ORA-01507: database not mounted\cf1\highlight2 
+\par 
+\par 
+\par \cf0\highlight0 ORACLE instance shut down.\cf1\highlight2 
+\par \cf0\highlight0 SQL>\cf1\highlight2 
+\par \cf0\highlight0 SQL>\cf1\highlight2 
+\par \cf0\highlight0 SQL> exit\cf1\highlight2 
+\par \cf0\highlight0 Disconnected from Oracle Database 19c Enterprise Edition Release 19.0.0.0.0 - Production\cf1\highlight2 
+\par \cf0\highlight0 Version 19.11.0.0.0\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining controlfile]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining controlfile]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining controlfile]$ cd /u01/app/oracle/oradata/TEST/controlfile/\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining controlfile]$ ls -lrth o1_mf_jf6dy46v_.ctl\cf1\highlight2 
+\par \cf0\highlight0 -rw-r-----. 1 oracle oinstall 11M Feb 24 07:11 o1_mf_jf6dy46v_.ctl\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining controlfile]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining controlfile]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining controlfile]$ cp o1_mf_jf6dy46v_.ctl /u01/app/FRA/TEST/controlfile/\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining controlfile]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining controlfile]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining controlfile]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining controlfile]$ cd /u01/app/FRA/TEST/controlfil\cf1\highlight2 
+\par \cf0\highlight0 -bash: cd: /u01/app/FRA/TEST/controlfil: No such file or directory\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining controlfile]$ cd /u01/app/FRA/TEST/controlfile/\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining controlfile]$ ls -lrth\cf1\highlight2 
+\par \cf0\highlight0 total 21M\cf1\highlight2 
+\par \cf0\highlight0 -rw-r-----. 1 oracle oinstall 11M Feb 24 07:11 o1_mf_jf6dy4b4_.ctl_old\cf1\highlight2 
+\par \cf0\highlight0 -rw-r-----. 1 oracle oinstall 11M Feb 24 07:14 o1_mf_jf6dy46v_.ctl\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining controlfile]$ sqlplus / as sysdba\cf1\highlight2 
+\par 
+\par \cf0\highlight0 SQL*Plus: Release 19.0.0.0.0 - Production on Fri Feb 24 07:14:36 2023\cf1\highlight2 
+\par \cf0\highlight0 Version 19.11.0.0.0\cf1\highlight2 
+\par 
+\par \cf0\highlight0 Copyright (c) 1982, 2020, Oracle.  All rights reserved.\cf1\highlight2 
+\par 
+\par \cf0\highlight0 Connected to an idle instance.\cf1\highlight2 
+\par 
+\par \cf0\highlight0 SQL> startup\cf1\highlight2 
+\par \cf0\highlight0 ORACLE instance started.\cf1\highlight2 
+\par 
+\par \cf0\highlight0 Total System Global Area 2634022304 bytes\cf1\highlight2 
+\par \cf0\highlight0 Fixed Size                  8900000 bytes\cf1\highlight2 
+\par \cf0\highlight0 Variable Size             553648128 bytes\cf1\highlight2 
+\par \cf0\highlight0 Database Buffers         2063597568 bytes\cf1\highlight2 
+\par \cf0\highlight0 Redo Buffers                7876608 bytes\cf1\highlight2 
+\par \cf0\highlight0 ORA-00205: error in identifying control file, check alert log for more info\cf1\highlight2 
+\par 
+\par 
+\par \cf0\highlight0 SQL> exit\cf1\highlight2 
+\par \cf0\highlight0 Disconnected from Oracle Database 19c Enterprise Edition Release 19.0.0.0.0 - Production\cf1\highlight2 
+\par \cf0\highlight0 Version 19.11.0.0.0\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining controlfile]$ ls -lrth /u01/app/FRA/TEST/controlfile/o1_mf_jf6dy4b4_.ctl\cf1\highlight2 
+\par \cf0\highlight0 ls: cannot access /u01/app/FRA/TEST/controlfile/o1_mf_jf6dy4b4_.ctl: No such file or directory\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining controlfile]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining controlfile]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining controlfile]$ ls -lrth /u01/app/FRA/TEST/controlfile/\cf1\highlight2 
+\par \cf0\highlight0 total 21M\cf1\highlight2 
+\par \cf0\highlight0 -rw-r-----. 1 oracle oinstall 11M Feb 24 07:11 o1_mf_jf6dy4b4_.ctl_old\cf1\highlight2 
+\par \cf0\highlight0 -rw-r-----. 1 oracle oinstall 11M Feb 24 07:14 o1_mf_jf6dy46v_.ctl\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining controlfile]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining controlfile]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining controlfile]$ cd /u01/app/oracle/oradata/TEST/controlfile/\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining controlfile]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining controlfile]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining controlfile]$ ls -lrth o1_mf_jf6dy46v_.ctl\cf1\highlight2 
+\par \cf0\highlight0 -rw-r-----. 1 oracle oinstall 11M Feb 24 07:11 o1_mf_jf6dy46v_.ctl\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining controlfile]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining controlfile]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining controlfile]$ cp o1_mf_jf6dy46v_.ctl o1_mf_jf6dy4b4_.ctl\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining controlfile]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining controlfile]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining controlfile]$ ls -lrth\cf1\highlight2 
+\par \cf0\highlight0 total 21M\cf1\highlight2 
+\par \cf0\highlight0 -rw-r-----. 1 oracle oinstall 11M Feb 24 07:11 o1_mf_jf6dy46v_.ctl\cf1\highlight2 
+\par \cf0\highlight0 -rw-r-----. 1 oracle oinstall 11M Feb 24 07:18 o1_mf_jf6dy4b4_.ctl\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining controlfile]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining controlfile]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining controlfile]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining controlfile]$ cd /u01/app/FRA/TEST/controlfile/\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining controlfile]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining controlfile]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining controlfile]$ ls -lrth\cf1\highlight2 
+\par \cf0\highlight0 total 21M\cf1\highlight2 
+\par \cf0\highlight0 -rw-r-----. 1 oracle oinstall 11M Feb 24 07:11 o1_mf_jf6dy4b4_.ctl_old\cf1\highlight2 
+\par \cf0\highlight0 -rw-r-----. 1 oracle oinstall 11M Feb 24 07:14 o1_mf_jf6dy46v_.ctl\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining controlfile]$ mv o1_mf_jf6dy46v_.ctl o1_mf_jf6dy4b4_.ctl\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining controlfile]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining controlfile]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining controlfile]$ ls -lrth\cf1\highlight2 
+\par \cf0\highlight0 total 21M\cf1\highlight2 
+\par \cf0\highlight0 -rw-r-----. 1 oracle oinstall 11M Feb 24 07:11 o1_mf_jf6dy4b4_.ctl_old\cf1\highlight2 
+\par \cf0\highlight0 -rw-r-----. 1 oracle oinstall 11M Feb 24 07:14 o1_mf_jf6dy4b4_.ctl\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining controlfile]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining controlfile]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining controlfile]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining controlfile]$ sqlplus / as sysdba\cf1\highlight2 
+\par 
+\par \cf0\highlight0 SQL*Plus: Release 19.0.0.0.0 - Production on Fri Feb 24 07:19:13 2023\cf1\highlight2 
+\par \cf0\highlight0 Version 19.11.0.0.0\cf1\highlight2 
+\par 
+\par \cf0\highlight0 Copyright (c) 1982, 2020, Oracle.  All rights reserved.\cf1\highlight2 
+\par 
+\par 
+\par \cf0\highlight0 Connected to:\cf1\highlight2 
+\par \cf0\highlight0 Oracle Database 19c Enterprise Edition Release 19.0.0.0.0 - Production\cf1\highlight2 
+\par \cf0\highlight0 Version 19.11.0.0.0\cf1\highlight2 
+\par 
+\par \cf0\highlight0 SQL>\cf1\highlight2 
+\par \cf0\highlight0 SQL>\cf1\highlight2 
+\par \cf0\highlight0 SQL> set lines 200 pages 200\cf1\highlight2 
+\par \cf0\highlight0 SQL>\cf1\highlight2 
+\par \cf0\highlight0 SQL>\cf1\highlight2 
+\par \cf0\highlight0 SQL> select name from v$controlfile;\cf1\highlight2 
+\par 
+\par \cf0\highlight0 no rows selected\cf1\highlight2 
+\par 
+\par \cf0\highlight0 SQL>\cf1\highlight2 
+\par \cf0\highlight0 SQL>\cf1\highlight2 
+\par \cf0\highlight0 SQL> showp arameter control_files;\cf1\highlight2 
+\par \cf0\highlight0 SP2-0734: unknown command beginning "showp aram..." - rest of line ignored.\cf1\highlight2 
+\par \cf0\highlight0 SQL>\cf1\highlight2 
+\par \cf0\highlight0 SQL>\cf1\highlight2 
+\par \cf0\highlight0 SQL> show parameter control_files\cf1\highlight2 
+\par 
+\par \cf0\highlight0 NAME                                 TYPE        VALUE\cf1\highlight2 
+\par \cf0\highlight0 ------------------------------------ ----------- ------------------------------\cf1\highlight2 
+\par \cf0\highlight0 control_files                        string      /u01/app/oracle/oradata/TEST/c\cf1\highlight2 
+\par \cf0\highlight0                                                  ontrolfile/o1_mf_jf6dy46v_.ctl\cf1\highlight2 
+\par \cf0\highlight0                                                  , /u01/app/FRA/TEST/controlfil\cf1\highlight2 
+\par \cf0\highlight0                                                  e/o1_mf_jf6dy4b4_.ctl\cf1\highlight2 
+\par \cf0\highlight0 SQL>\cf1\highlight2 
+\par \cf0\highlight0 SQL>\cf1\highlight2 
+\par \cf0\highlight0 SQL> shut immediate\cf1\highlight2 
+\par \cf0\highlight0 startup\cf1\highlight2 
+\par \cf0\highlight0 ORA-01507: database not mounted\cf1\highlight2 
+\par 
+\par 
+\par \cf0\highlight0 ORACLE instance shut down.\cf1\highlight2 
+\par \cf0\highlight0 SQL>\cf1\highlight2 
+\par \cf0\highlight0 ORACLE instance started.\cf1\highlight2 
+\par 
+\par \cf0\highlight0 Total System Global Area 2634022304 bytes\cf1\highlight2 
+\par \cf0\highlight0 Fixed Size                  8900000 bytes\cf1\highlight2 
+\par \cf0\highlight0 Variable Size             553648128 bytes\cf1\highlight2 
+\par \cf0\highlight0 Database Buffers         2063597568 bytes\cf1\highlight2 
+\par \cf0\highlight0 Redo Buffers                7876608 bytes\cf1\highlight2 
+\par \cf0\highlight0 Database mounted.\cf1\highlight2 
+\par \cf0\highlight0 Database opened.\cf1\highlight2 
+\par \cf0\highlight0 SQL> SQL>\cf1\highlight2 
+\par \cf0\highlight0 SQL>\cf1\highlight2 
+\par \cf0\highlight0 SQL>\cf1\highlight2 
+\par \cf0\highlight0 SQL>\cf1\highlight2 
+\par \cf0\highlight0 SQL> recover database\cf1\highlight2 
+\par \cf0\highlight0 ;ORA-00283: recovery session canceled due to errors\cf1\highlight2 
+\par \cf0\highlight0 ORA-01124: cannot recover data file 1 - file is in use or recovery\cf1\highlight2 
+\par \cf0\highlight0 ORA-01110: data file 1: '/u01/app/oracle/oradata/TEST/datafile/o1_mf_system_jf6dvm2j_.dbf'\cf1\highlight2 
+\par 
+\par 
+\par \cf0\highlight0 SQL> create pfile='/home/oracle/pfile_bkp.ora' from memory;\cf1\highlight2 
+\par \cf0\highlight0 SP2-0734: unknown command beginning ";create pf..." - rest of line ignored.\cf1\highlight2 
+\par \cf0\highlight0 SQL>\cf1\highlight2 
+\par \cf0\highlight0 SQL>\cf1\highlight2 
+\par \cf0\highlight0 SQL>\cf1\highlight2 
+\par \cf0\highlight0 SQL> create pfile='/home/oracle/pfile_bkp.ora' from memory;\cf1\highlight2 
+\par 
+\par \cf0\highlight0 File created.\cf1\highlight2 
+\par 
+\par \cf0\highlight0 SQL>\cf1\highlight2 
+\par \cf0\highlight0 SQL>\cf1\highlight2 
+\par \cf0\highlight0 SQL> !cat /home/oracle/pfile_bkp.ora\cf1\highlight2 
+\par \cf0\highlight0 # Oracle init.ora parameter file generated by instance test on 02/24/2023 07:24:10\cf1\highlight2 
+\par \cf0\highlight0 __data_transfer_cache_size=0\cf1\highlight2 
+\par \cf0\highlight0 __db_cache_size=1840M\cf1\highlight2 
+\par \cf0\highlight0 __inmemory_ext_roarea=0\cf1\highlight2 
+\par \cf0\highlight0 __inmemory_ext_rwarea=0\cf1\highlight2 
+\par \cf0\highlight0 __java_pool_size=0\cf1\highlight2 
+\par \cf0\highlight0 __large_pool_size=16M\cf1\highlight2 
+\par \cf0\highlight0 __oracle_base='/u01/app/oracle' # ORACLE_BASE set from environment\cf1\highlight2 
+\par \cf0\highlight0 __pga_aggregate_target=848M\cf1\highlight2 
+\par \cf0\highlight0 __sga_target=2512M\cf1\highlight2 
+\par \cf0\highlight0 __shared_io_pool_size=128M\cf1\highlight2 
+\par \cf0\highlight0 __shared_pool_size=512M\cf1\highlight2 
+\par \cf0\highlight0 __streams_pool_size=0\cf1\highlight2 
+\par \cf0\highlight0 __unified_pga_pool_size=0\cf1\highlight2 
+\par \cf0\highlight0 _always_anti_join='CHOOSE'\cf1\highlight2 
+\par \cf0\highlight0 _always_semi_join='CHOOSE'\cf1\highlight2 
+\par \cf0\highlight0 _b_tree_bitmap_plans=TRUE\cf1\highlight2 
+\par \cf0\highlight0 _bloom_serial_filter='ON'\cf1\highlight2 
+\par \cf0\highlight0 _complex_view_merging=TRUE\cf1\highlight2 
+\par \cf0\highlight0 _compression_compatibility='19.0.0'\cf1\highlight2 
+\par \cf0\highlight0 _diag_adr_trace_dest='/u01/app/oracle/diag/rdbms/test/test/trace'\cf1\highlight2 
+\par \cf0\highlight0 _ds_xt_split_count=1\cf1\highlight2 
+\par \cf0\highlight0 _eliminate_common_subexpr=TRUE\cf1\highlight2 
+\par \cf0\highlight0 _fast_full_scan_enabled=TRUE\cf1\highlight2 
+\par \cf0\highlight0 _generalized_pruning_enabled=TRUE\cf1\highlight2 
+\par \cf0\highlight0 _gs_anti_semi_join_allowed=TRUE\cf1\highlight2 
+\par \cf0\highlight0 _hang_resolution_scope='INSTANCE' # _hang_resolution_scope updated by kjznpahps\cf1\highlight2 
+\par \cf0\highlight0 _improved_outerjoin_card=TRUE\cf1\highlight2 
+\par \cf0\highlight0 _improved_row_length_enabled=TRUE\cf1\highlight2 
+\par \cf0\highlight0 _index_join_enabled=TRUE\cf1\highlight2 
+\par \cf0\highlight0 _key_vector_create_pushdown_threshold=20000\cf1\highlight2 
+\par \cf0\highlight0 _ksb_restart_policy_times='0'\cf1\highlight2 
+\par \cf0\highlight0 _ksb_restart_policy_times='60'\cf1\highlight2 
+\par \cf0\highlight0 _ksb_restart_policy_times='120'\cf1\highlight2 
+\par \cf0\highlight0 _ksb_restart_policy_times='240' # internal update to set default\cf1\highlight2 
+\par \cf0\highlight0 _left_nested_loops_random=TRUE\cf1\highlight2 
+\par \cf0\highlight0 _mv_access_compute_fresh_data='ON'\cf1\highlight2 
+\par \cf0\highlight0 _new_initial_join_orders=TRUE\cf1\highlight2 
+\par \cf0\highlight0 _new_sort_cost_estimate=TRUE\cf1\highlight2 
+\par \cf0\highlight0 _nlj_batching_enabled=1\cf1\highlight2 
+\par \cf0\highlight0 _optim_enhance_nnull_detection=TRUE\cf1\highlight2 
+\par \cf0\highlight0 _optim_peek_user_binds=TRUE\cf1\highlight2 
+\par \cf0\highlight0 _optimizer_ads_use_partial_results=TRUE\cf1\highlight2 
+\par \cf0\highlight0 _optimizer_better_inlist_costing='ALL'\cf1\highlight2 
+\par \cf0\highlight0 _optimizer_cbqt_or_expansion='ON'\cf1\highlight2 
+\par \cf0\highlight0 _optimizer_cluster_by_rowid_control=129\cf1\highlight2 
+\par \cf0\highlight0 _optimizer_control_shard_qry_processing=65528\cf1\highlight2 
+\par \cf0\highlight0 _optimizer_cost_based_transformation='LINEAR'\cf1\highlight2 
+\par \cf0\highlight0 _optimizer_cost_model='CHOOSE'\cf1\highlight2 
+\par \cf0\highlight0 _optimizer_extended_cursor_sharing='UDO'\cf1\highlight2 
+\par \cf0\highlight0 _optimizer_extended_cursor_sharing_rel='SIMPLE'\cf1\highlight2 
+\par \cf0\highlight0 _optimizer_extended_stats_usage_control=192\cf1\highlight2 
+\par \cf0\highlight0 _optimizer_join_order_control=3\cf1\highlight2 
+\par \cf0\highlight0 _optimizer_max_permutations=2000\cf1\highlight2 
+\par \cf0\highlight0 _optimizer_mode_force=TRUE\cf1\highlight2 
+\par \cf0\highlight0 _optimizer_native_full_outer_join='FORCE'\cf1\highlight2 
+\par \cf0\highlight0 _optimizer_or_expansion='DEPTH'\cf1\highlight2 
+\par \cf0\highlight0 _optimizer_proc_rate_level='BASIC'\cf1\highlight2 
+\par \cf0\highlight0 _optimizer_system_stats_usage=TRUE\cf1\highlight2 
+\par \cf0\highlight0 _optimizer_try_st_before_jppd=TRUE\cf1\highlight2 
+\par \cf0\highlight0 _optimizer_use_cbqt_star_transformation=TRUE\cf1\highlight2 
+\par \cf0\highlight0 _or_expand_nvl_predicate=TRUE\cf1\highlight2 
+\par \cf0\highlight0 _ordered_nested_loop=TRUE\cf1\highlight2 
+\par \cf0\highlight0 _parallel_broadcast_enabled=TRUE\cf1\highlight2 
+\par \cf0\highlight0 _pivot_implementation_method='CHOOSE'\cf1\highlight2 
+\par \cf0\highlight0 _pred_move_around=TRUE\cf1\highlight2 
+\par \cf0\highlight0 _push_join_predicate=TRUE\cf1\highlight2 
+\par \cf0\highlight0 _push_join_union_view=TRUE\cf1\highlight2 
+\par \cf0\highlight0 _push_join_union_view2=TRUE\cf1\highlight2 
+\par \cf0\highlight0 _px_dist_agg_partial_rollup_pushdown='ADAPTIVE'\cf1\highlight2 
+\par \cf0\highlight0 _px_groupby_pushdown='FORCE'\cf1\highlight2 
+\par \cf0\highlight0 _px_partial_rollup_pushdown='ADAPTIVE'\cf1\highlight2 
+\par \cf0\highlight0 _px_shared_hash_join=FALSE\cf1\highlight2 
+\par \cf0\highlight0 _px_wif_dfo_declumping='CHOOSE'\cf1\highlight2 
+\par \cf0\highlight0 _sql_model_unfold_forloops='RUN_TIME'\cf1\highlight2 
+\par \cf0\highlight0 _sqltune_category_parsed='DEFAULT' # parsed sqltune_category\cf1\highlight2 
+\par \cf0\highlight0 _subquery_pruning_mv_enabled=FALSE\cf1\highlight2 
+\par \cf0\highlight0 _table_scan_cost_plus_one=TRUE\cf1\highlight2 
+\par \cf0\highlight0 _union_rewrite_for_gs='YES_GSET_MVS'\cf1\highlight2 
+\par \cf0\highlight0 _unnest_subquery=TRUE\cf1\highlight2 
+\par \cf0\highlight0 _use_column_stats_for_function=TRUE\cf1\highlight2 
+\par \cf0\highlight0 _xt_sampling_scan_granules='ON'\cf1\highlight2 
+\par \cf0\highlight0 audit_file_dest='/u01/app/oracle/admin/test/adump'\cf1\highlight2 
+\par \cf0\highlight0 audit_trail='DB'\cf1\highlight2 
+\par \cf0\highlight0 compatible='19.0.0'\cf1\highlight2 
+\par \cf0\highlight0 connection_brokers='((TYPE=DEDICATED)(BROKERS=1))'\cf1\highlight2 
+\par \cf0\highlight0 connection_brokers='((TYPE=EMON)(BROKERS=1))' # connection_brokers default value\cf1\highlight2 
+\par \cf0\highlight0 control_files='/u01/app/oracle/oradata/TEST/controlfile/o1_mf_jf6dy46v_.ctl'\cf1\highlight2 
+\par \cf0\highlight0 control_files='/u01/app/FRA/TEST/controlfile/o1_mf_jf6dy4b4_.ctl'\cf1\highlight2 
+\par \cf0\highlight0 core_dump_dest='/u01/app/oracle/diag/rdbms/test/test/cdump'\cf1\highlight2 
+\par \cf0\highlight0 cpu_count=4\cf1\highlight2 
+\par \cf0\highlight0 cpu_min_count='4'\cf1\highlight2 
+\par \cf0\highlight0 db_block_size=8192\cf1\highlight2 
+\par \cf0\highlight0 db_create_file_dest='/u01/app/oracle/oradata'\cf1\highlight2 
+\par \cf0\highlight0 db_name='test'\cf1\highlight2 
+\par \cf0\highlight0 db_recovery_file_dest='/u01/app/FRA'\cf1\highlight2 
+\par \cf0\highlight0 db_recovery_file_dest_size=8256M\cf1\highlight2 
+\par \cf0\highlight0 diagnostic_dest='/u01/app/oracle'\cf1\highlight2 
+\par \cf0\highlight0 dispatchers='(PROTOCOL=TCP) (SERVICE=testXDB)'\cf1\highlight2 
+\par \cf0\highlight0 job_queue_processes=80 # job queue processes default tuning\cf1\highlight2 
+\par \cf0\highlight0 log_archive_dest_1='location=USE_DB_RECOVERY_FILE_DEST'\cf1\highlight2 
+\par \cf0\highlight0 log_archive_format='%t_%s_%r.dbf'\cf1\highlight2 
+\par \cf0\highlight0 log_buffer=7360K # log buffer update\cf1\highlight2 
+\par \cf0\highlight0 nls_language='AMERICAN'\cf1\highlight2 
+\par \cf0\highlight0 nls_territory='AMERICA'\cf1\highlight2 
+\par \cf0\highlight0 open_cursors=300\cf1\highlight2 
+\par \cf0\highlight0 optimizer_mode='ALL_ROWS'\cf1\highlight2 
+\par \cf0\highlight0 pga_aggregate_target=834M\cf1\highlight2 
+\par \cf0\highlight0 plsql_warnings='DISABLE:ALL' # PL/SQL warnings at init.ora\cf1\highlight2 
+\par \cf0\highlight0 processes=320\cf1\highlight2 
+\par \cf0\highlight0 query_rewrite_enabled='TRUE'\cf1\highlight2 
+\par \cf0\highlight0 remote_login_passwordfile='EXCLUSIVE'\cf1\highlight2 
+\par \cf0\highlight0 result_cache_max_size=12864K\cf1\highlight2 
+\par \cf0\highlight0 sga_target=2512M\cf1\highlight2 
+\par \cf0\highlight0 undo_tablespace='UNDOTBS1'\cf1\highlight2 
+\par 
+\par \cf0\highlight0 SQL>\cf1\highlight2 
+\par \cf0\highlight0 SQL>\cf1\highlight2 
+\par \cf0\highlight0 SQL>\cf1\highlight2 
+\par \cf0\highlight0 SQL>\cf1\highlight2 
+\par \cf0\highlight0 SQL>\cf1\highlight2 
+\par \cf0\highlight0 SQL> exit\cf1\highlight2 
+\par \cf0\highlight0 Disconnected from Oracle Database 19c Enterprise Edition Release 19.0.0.0.0 - Production\cf1\highlight2 
+\par \cf0\highlight0 Version 19.11.0.0.0\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining controlfile]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining controlfile]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining controlfile]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining controlfile]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining controlfile]$ cd\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining ~]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining ~]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining ~]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining ~]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining ~]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining ~]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining ~]$ rman target /\cf1\highlight2 
+\par 
+\par \cf0\highlight0 Recovery Manager: Release 19.0.0.0.0 - Production on Fri Feb 24 07:25:56 2023\cf1\highlight2 
+\par \cf0\highlight0 Version 19.11.0.0.0\cf1\highlight2 
+\par 
+\par \cf0\highlight0 Copyright (c) 1982, 2019, Oracle and/or its affiliates.  All rights reserved.\cf1\highlight2 
+\par 
+\par \cf0\highlight0 connected to target database: TEST (DBID=2374153116)\cf1\highlight2 
+\par 
+\par \cf0\highlight0 RMAN>\cf1\highlight2 
+\par 
+\par \cf0\highlight0 RMAN>\cf1\highlight2 
+\par 
+\par \cf0\highlight0 RMAN> exit\cf1\highlight2 
+\par 
+\par 
+\par \cf0\highlight0 Recovery Manager complete.\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining ~]$ rman target sys/sys\cf1\highlight2 
+\par 
+\par \cf0\highlight0 Recovery Manager: Release 19.0.0.0.0 - Production on Fri Feb 24 07:26:10 2023\cf1\highlight2 
+\par \cf0\highlight0 Version 19.11.0.0.0\cf1\highlight2 
+\par 
+\par \cf0\highlight0 Copyright (c) 1982, 2019, Oracle and/or its affiliates.  All rights reserved.\cf1\highlight2 
+\par 
+\par \cf0\highlight0 connected to target database: TEST (DBID=2374153116)\cf1\highlight2 
+\par 
+\par \cf0\highlight0 RMAN>\cf1\highlight2 
+\par 
+\par \cf0\highlight0 RMAN> backup database;\cf1\highlight2 
+\par 
+\par \cf0\highlight0 Starting backup at 24-FEB-23\cf1\highlight2 
+\par \cf0\highlight0 using target database control file instead of recovery catalog\cf1\highlight2 
+\par \cf0\highlight0 allocated channel: ORA_DISK_1\cf1\highlight2 
+\par \cf0\highlight0 channel ORA_DISK_1: SID=145 device type=DISK\cf1\highlight2 
+\par \cf0\highlight0 channel ORA_DISK_1: starting full datafile backup set\cf1\highlight2 
+\par \cf0\highlight0 channel ORA_DISK_1: specifying datafile(s) in backup set\cf1\highlight2 
+\par \cf0\highlight0 input datafile file number=00001 name=/u01/app/oracle/oradata/TEST/datafile/o1_mf_system_jf6dvm2j_.dbf\cf1\highlight2 
+\par \cf0\highlight0 input datafile file number=00003 name=/u01/app/oracle/oradata/TEST/datafile/o1_mf_sysaux_jf6dwpf2_.dbf\cf1\highlight2 
+\par \cf0\highlight0 input datafile file number=00004 name=/u01/app/oracle/oradata/TEST/datafile/o1_mf_undotbs1_jf6dx5ky_.dbf\cf1\highlight2 
+\par \cf0\highlight0 input datafile file number=00007 name=/u01/app/oracle/oradata/TEST/datafile/o1_mf_users_jf6dx7dq_.dbf\cf1\highlight2 
+\par \cf0\highlight0 channel ORA_DISK_1: starting piece 1 at 24-FEB-23\cf1\highlight2 
+\par \cf0\highlight0 channel ORA_DISK_1: finished piece 1 at 24-FEB-23\cf1\highlight2 
+\par \cf0\highlight0 piece handle=/u01/app/FRA/TEST/backupset/2023_02_24/o1_mf_nnndf_TAG20230224T072704_kzj6ck12_.bkp tag=TAG20230224T072704 comment=NONE\cf1\highlight2 
+\par \cf0\highlight0 channel ORA_DISK_1: backup set complete, elapsed time: 00:00:16\cf1\highlight2 
+\par \cf0\highlight0 Finished backup at 24-FEB-23\cf1\highlight2 
+\par 
+\par \cf0\highlight0 Starting Control File and SPFILE Autobackup at 24-FEB-23\cf1\highlight2 
+\par \cf0\highlight0 piece handle=/u01/app/FRA/TEST/autobackup/2023_02_24/o1_mf_s_1129620440_kzj6d0cs_.bkp comment=NONE\cf1\highlight2 
+\par \cf0\highlight0 Finished Control File and SPFILE Autobackup at 24-FEB-23\cf1\highlight2 
+\par 
+\par \cf0\highlight0 RMAN> exit\cf1\highlight2 
+\par 
+\par 
+\par \cf0\highlight0 Recovery Manager complete.\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining ~]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining ~]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining ~]$ sqlplus / as sysdba\cf1\highlight2 
+\par 
+\par \cf0\highlight0 SQL*Plus: Release 19.0.0.0.0 - Production on Fri Feb 24 07:28:13 2023\cf1\highlight2 
+\par \cf0\highlight0 Version 19.11.0.0.0\cf1\highlight2 
+\par 
+\par \cf0\highlight0 Copyright (c) 1982, 2020, Oracle.  All rights reserved.\cf1\highlight2 
+\par 
+\par 
+\par \cf0\highlight0 Connected to:\cf1\highlight2 
+\par \cf0\highlight0 Oracle Database 19c Enterprise Edition Release 19.0.0.0.0 - Production\cf1\highlight2 
+\par \cf0\highlight0 Version 19.11.0.0.0\cf1\highlight2 
+\par 
+\par \cf0\highlight0 SQL> show paramater recovery\cf1\highlight2 
+\par \cf0\highlight0 SP2-0158: unknown SHOW option "paramater"\cf1\highlight2 
+\par \cf0\highlight0 SP2-0158: unknown SHOW option "recovery"\cf1\highlight2 
+\par \cf0\highlight0 SQL> show parameter recovery\cf1\highlight2 
+\par 
+\par \cf0\highlight0 NAME                                 TYPE        VALUE\cf1\highlight2 
+\par \cf0\highlight0 ------------------------------------ ----------- ------------------------------\cf1\highlight2 
+\par \cf0\highlight0 db_recovery_file_dest                string      /u01/app/FRA\cf1\highlight2 
+\par \cf0\highlight0 db_recovery_file_dest_size           big integer 8256M\cf1\highlight2 
+\par \cf0\highlight0 recovery_parallelism                 integer     0\cf1\highlight2 
+\par \cf0\highlight0 remote_recovery_file_dest            string\cf1\highlight2 
+\par \cf0\highlight0 SQL> exit\cf1\highlight2 
+\par \cf0\highlight0 Disconnected from Oracle Database 19c Enterprise Edition Release 19.0.0.0.0 - Production\cf1\highlight2 
+\par \cf0\highlight0 Version 19.11.0.0.0\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining ~]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining ~]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining ~]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining ~]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining ~]$ rman target sys/sys\cf1\highlight2 
+\par 
+\par \cf0\highlight0 Recovery Manager: Release 19.0.0.0.0 - Production on Fri Feb 24 07:34:44 2023\cf1\highlight2 
+\par \cf0\highlight0 Version 19.11.0.0.0\cf1\highlight2 
+\par 
+\par \cf0\highlight0 Copyright (c) 1982, 2019, Oracle and/or its affiliates.  All rights reserved.\cf1\highlight2 
+\par 
+\par \cf0\highlight0 connected to target database: TEST (DBID=2374153116)\cf1\highlight2 
+\par 
+\par \cf0\highlight0 RMAN> list backup;\cf1\highlight2 
+\par 
+\par \cf0\highlight0 using target database control file instead of recovery catalog\cf1\highlight2 
+\par 
+\par \cf0\highlight0 List of Backup Sets\cf1\highlight2 
+\par \cf0\highlight0 ===================\cf1\highlight2 
+\par 
+\par 
+\par \cf0\highlight0 BS Key  Type LV Size       Device Type Elapsed Time Completion Time\cf1\highlight2 
+\par \cf0\highlight0 ------- ---- -- ---------- ----------- ------------ ---------------\cf1\highlight2 
+\par \cf0\highlight0 1       Full    10.20M     DISK        00:00:00     20-FEB-23\cf1\highlight2 
+\par \cf0\highlight0         BP Key: 1   Status: AVAILABLE  Compressed: NO  Tag: TAG20230220T073902\cf1\highlight2 
+\par \cf0\highlight0         Piece Name: /u01/app/FRA/TEST/autobackup/2023_02_20/o1_mf_s_1129275543_kz5okz5s_.bkp\cf1\highlight2 
+\par \cf0\highlight0   SPFILE Included: Modification time: 20-FEB-23\cf1\highlight2 
+\par \cf0\highlight0   SPFILE db_unique_name: TEST\cf1\highlight2 
+\par \cf0\highlight0   Control File Included: Ckp SCN: 2307295      Ckp time: 20-FEB-23\cf1\highlight2 
+\par 
+\par \cf0\highlight0 BS Key  Type LV Size       Device Type Elapsed Time Completion Time\cf1\highlight2 
+\par \cf0\highlight0 ------- ---- -- ---------- ----------- ------------ ---------------\cf1\highlight2 
+\par \cf0\highlight0 2       Full    10.20M     DISK        00:00:00     20-FEB-23\cf1\highlight2 
+\par \cf0\highlight0         BP Key: 2   Status: AVAILABLE  Compressed: NO  Tag: TAG20230220T081418\cf1\highlight2 
+\par \cf0\highlight0         Piece Name: /u01/app/FRA/TEST/autobackup/2023_02_20/o1_mf_s_1129277658_kz5qn2py_.bkp\cf1\highlight2 
+\par \cf0\highlight0   SPFILE Included: Modification time: 20-FEB-23\cf1\highlight2 
+\par \cf0\highlight0   SPFILE db_unique_name: TEST\cf1\highlight2 
+\par \cf0\highlight0   Control File Included: Ckp SCN: 2309398      Ckp time: 20-FEB-23\cf1\highlight2 
+\par 
+\par \cf0\highlight0 BS Key  Type LV Size       Device Type Elapsed Time Completion Time\cf1\highlight2 
+\par \cf0\highlight0 ------- ---- -- ---------- ----------- ------------ ---------------\cf1\highlight2 
+\par \cf0\highlight0 3       Full    1.42G      DISK        00:00:10     24-FEB-23\cf1\highlight2 
+\par \cf0\highlight0         BP Key: 3   Status: AVAILABLE  Compressed: NO  Tag: TAG20230224T072704\cf1\highlight2 
+\par \cf0\highlight0         Piece Name: /u01/app/FRA/TEST/backupset/2023_02_24/o1_mf_nnndf_TAG20230224T072704_kzj6ck12_.bkp\cf1\highlight2 
+\par \cf0\highlight0   List of Datafiles in backup set 3\cf1\highlight2 
+\par \cf0\highlight0   File LV Type Ckp SCN    Ckp Time  Abs Fuz SCN Sparse Name\cf1\highlight2 
+\par \cf0\highlight0   ---- -- ---- ---------- --------- ----------- ------ ----\cf1\highlight2 
+\par \cf0\highlight0   1       Full 2314153    24-FEB-23              NO    /u01/app/oracle/oradata/TEST/datafile/o1_mf_system_jf6dvm2j_.dbf\cf1\highlight2 
+\par \cf0\highlight0   3       Full 2314153    24-FEB-23              NO    /u01/app/oracle/oradata/TEST/datafile/o1_mf_sysaux_jf6dwpf2_.dbf\cf1\highlight2 
+\par \cf0\highlight0   4       Full 2314153    24-FEB-23              NO    /u01/app/oracle/oradata/TEST/datafile/o1_mf_undotbs1_jf6dx5ky_.dbf\cf1\highlight2 
+\par \cf0\highlight0   7       Full 2314153    24-FEB-23              NO    /u01/app/oracle/oradata/TEST/datafile/o1_mf_users_jf6dx7dq_.dbf\cf1\highlight2 
+\par 
+\par \cf0\highlight0 BS Key  Type LV Size       Device Type Elapsed Time Completion Time\cf1\highlight2 
+\par \cf0\highlight0 ------- ---- -- ---------- ----------- ------------ ---------------\cf1\highlight2 
+\par \cf0\highlight0 4       Full    10.20M     DISK        00:00:00     24-FEB-23\cf1\highlight2 
+\par \cf0\highlight0         BP Key: 4   Status: AVAILABLE  Compressed: NO  Tag: TAG20230224T072720\cf1\highlight2 
+\par \cf0\highlight0         Piece Name: /u01/app/FRA/TEST/autobackup/2023_02_24/o1_mf_s_1129620440_kzj6d0cs_.bkp\cf1\highlight2 
+\par \cf0\highlight0   SPFILE Included: Modification time: 24-FEB-23\cf1\highlight2 
+\par \cf0\highlight0   SPFILE db_unique_name: TEST\cf1\highlight2 
+\par \cf0\highlight0   Control File Included: Ckp SCN: 2314169      Ckp time: 24-FEB-23\cf1\highlight2 
+\par 
+\par \cf0\highlight0 RMAN>\cf1\highlight2 
+\par 
+\par \cf0\highlight0 RMAN>\cf1\highlight2 
+\par 
+\par \cf0\highlight0 RMAN>\cf1\highlight2 
+\par 
+\par \cf0\highlight0 RMAN>\cf1\highlight2 
+\par 
+\par \cf0\highlight0 RMAN>\cf1\highlight2 
+\par 
+\par \cf0\highlight0 RMAN>\cf1\highlight2 
+\par 
+\par \cf0\highlight0 RMAN> show all;\cf1\highlight2 
+\par 
+\par \cf0\highlight0 RMAN configuration parameters for database with db_unique_name TEST are:\cf1\highlight2 
+\par \cf0\highlight0 CONFIGURE RETENTION POLICY TO REDUNDANCY 1; # default\cf1\highlight2 
+\par \cf0\highlight0 CONFIGURE BACKUP OPTIMIZATION OFF; # default\cf1\highlight2 
+\par \cf0\highlight0 CONFIGURE DEFAULT DEVICE TYPE TO DISK; # default\cf1\highlight2 
+\par \cf0\highlight0 CONFIGURE CONTROLFILE AUTOBACKUP ON; # default\cf1\highlight2 
+\par \cf0\highlight0 CONFIGURE CONTROLFILE AUTOBACKUP FORMAT FOR DEVICE TYPE DISK TO '%F'; # default\cf1\highlight2 
+\par \cf0\highlight0 CONFIGURE DEVICE TYPE DISK PARALLELISM 1 BACKUP TYPE TO BACKUPSET; # default\cf1\highlight2 
+\par \cf0\highlight0 CONFIGURE DATAFILE BACKUP COPIES FOR DEVICE TYPE DISK TO 1; # default\cf1\highlight2 
+\par \cf0\highlight0 CONFIGURE ARCHIVELOG BACKUP COPIES FOR DEVICE TYPE DISK TO 1; # default\cf1\highlight2 
+\par \cf0\highlight0 CONFIGURE MAXSETSIZE TO UNLIMITED; # default\cf1\highlight2 
+\par \cf0\highlight0 CONFIGURE ENCRYPTION FOR DATABASE OFF; # default\cf1\highlight2 
+\par \cf0\highlight0 CONFIGURE ENCRYPTION ALGORITHM 'AES128'; # default\cf1\highlight2 
+\par \cf0\highlight0 CONFIGURE COMPRESSION ALGORITHM 'BASIC' AS OF RELEASE 'DEFAULT' OPTIMIZE FOR LOAD TRUE ; # default\cf1\highlight2 
+\par \cf0\highlight0 CONFIGURE RMAN OUTPUT TO KEEP FOR 7 DAYS; # default\cf1\highlight2 
+\par \cf0\highlight0 CONFIGURE ARCHIVELOG DELETION POLICY TO NONE; # default\cf1\highlight2 
+\par \cf0\highlight0 CONFIGURE SNAPSHOT CONTROLFILE NAME TO '/u01/app/oracle/product/19c/db_1/dbs/snapcf_test.f'; # default\cf1\highlight2 
+\par 
+\par \cf0\highlight0 RMAN> Backup as copy database;\cf1\highlight2 
+\par 
+\par \cf0\highlight0 Starting backup at 24-FEB-23\cf1\highlight2 
+\par \cf0\highlight0 allocated channel: ORA_DISK_1\cf1\highlight2 
+\par \cf0\highlight0 channel ORA_DISK_1: SID=19 device type=DISK\cf1\highlight2 
+\par \cf0\highlight0 channel ORA_DISK_1: starting datafile copy\cf1\highlight2 
+\par \cf0\highlight0 input datafile file number=00001 name=/u01/app/oracle/oradata/TEST/datafile/o1_mf_system_jf6dvm2j_.dbf\cf1\highlight2 
+\par \cf0\highlight0 output file name=/u01/app/FRA/TEST/datafile/o1_mf_system_kzj8dk6h_.dbf tag=TAG20230224T080145 RECID=2 STAMP=1129622507\cf1\highlight2 
+\par \cf0\highlight0 channel ORA_DISK_1: datafile copy complete, elapsed time: 00:00:03\cf1\highlight2 
+\par \cf0\highlight0 channel ORA_DISK_1: starting datafile copy\cf1\highlight2 
+\par \cf0\highlight0 input datafile file number=00003 name=/u01/app/oracle/oradata/TEST/datafile/o1_mf_sysaux_jf6dwpf2_.dbf\cf1\highlight2 
+\par \cf0\highlight0 output file name=/u01/app/FRA/TEST/datafile/o1_mf_sysaux_kzj8dndj_.dbf tag=TAG20230224T080145 RECID=3 STAMP=1129622510\cf1\highlight2 
+\par \cf0\highlight0 channel ORA_DISK_1: datafile copy complete, elapsed time: 00:00:03\cf1\highlight2 
+\par \cf0\highlight0 channel ORA_DISK_1: starting datafile copy\cf1\highlight2 
+\par \cf0\highlight0 input datafile file number=00004 name=/u01/app/oracle/oradata/TEST/datafile/o1_mf_undotbs1_jf6dx5ky_.dbf\cf1\highlight2 
+\par \cf0\highlight0 output file name=/u01/app/FRA/TEST/datafile/o1_mf_undotbs1_kzj8dqm4_.dbf tag=TAG20230224T080145 RECID=4 STAMP=1129622513\cf1\highlight2 
+\par \cf0\highlight0 channel ORA_DISK_1: datafile copy complete, elapsed time: 00:00:03\cf1\highlight2 
+\par \cf0\highlight0 channel ORA_DISK_1: starting datafile copy\cf1\highlight2 
+\par \cf0\highlight0 input datafile file number=00007 name=/u01/app/oracle/oradata/TEST/datafile/o1_mf_users_jf6dx7dq_.dbf\cf1\highlight2 
+\par \cf0\highlight0 output file name=/u01/app/FRA/TEST/datafile/o1_mf_users_kzj8dtpf_.dbf tag=TAG20230224T080145 RECID=5 STAMP=1129622514\cf1\highlight2 
+\par \cf0\highlight0 channel ORA_DISK_1: datafile copy complete, elapsed time: 00:00:01\cf1\highlight2 
+\par \cf0\highlight0 Finished backup at 24-FEB-23\cf1\highlight2 
+\par 
+\par \cf0\highlight0 Starting Control File and SPFILE Autobackup at 24-FEB-23\cf1\highlight2 
+\par \cf0\highlight0 piece handle=/u01/app/FRA/TEST/autobackup/2023_02_24/o1_mf_s_1129622515_kzj8dw0w_.bkp comment=NONE\cf1\highlight2 
+\par \cf0\highlight0 Finished Control File and SPFILE Autobackup at 24-FEB-23\cf1\highlight2 
+\par 
+\par \cf0\highlight0 RMAN>\cf1\highlight2 
+\par 
+\par \cf0\highlight0 RMAN>\cf1\highlight2 
+\par 
+\par \cf0\highlight0 RMAN>\cf1\highlight2 
+\par 
+\par \cf0\highlight0 RMAN> exit\cf1\highlight2 
+\par 
+\par 
+\par \cf0\highlight0 Recovery Manager complete.\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining ~]$ exit\cf1\highlight2 
+\par \cf0\highlight0 logout\cf1\highlight2 
+\par \cf0\highlight0 [root@oracledbaonlinetraining ~]# sqlplus / as sysdba\cf1\highlight2 
+\par \cf0\highlight0 bash: sqlplus: command not found...\cf1\highlight2 
+\par \cf0\highlight0 [root@oracledbaonlinetraining ~]# su - oracle\cf1\highlight2 
+\par \cf0\highlight0 Last login: Fri Feb 24 07:08:05 IST 2023 on pts/0\cf1\highlight2 
+\par \cf0\highlight0 [oracle@oracledbaonlinetraining ~]$ sqlplus / as sysdba\cf1\highlight2 
+\par 
+\par \cf0\highlight0 SQL*Plus: Release 19.0.0.0.0 - Production on Fri Feb 24 08:09:52 2023\cf1\highlight2 
+\par \cf0\highlight0 Version 19.11.0.0.0\cf1\highlight2 
+\par 
+\par \cf0\highlight0 Copyright (c) 1982, 2020, Oracle.  All rights reserved.\cf1\highlight2 
+\par 
+\par 
+\par \cf0\highlight0 Connected to:\cf1\highlight2 
+\par \cf0\highlight0 Oracle Database 19c Enterprise Edition Release 19.0.0.0.0 - Production\cf1\highlight2 
+\par \cf0\highlight0 Version 19.11.0.0.0\cf1\highlight2 
+\par 
+\par \cf0\highlight0 SQL> shut immediate\cf1\highlight2 
+\par \cf0\highlight0 Database closed.\cf1\highlight2 
+\par \cf0\highlight0 Database dismounted.\cf1\highlight2 
+\par \cf0\highlight0 ORACLE instance shut down.\cf1\highlight2 
+\par \cf0\highlight0 SQL>\cf1\highlight2 
+\par \pard\cf0\highlight0\f2\fs14 
+\par }
+ 

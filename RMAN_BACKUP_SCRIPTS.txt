@@ -1,0 +1,511 @@
+ORACLE_HOME=/u01/app/oracle/product/19c/db_1
+export ORACLE_HOME
+ORACLE_SID=test
+export ORACLE_SID
+ORACLE_TERM=386
+export ORACLE_TERM
+LD_LIBRARY_PATH=$ORACLE_HOME/lib:/usr/lib:/usr/java1.2/lib
+export LD_LIBRARY_PATH
+PATH=$ORACLE_HOME/bin:/bin:/usr/bin:/usr/ucb:/usr/ccs/bin
+export PATH
+
+dt=`date +%d%m%y`
+
+cd /u01/BACKUP/RMAN1
+
+/u01/app/oracle/product/19c/db_1/bin/rman target sys/sys trace/u01/BACKUP/RMAN1/TEST_Rman_full_L0_$dt.log<< EOF
+run {
+    ALLOCATE CHANNEL disk1 DEVICE TYPE DISK FORMAT '/u01/BACKUP/RMAN1/test_%U_%T.%p';
+    ALLOCATE CHANNEL disk2 DEVICE TYPE DISK FORMAT '/u01/BACKUP/RMAN1/test_%U_%T.%p';
+    ALLOCATE CHANNEL disk3 DEVICE TYPE DISK FORMAT '/u01/BACKUP/RMAN1/test_%U_%T.%p';
+    ALLOCATE CHANNEL disk4 DEVICE TYPE DISK FORMAT '/u01/BACKUP/RMAN1/test_%U_%T.%p';
+    crosscheck archivelog all;
+    delete noprompt expired archivelog all;
+    backup as compressed backupset incremental level 0 database plus archivelog ;
+    backup current controlfile format '/u01/BACKUP/RMAN1/test_controlfile_%U_%T.%p';
+    crosscheck backupset ;
+    delete noprompt EXPIRED backupset ;
+    release channel disk1;
+    release channel disk2;
+    release channel disk3;
+    release channel disk4;
+    }
+ exit;
+	
+26 12 * * * /u01/BACKUP/RMAN1/rman_backup.sh
+
+backup as compressed backupset incremental level 0 database plus archivelog tag 'BKP_FULL_06-JULY-2021';
+
+crosscheck backup;
+
+list expired backup;
+
+delete expired backup;
+
+list expired backup;
+
+
+1. By default it goes to FRA :
+
+BACKUP DATABASE PLUS ARCHIVELOG;
+
+delete backup;
+
+delete backuppiece tag="TAG20210705T153955";
+
+2) Backup as Image copy:
+
+ Backup as copy database;
+ 
+ list backuppiece tag="TAG20210706T130034";
+ 
+#####Using RMAN for performing incremental backups#######
+
+To take a differential backup at level 0 for the database, you can do the following:
+RMAN> BACKUP INCREMENTAL LEVEL 0 DATABASE;
+
+For level 1 incremental backup, just replace 0 with 1 in the previous command:
+RMAN> BACKUP INCREMENTAL LEVEL 1 DATABASE;
+
+If you want to take a cumulative backup, the command would appear as follows:
+RMAN> BACKUP INCREMENTAL LEVEL 1 cumulative DATABASE;
+
+##########Performing backups of the control file, the SPFILE, and archived redo logs #########
+
+1) backup spfile;
+
+2) You can take the image copy backup of the control file using the command BACKUP AS COPY CURRENT CONTROLFILE.
+
+3) BACKUP TABLESPACE users INCLUDE CURRENT CONTROLFILE;
+
+4) To release space, you can use the option delete input to delete the archive redo logs after being backed up. So, the final statement for full database backup would appear as follows:
+
+RMAN> BACKUP database plus archivelog delete input;
+
+############# compressed backup ###############
+
+BACKUP AS COMPRESSED BACKUPSET DATABASE plus archivelog;
+
+
+SELECT * FROM V$rman_configuration;
+
+
+Configuring the backup retention policy
+
+Two mutually exclusive retention policies are available:
+• Redundancy (the number of copies of the backups to be kept)
+• Recovery window of n days (the number of days for which the backups need to be kept)
+
+
+###############Redundancy retention policy#######
+
+SHOW RETENTION POLICY;
+
+CONFIGURE RETENTION POLICY TO REDUNDANCY 3;
+
+REPORT OBSOLETE;
+
+
+REPORT NEED BACKUP;
+
+delete obsolete;
+
+
+######Password encryption##########
+
+RMAN> SET ENCRYPTION ON IDENTIFIED BY bkppwd ONLY;
+
+Perfect! So now let's take the backup of the tablespace users:
+
+RMAN> BACKUP TABLESPACE USERS;
+
+Now, just to demonstrate what will happen if we don't supply the correct password,
+we will make the tablespace OFFLINE and try to restore it. Any guesses? Yes, the
+restore will fail!
+
+select * from dba_data_files where tablespace_NAME='USERS';
+
+RMAN> ALTER DATABASE DATAFILE 7 OFFLINE;
+
+Statement processed
+
+RMAN> RESTORE DATAFILE 7;
+
+
+Now, we shall re-attempt the restore but with the correct password:
+
+RMAN> SET DECRYPTION IDENTIFIED BY bkppwd;
+
+RMAN> RESTORE DATAFILE 7;
+
+
+
+RMAN> RECOVER DATAFILE 7;
+
+RMAN> ALTER DATABASE DATAFILE 7 ONLINE;
+
+
+##################################################
+
+
+Crash and media recovery >>>>>>pg 200
+
+
+#####Data recovery advisor #############
+
+Although performing recovery is not really tough, with a little practice and
+understanding how various database components work with each other, it can go
+smoothly even for advanced scenarios. Still, almost every time I take a session on
+RMAN, the same question arises from the delegates of why recovery isn't being
+automated when almost everything else in the database is. Well, their wish has been
+granted and since the database release 11g, a simple yet efficient tool is now available
+that can actually perform recoveries automatically. Please say hello to Data Recovery
+Advisor (DRA).
+DRA is available in both the CLI (via RMAN) and GUI mode (via Cloud Control).
+In the RMAN, DRA is maintained through the following commands:
+
+• LIST FAILURE
+• ADVICE FAILURE
+• REPAIR FAILURE PREVIEW
+• CHANGE FAILURE
+
+SQL> !rm /u01/app/oracle/oradata/TEST/datafile/o1_mf_users_jf6dx7dq_.dbf
+
+Now it's time to fire up the DRA to see the details of this failure. From the RMAN
+client, we shall execute the LIST FAILURE command along with the DETAIL option
+that will give us elaborate details of the issue:
+
+RMAN> LIST FAILURE DETAIL;
+
+RMAN> ADVISE FAILURE;
+
+We can see a script name in the output. We can also see the details of this script using
+the PREVIEW option of the REPAIR command:
+
+
+RMAN> REPAIR FAILURE PREVIEW;
+
+Now, we can ask DRA to solve this issue for us without asking us anything:
+
+RMAN> REPAIR FAILURE NOPROMPT;
+
+######################################
+
+
+select TYPE,RECORD_SIZE,RECORDS_TOTAL,RECORDS_USED from v$controlfile_record_section where type like '%BACKUP%';
+
+report schema;
+
+SQL> SELECT s.sid,p.spid,s.client_info FROM V$process p, V$session s WHERE p.addr=s.paddr AND client_info like '%rman%';
+
+alter session set nls_date_format = 'DD-Mon-YYYY HH24:MI:SS';
+
+SELECT session_key S_KEY,session_recid S_RECID,start_time,end_time, round(output_bytes/1048576) as OUTPUT_MB,elapsed_seconds
+FROM V$RMAN_BACKUP_JOB_DETAILS
+WHERE start_time >= sysdate-180 and status='COMPLETED'
+AND input_type='DB FULL';
+
+SELECT type, item, units, sofar, total FROM V$RECOVERY_PROGRESS;
+
+
+SQL> SELECT sid, serial#, opname, time_remaining FROM v$session_longops Where sid||serial# in (39149) AND time_remaining > 0;
+
+
+##############################################
+
+SQL> SELECT header_block FROM dba_segments WHERE segment_name='PERSONS' and owner='JOHN';
+
+HEADER_BLOCK
+------------
+         370
+
+select segment_name,tablespace_name from dba_segments WHERE segment_name='PERSONS' and owner='JOHN';
+
+SQL> select FILE_NAME from dba_data_files where TABLESPACE_NAME='USERS';
+
+FILE_NAME
+--------------------------------------------------------------------------------
+/u01/app/oracle/oradata/TEST/datafile/o1_mf_users_jg85o5xn_.dbf
+
+
+dd of=/u01/app/oracle/oradata/TEST/datafile/o1_mf_users_jg85o5xn_.dbf bs=8192 conv=notrunc seek=147 << EOF
+> corruption test
+> EOF
+
+
+BACKUP VALIDATE CHECK LOGICAL DATABASE;
+
+
+
+run {
+ set until time "to_date('06-JUL-2021 12:30:00','DD-MON-YYYY HH24:Mi:SS')";
+ restore database;
+ recover database;
+ }
+ 
+ 
+[oracle@test1 ~]$ sqlplus / as sysdba
+
+SQL*Plus: Release 19.0.0.0.0 - Production on Tue Jul 6 16:11:04 2021
+Version 19.11.0.0.0
+
+Copyright (c) 1982, 2020, Oracle.  All rights reserved.
+
+
+Connected to:
+Oracle Database 19c Enterprise Edition Release 19.0.0.0.0 - Production
+Version 19.11.0.0.0
+
+SQL> @db
+
+Session altered.
+
+
+   INST_ID DB_NAME    INST_NAME  STARTUP_TIME       HOST_NAME    OPEN_MODE  LOG_MODE     CONTROL DATABASE_R VERSION    PROTECTION_MODE      SWITCHOVER_STATUS
+---------- ---------- ---------- ------------------ ------------ ---------- ------------ ------- ---------- ---------- -------------------- --------------------
+         1 TEST       test       06-JUL-21 16:07:36 test1.locald READ WRITE ARCHIVELOG   CURRENT PRIMARY    19.0.0.0.0 MAXIMUM PERFORMANCE  NOT ALLOWED
+                                                    omain
+
+
+SQL> @tbs
+
+Tablespace Name                FREE_SPACE USED_SPACE TOTAL_SPACE     %_Free
+------------------------------ ---------- ---------- ----------- ----------
+GGTBS                            2044.875      3.125        2048      99.85
+SYSAUX                               45.5      784.5         830       5.48
+SYSTEM                             6.4375   983.5625         990        .65
+UNDOTBS1                           607.75      32.25         640      94.96
+
+SQL> shut immediate
+Database closed.
+Database dismounted.
+ORACLE instance shut down.
+SQL>
+SQL>
+SQL>
+SQL> startup nomount
+ORACLE instance started.
+
+Total System Global Area 2634022304 bytes
+Fixed Size                  8900000 bytes
+Variable Size            1459617792 bytes
+Database Buffers         1157627904 bytes
+Redo Buffers                7876608 bytes
+SQL> exit
+Disconnected from Oracle Database 19c Enterprise Edition Release 19.0.0.0.0 - Production
+Version 19.11.0.0.0
+[oracle@test1 ~]$
+[oracle@test1 ~]$
+[oracle@test1 ~]$
+[oracle@test1 ~]$
+[oracle@test1 ~]$
+[oracle@test1 ~]$ rman target /
+
+Recovery Manager: Release 19.0.0.0.0 - Production on Tue Jul 6 16:12:19 2021
+Version 19.11.0.0.0
+
+Copyright (c) 1982, 2019, Oracle and/or its affiliates.  All rights reserved.
+
+connected to target database: TEST (not mounted)
+
+RMAN> restore controlfile from '/u01/RESTORE/test_controlfile_0a0371s0_10_1_1_20210705.1';
+
+Starting restore at 06-JUL-21
+using target database control file instead of recovery catalog
+allocated channel: ORA_DISK_1
+channel ORA_DISK_1: SID=261 device type=DISK
+
+channel ORA_DISK_1: restoring control file
+channel ORA_DISK_1: restore complete, elapsed time: 00:00:01
+output file name=/u01/app/oracle/oradata/TEST/controlfile/o1_mf_jf6dy46v_.ctl
+output file name=/u01/app/FRA/TEST/controlfile/o1_mf_jf6dy4b4_.ctl
+Finished restore at 06-JUL-21
+
+RMAN> catalog start with '/u01/RESTORE/';
+
+RMAN-00571: ===========================================================
+RMAN-00569: =============== ERROR MESSAGE STACK FOLLOWS ===============
+RMAN-00571: ===========================================================
+RMAN-03002: failure of catalog command at 07/06/2021 16:12:53
+ORA-01507: database not mounted
+
+RMAN> alter database mount;
+
+released channel: ORA_DISK_1
+Statement processed
+
+RMAN> catalog start with '/u01/RESTORE/';
+
+Starting implicit crosscheck backup at 06-JUL-21
+allocated channel: ORA_DISK_1
+channel ORA_DISK_1: SID=261 device type=DISK
+Crosschecked 9 objects
+Finished implicit crosscheck backup at 06-JUL-21
+
+Starting implicit crosscheck copy at 06-JUL-21
+using channel ORA_DISK_1
+Finished implicit crosscheck copy at 06-JUL-21
+
+searching for all files in the recovery area
+cataloging files...
+cataloging done
+
+List of Cataloged Files
+=======================
+File Name: /u01/app/FRA/TEST/backupset/2021_07_06/o1_mf_nnnd0_TAG20210706T131458_jg82ht6o_.bkp
+File Name: /u01/app/FRA/TEST/backupset/2021_07_06/o1_mf_nnnd1_TAG20210706T131508_jg82j58g_.bkp
+File Name: /u01/app/FRA/TEST/backupset/2021_07_06/o1_mf_nnnd1_TAG20210706T131538_jg82k2mr_.bkp
+File Name: /u01/app/FRA/TEST/backupset/2021_07_06/o1_mf_nnsnf_TAG20210706T132807_jg838h49_.bkp
+File Name: /u01/app/FRA/TEST/backupset/2021_07_06/o1_mf_ncnnf_TAG20210706T132934_jg83c7ms_.bkp
+File Name: /u01/app/FRA/TEST/backupset/2021_07_06/o1_mf_nnndf_TAG20210706T132934_jg83c8qm_.bkp
+File Name: /u01/app/FRA/TEST/backupset/2021_07_06/o1_mf_nnndf_TAG20210706T134942_jg84jz0n_.bkp
+File Name: /u01/app/FRA/TEST/backupset/2021_07_06/o1_mf_annnn_BKP_FULL_06_JULY_202_jg8b9rh2_.bkp
+File Name: /u01/app/FRA/TEST/backupset/2021_07_06/o1_mf_nnnd0_TAG20210706T152831_jg8bb7vm_.bkp
+File Name: /u01/app/FRA/TEST/backupset/2021_07_06/o1_mf_annnn_BKP_FULL_06_JULY_202_jg8bcc6p_.bkp
+File Name: /u01/app/FRA/TEST/datafile/o1_mf_system_jg81zcc8_.dbf
+File Name: /u01/app/FRA/TEST/datafile/o1_mf_sysaux_jg81zlgy_.dbf
+File Name: /u01/app/FRA/TEST/datafile/o1_mf_undotbs1_jg81zolz_.dbf
+File Name: /u01/app/FRA/TEST/datafile/o1_mf_users_jg81zwrw_.dbf
+
+searching for all files that match the pattern /u01/RESTORE/
+
+List of Files Unknown to the Database
+=====================================
+File Name: /u01/RESTORE/pfile_test.txt
+File Name: /u01/RESTORE/test_030371qb_3_1_1_20210705.1
+File Name: /u01/RESTORE/test_040371qb_4_1_1_20210705.1
+File Name: /u01/RESTORE/test_050371qb_5_1_1_20210705.1
+File Name: /u01/RESTORE/test_060371qr_6_1_1_20210705.1
+File Name: /u01/RESTORE/test_070371qr_7_1_1_20210705.1
+File Name: /u01/RESTORE/test_080371qr_8_1_1_20210705.1
+File Name: /u01/RESTORE/test_090371ru_9_1_1_20210705.1
+File Name: /u01/RESTORE/test_controlfile_0a0371s0_10_1_1_20210705.1
+File Name: /u01/RESTORE/TEST_Rman_full_L0.log
+
+Do you really want to catalog the above files (enter YES or NO)? yes
+cataloging files...
+cataloging done
+
+List of Cataloged Files
+=======================
+File Name: /u01/RESTORE/test_030371qb_3_1_1_20210705.1
+File Name: /u01/RESTORE/test_040371qb_4_1_1_20210705.1
+File Name: /u01/RESTORE/test_050371qb_5_1_1_20210705.1
+File Name: /u01/RESTORE/test_060371qr_6_1_1_20210705.1
+File Name: /u01/RESTORE/test_070371qr_7_1_1_20210705.1
+File Name: /u01/RESTORE/test_080371qr_8_1_1_20210705.1
+File Name: /u01/RESTORE/test_090371ru_9_1_1_20210705.1
+File Name: /u01/RESTORE/test_controlfile_0a0371s0_10_1_1_20210705.1
+
+List of Files Which Were Not Cataloged
+=======================================
+File Name: /u01/RESTORE/pfile_test.txt
+  RMAN-07517: Reason: The file header is corrupted
+File Name: /u01/RESTORE/TEST_Rman_full_L0.log
+  RMAN-07517: Reason: The file header is corrupted
+
+RMAN>
+
+RMAN> run {
+ set until time "to_date('06-JUL-2021 12:30:00','DD-MON-YYYY HH24:Mi:SS')";
+ restore database;
+ recover database;
+ }2> 3> 4> 5>
+
+executing command: SET until clause
+
+Starting restore at 06-JUL-21
+using channel ORA_DISK_1
+
+channel ORA_DISK_1: starting datafile backup set restore
+channel ORA_DISK_1: specifying datafile(s) to restore from backup set
+channel ORA_DISK_1: restoring datafile 00005 to /u01/app/oracle/oradata/TEST/datafile/ggtbs.dbf
+channel ORA_DISK_1: reading from backup piece /u01/BACKUP/RMAN/test_060371qr_6_1_1_20210705.1
+channel ORA_DISK_1: piece handle=/u01/BACKUP/RMAN/test_060371qr_6_1_1_20210705.1 tag=TAG20210705T154011
+channel ORA_DISK_1: restored backup piece 1
+channel ORA_DISK_1: restore complete, elapsed time: 00:00:03
+channel ORA_DISK_1: starting datafile backup set restore
+channel ORA_DISK_1: specifying datafile(s) to restore from backup set
+channel ORA_DISK_1: restoring datafile 00003 to /u01/app/oracle/oradata/TEST/datafile/o1_mf_sysaux_jf6dwpf2_.dbf
+channel ORA_DISK_1: restoring datafile 00004 to /u01/app/oracle/oradata/TEST/datafile/o1_mf_undotbs1_jf6dx5ky_.dbf
+channel ORA_DISK_1: reading from backup piece /u01/BACKUP/RMAN/test_070371qr_7_1_1_20210705.1
+channel ORA_DISK_1: piece handle=/u01/BACKUP/RMAN/test_070371qr_7_1_1_20210705.1 tag=TAG20210705T154011
+channel ORA_DISK_1: restored backup piece 1
+channel ORA_DISK_1: restore complete, elapsed time: 00:00:16
+channel ORA_DISK_1: starting datafile backup set restore
+channel ORA_DISK_1: specifying datafile(s) to restore from backup set
+channel ORA_DISK_1: restoring datafile 00001 to /u01/app/oracle/oradata/TEST/datafile/o1_mf_system_jf6dvm2j_.dbf
+channel ORA_DISK_1: restoring datafile 00007 to /u01/app/oracle/oradata/TEST/datafile/o1_mf_users_jf6dx7dq_.dbf
+channel ORA_DISK_1: reading from backup piece /u01/BACKUP/RMAN/test_080371qr_8_1_1_20210705.1
+channel ORA_DISK_1: piece handle=/u01/BACKUP/RMAN/test_080371qr_8_1_1_20210705.1 tag=TAG20210705T154011
+channel ORA_DISK_1: restored backup piece 1
+channel ORA_DISK_1: restore complete, elapsed time: 00:00:35
+Finished restore at 06-JUL-21
+
+Starting recover at 06-JUL-21
+using channel ORA_DISK_1
+
+starting media recovery
+
+archived log for thread 1 with sequence 14 is already on disk as file /u01/app/ARCHIVE/1_14_1076006686.dbf
+archived log file name=/u01/app/ARCHIVE/1_14_1076006686.dbf thread=1 sequence=14
+channel ORA_DISK_1: starting archived log restore to default destination
+channel ORA_DISK_1: restoring archived log
+archived log thread=1 sequence=15
+channel ORA_DISK_1: restoring archived log
+archived log thread=1 sequence=16
+channel ORA_DISK_1: restoring archived log
+archived log thread=1 sequence=17
+channel ORA_DISK_1: reading from backup piece /u01/app/FRA/TEST/backupset/2021_07_06/o1_mf_annnn_BKP_FULL_06_JULY_202_jg8b9rh2_.bkp
+channel ORA_DISK_1: piece handle=/u01/app/FRA/TEST/backupset/2021_07_06/o1_mf_annnn_BKP_FULL_06_JULY_202_jg8b9rh2_.bkp tag=BKP_FULL_06-JULY-2021
+channel ORA_DISK_1: restored backup piece 1
+channel ORA_DISK_1: restore complete, elapsed time: 00:00:07
+archived log file name=/u01/app/ARCHIVE/1_15_1076006686.dbf thread=1 sequence=15
+archived log file name=/u01/app/ARCHIVE/1_16_1076006686.dbf thread=1 sequence=16
+archived log file name=/u01/app/ARCHIVE/1_17_1076006686.dbf thread=1 sequence=17
+media recovery complete, elapsed time: 00:00:01
+Finished recover at 06-JUL-21
+
+RMAN> alter database open resetlogs;
+
+Statement processed
+
+RMAN> exit
+
+
+Recovery Manager complete.
+[oracle@test1 ~]$ sqlplus / as sysdba
+
+SQL*Plus: Release 19.0.0.0.0 - Production on Tue Jul 6 16:15:32 2021
+Version 19.11.0.0.0
+
+Copyright (c) 1982, 2020, Oracle.  All rights reserved.
+
+
+Connected to:
+Oracle Database 19c Enterprise Edition Release 19.0.0.0.0 - Production
+Version 19.11.0.0.0
+
+SQL> @db
+
+Session altered.
+
+
+   INST_ID DB_NAME    INST_NAME  STARTUP_TIME       HOST_NAME    OPEN_MODE  LOG_MODE     CONTROL DATABASE_R VERSION    PROTECTION_MODE      SWITCHOVER_STATUS
+---------- ---------- ---------- ------------------ ------------ ---------- ------------ ------- ---------- ---------- -------------------- --------------------
+         1 TEST       test       06-JUL-21 16:12:11 test1.locald READ WRITE ARCHIVELOG   CURRENT PRIMARY    19.0.0.0.0 MAXIMUM PERFORMANCE  NOT ALLOWED
+                                                    omain
+
+
+SQL> @tbs
+
+Tablespace Name                FREE_SPACE USED_SPACE TOTAL_SPACE     %_Free
+------------------------------ ---------- ---------- ----------- ----------
+GGTBS                            2045.375      2.625        2048      99.87
+SYSAUX                              48.75     781.25         830       5.87
+SYSTEM                             6.4375   983.5625         990        .65
+UNDOTBS1                           606.75      33.25         640       94.8
+USERS                               2.125      2.875           5       42.5
+
+SQL>
+ 
