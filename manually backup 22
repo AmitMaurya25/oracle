@@ -1,0 +1,123 @@
+SQL> select name from v$datafile;
+SQL> archive log list
+SQL> show parameter recovery
+SQL> select name from v$controlfile;
+SQL> show parameter spfile
+
+SQL> select file_name from dba_data_files where tablespace_name='USERS';
+
+
+SQL> alter tablespace USERS offline;
+
+cp /u01/app/oracle/oradata/TEST/datafile/o1_mf_users_jf6dx7dq_.dbf /u01/BACKUP/USER_TABLESPACE_BKP/
+
+SQL> alter tablespace USERS online;
+
+Tablespace altered.
+
+-----------------------------------------------------------------------------------------
+select CHECKPOINT_CHANGE# from v$database; ----both should be same..
+
+SQL> select CHECKPOINT_CHANGE# from v$datafile_header;
+
+CHECKPOINT_CHANGE#
+------------------
+           2305730
+           2305730
+           2305730
+           2306672
+select CHECKPOINT_CHANGE# from v$database;
+
+select FILE#,STATUS,CHANGE#,TIME from v$backup;
+
+     FILE# STATUS                CHANGE# TIME
+---------- ------------------ ---------- ---------
+         1 NOT ACTIVE                  0
+         3 NOT ACTIVE                  0
+         4 NOT ACTIVE                  0
+         7 NOT ACTIVE                  0
+alter database begin backup;
+
+> select CHECKPOINT_CHANGE# from v$datafile_header;
+---------------------------------------------
+cd /u01/app/oracle/oradata/TEST/datafile/
+
+cp * /u01/BACKUP/DATAFILE_NEW_BKP_USING_HOTBAKCUP/
+
+alter database end backup;
+
+cd /u01/app/FRA/TEST/archivelog/2023_02_20/ ---archive backing up
+
+ls -lrth o1_mf_1_1[3-6]*
+cp o1_mf_1_1[3-6]* /u01/BACKUP/DATAFILE_NEW_BKP_USING_HOTBAKCUP/
+
+
+alter database backup controlfile to '/u01/BACKUP/DATAFILE_NEW_BKP_USING_HOTBAKCUP/control_bkp.ctl';
+
+alter database backup controlfile to trace as '/u01/BACKUP/DATAFILE_NEW_BKP_USING_HOTBAKCUP/control_bkp_trace.txt';
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+[oracle@oracledbaonlinetraining datafile]$ mv o1_mf_users_jf6dx7dq_.dbf o1_mf_users_jf6dx7dq_.dbf_bkp ----changing user filename then creating user
+
+create user jack identified by abc;
+
+SQL> grant create session,create table,resource to jack
+  2  ;
+
+
+SQL> connect jack/abc
+Connected.
+SQL> CREATE TABLE t1(id NUMBER PRIMARY KEY);
+
+SQL>
+INSERT INTO t1(id) VALUES(10);SQL>
+INSERT INTO t1(id) VALUES(10)
+            *
+ERROR at line 1:
+ORA-01950: no privileges on tablespace 'USERS'
+SQL> grant dba to jack;
+
+Grant succeeded.
+
+SQL> connect jack/abc
+Connected.
+SQL> INSERT INTO t1(id) VALUES(10);
+INSERT INTO t1(id) VALUES(10)
+            *
+ERROR at line 1:
+ORA-01116: error in opening database file 7
+ORA-01110: data file 7:
+'/u01/app/oracle/oradata/TEST/datafile/o1_mf_users_jf6dx7dq_.dbf'
+ORA-27041: unable to open file
+Linux-x86_64 Error: 2: No such file or directory
+Additional information: 3
+
+
+SQL> alter tablespace USERS offline immediate;
+
+now taking cp from backup and inserting input again..
+
+SQL> recover tablespace USERS;
+ORA-00279: change 2306929 generated at 02/20/2023 07:38:39 needed for thread 1
+ORA-00289: suggestion :
+/u01/app/FRA/TEST/archivelog/2023_02_20/o1_mf_1_14_kz5ovwvg_.arc
+ORA-00280: change 2306929 for thread 1 is in sequence #14
+
+
+Specify log: {<RET>=suggested | filename | AUTO | CANCEL}
+AUTO
+Log applied.
+Media recovery complete.
+
+SQL> alter tablespace USERS online;
+
+SQL> connect jack/abc
+Connected.
+SQL>  INSERT INTO t1(id) VALUES(10);
+
+1 row created.
+
+SQL> commit;
+
+
