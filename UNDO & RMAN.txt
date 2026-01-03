@@ -1,0 +1,56 @@
+show parameter undo
+
+select tablespace_name,RETENTION from dba_tablespaces;
+create temporary tablespace TEMPNEW tempfile '/u01/oradata/prod/datafile/tempnew01.dbf' size 100m;
+select FILE_NAME,TABLESPACE_NAME,BYTES/1024/1024,STATUS from dba_temp_files;
+
+
+select PROPERTY_NAME,PROPERTY_VALUE,DESCRIPTION from database_properties where PROPERTY_NAME like 'DEFAULT%';
+
+col PROPERTY_NAME for a40
+col PROPERTY_VALUE for a40
+col DESCRIPTION for a40
+select PROPERTY_NAME,PROPERTY_VALUE,DESCRIPTION from database_properties where PROPERTY_NAME like 'DEFAULT%';
+
+SQL> ALTER DATABASE DEFAULT TEMPORARY TABLESPACE TEMPNEW;
+
+Database altered.
+
+
+select PROPERTY_NAME,PROPERTY_VALUE,DESCRIPTION from database_properties where PROPERTY_NAME like 'DEFAULT%';
+
+SQL> CREATE USER JACK_NEW IDENTIFIED BY abcd1234 temporary tablespace TEMP;
+
+select USERNAME,USER_ID,PASSWORD,ACCOUNT_STATUS,LOCK_DATE,EXPIRY_DATE,DEFAULT_TABLESPACE,TEMPORARY_TABLESPACE,created,profile,last_login from dba_users;
+
+drop tablespace TEMP including contents and datafiles;
+
+alter user JACK_NEW temporary tablespace TEMPNEW;
+
+User altered.
+
+
+-------------------------------------------------------------------------------------------------------------------------------------
+============================================RMAN==========================================================
+archive log list
+
+show parameter log
+alter system set log_archive_dest_1='LOCATION=/u01/app/ARCHIVE';
+
+show parameter log_archive_dest_1
+alter system set log_archive_dest_1='LOCATION=/u01/app/ARCHIVE_NEW';
+
+System altered.
+show parameter log_archive_dest_1
+alter system switch logfile;
+
+show parameter recovery
+alter system set log_archive_dest_1='LOCATION=db_recovery_file_dest';
+
+System altered.
+alter system switch logfile;
+
+
+cd $ORACLE_HOME/dbs    ---if no location set archive will come in this default area..
+
+show parameter db_recovery_file_dest
