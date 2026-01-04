@@ -1,0 +1,146 @@
+ORACLE_SID=test
+
+
+Step1:
+******
+
+If pfile is available use that or else create new pfile as mentioned below:
+
+vi /u01/app/oracle/product/19c/db_1/dbs/inittest.ora
+
+
+*.audit_file_dest='/u01/app/oracle/admin/test/adump'
+*.audit_trail='db'
+*.compatible='19.0.0'
+*.control_files='/u01/app/oracle/oradata/TEST/control01.ctl','/u01/app/oracle/FRA/TEST/control02.ctl'
+*.db_block_size=8192
+*.db_name='test'
+*.db_recovery_file_dest='/u01/app/oracle/FRA'
+*.db_recovery_file_dest_size=7851m
+*.diagnostic_dest='/u01/app/oracle'
+*.dispatchers='(PROTOCOL=TCP) (SERVICE=testXDB)'
+*.log_archive_dest_1='LOCATION=/u01/ARCHIVE'
+*.log_archive_format='%t_%s_%r.arc'
+*.log_archive_max_processes=30
+*.nls_language='AMERICAN'
+*.nls_territory='AMERICA'
+*.open_cursors=300
+*.pga_aggregate_target=969m
+*.processes=300
+*.remote_login_passwordfile='EXCLUSIVE'
+*.sga_target=2906m
+*.standby_file_management='AUTO'
+*.undo_tablespace='UNDOTBS1'
+
+Step2:
+******
+
+mkdir -p /u01/app/oracle/admin/test/adump
+
+mkdir -p /u01/app/oracle/oradata/TEST/
+
+mkdir -p /u01/app/oracle/FRA/TEST/
+
+Step3:
+******
+
+sqlplus / as sysdba
+
+startup nomount;
+
+exit
+
+
+Step4:
+******
+
+Restore controlfile from backup piece and mount the db:
+
+rman target /
+
+restore controlfile from '/u01/RESTORE/RMAN1/test_controlfile_2p1lh7um_89_1_1_20230227.1';
+
+alter database mount;
+
+
+mkdir -p /u01/app/oracle/oradata/TEST/datafile
+
+Step5:
+******
+
+catalog the backup pieces:
+
+rman target /
+
+catalog start with '/u01/RESTORE/RMAN1/';
+
+Step6:
+******
+
+Restore and recover
+
+run 
+    {
+	ALLOCATE CHANNEL disk1 DEVICE TYPE DISK;
+    ALLOCATE CHANNEL disk2 DEVICE TYPE DISK;
+    ALLOCATE CHANNEL disk3 DEVICE TYPE DISK;
+    ALLOCATE CHANNEL disk4 DEVICE TYPE DISK;
+	restore database;
+	release channel disk1;
+	release channel disk2;
+	release channel disk3;
+    release channel disk4;
+    }
+
+recover database;
+
+###########################################
+
+This is from RAC to non-RAC restoration:
+
+run 
+    {
+	set newname for database to "/u01/app/oracle/%b";
+    ALLOCATE CHANNEL disk1 DEVICE TYPE DISK;
+    ALLOCATE CHANNEL disk2 DEVICE TYPE DISK;
+    ALLOCATE CHANNEL disk3 DEVICE TYPE DISK;
+    ALLOCATE CHANNEL disk4 DEVICE TYPE DISK;
+	restore database;
+	SWITCH DATAFILE ALL;
+ 	release channel disk1;
+	release channel disk2;
+	release channel disk3;
+    release channel disk4;
+    }
+
+recover database;
+
+Step7:
+******
+	
+Open DB in resetlogs:
+	
+alter database open resetlogs;
+
+Step8:
+******
+SQL> select * from v$tempfile;
+
+SQL> ALTER TABLESPACE TEMP ADD TEMPFILE 'new tempfile path filename' REUSE;
+
+
+Step9:
+******
+
+create spfile from pfile;
+
+shut immediate;
+startup;
+
+Step10:
+******
+Make entry in oratab if its not present:
+	
+test:/u01/app/oracle/product/19c/db_1:Y
+
+

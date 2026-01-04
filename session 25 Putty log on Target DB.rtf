@@ -1,0 +1,1530 @@
+{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fmodern Consolas;}{\f1\fmodern\fcharset0 Consolas;}{\f2\fnil\fcharset129 Courier New;}}
+{\colortbl ;\red20\green20\blue20;\red142\green142\blue142;\red16\green158\blue98;\red148\green146\blue12;\red170\green51\blue170;\red56\green136\blue159;\red170\green85\blue85;\red18\green124\blue155;}
+\viewkind4\uc1\pard\f0\fs20     \u9484?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9488?\cf1\highlight2 
+\par \cf0\highlight0     \u9474?                 \cf3\f1\bullet  MobaXterm Personal Edition v22.2 \bullet\cf0\f0                  \u9474?\cf1\highlight2 
+\par \cf0\highlight0     \u9474?               \cf4 (SSH client, X server and network tools)\cf0                \u9474?\cf1\highlight2 
+\par \cf0\highlight0     \u9474?                                                                      \u9474?\cf1\highlight2 
+\par \cf0\highlight0     \u9474? \u11166? SSH session to \cf5 root@192.168.1.36                         \cf0           \u9474?\cf1\highlight2 
+\par \cf0\highlight0     \u9474?\f1    \bullet  Direct SSH      :  \cf3\f0\u10003?\cf0                                              \u9474?\cf1\highlight2 
+\par \cf0\highlight0     \u9474?\f1    \bullet  SSH compression :  \cf3\f0\u10003?\cf0                                              \u9474?\cf1\highlight2 
+\par \cf0\highlight0     \u9474?\f1    \bullet  SSH-browser     :  \cf3\f0\u10003?\cf0                                              \u9474?\cf1\highlight2 
+\par \cf0\highlight0     \u9474?\f1    \bullet  X11-forwarding  :  \cf3\f0\u10003?\cf0   (remote display is forwarded through SSH)  \u9474?\cf1\highlight2 
+\par \cf0\highlight0     \u9474?                                                                      \u9474?\cf1\highlight2 
+\par \cf0\highlight0     \u9474? \u11166? For more info, ctrl+click on \cf6\ul help\cf0\ulnone  or visit our \cf6\ul website\cf0\ulnone .            \u9474?\cf1\highlight2 
+\par \cf0\highlight0     \u9492?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9496?\cf1\highlight2 
+\par 
+\par \cf0\highlight0 Last login: Mon Feb 27 08:00:02 2023\cf1\highlight2 
+\par \cf0\highlight0 [root@test ~]#\cf1\highlight2 
+\par \cf0\highlight0 [root@test ~]#\cf1\highlight2 
+\par \cf0\highlight0 [root@test ~]#\cf1\highlight2 
+\par \cf0\highlight0 [root@test ~]#\cf1\highlight2 
+\par \cf0\highlight0 [root@test ~]#\cf1\highlight2 
+\par \cf0\highlight0 [root@test ~]# su - oracle\cf1\highlight2 
+\par \cf0\highlight0 Last login: Tue Jan 24 12:14:07 IST 2023 on pts/1\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test ~]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test ~]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test ~]$ cat /etc/oratab\cf1\highlight2 
+\par \cf0\highlight0 #\cf1\highlight2 
+\par 
+\par 
+\par 
+\par \cf0\highlight0 # This file is used by ORACLE utilities.  It is created by root.sh\cf1\highlight2 
+\par \cf0\highlight0 # and updated by either Database Configuration Assistant while creating\cf1\highlight2 
+\par \cf0\highlight0 # a database or ASM Configuration Assistant while creating ASM instance.\cf1\highlight2 
+\par 
+\par \cf0\highlight0 # A colon, ':', is used as the field terminator.  A new line terminates\cf1\highlight2 
+\par \cf0\highlight0 # the entry.  Lines beginning with a pound sign, '#', are comments.\cf1\highlight2 
+\par \cf0\highlight0 #\cf1\highlight2 
+\par \cf0\highlight0 # Entries are of the form:\cf1\highlight2 
+\par \cf0\highlight0 #   $ORACLE_SID:$ORACLE_HOME:<N|Y>:\cf1\highlight2 
+\par \cf0\highlight0 #\cf1\highlight2 
+\par \cf0\highlight0 # The first and second fields are the system identifier and home\cf1\highlight2 
+\par \cf0\highlight0 # directory of the database respectively.  The third field indicates\cf1\highlight2 
+\par \cf0\highlight0 # to the dbstart utility that the database should , "Y", or should not,\cf1\highlight2 
+\par \cf0\highlight0 # "N", be brought up at system boot time.\cf1\highlight2 
+\par \cf0\highlight0 #\cf1\highlight2 
+\par \cf0\highlight0 # Multiple entries with the same $ORACLE_SID are not allowed.\cf1\highlight2 
+\par \cf0\highlight0 #\cf1\highlight2 
+\par \cf0\highlight0 #\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test ~]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test ~]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test ~]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test ~]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test ~]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test ~]$ env |grep ORA\cf1\highlight2 
+\par \cf7\highlight0 ORA\cf0 CLE_SID=test\cf1\highlight2 
+\par \cf7\highlight0 ORA\cf0 CLE_BASE=/u01/app/oracle\cf1\highlight2 
+\par \cf7\highlight0 ORA\cf0 CLE_TERM=xterm\cf1\highlight2 
+\par \cf7\highlight0 ORA\cf0 CLE_HOME=/u01/app/oracle/product/19c/db_1\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test ~]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test ~]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test ~]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test ~]$ df -h\cf1\highlight2 
+\par \cf0\highlight0 Filesystem            Size  Used Avail Use% Mounted on\cf1\highlight2 
+\par \cf0\highlight0 devtmpfs              3.9G     0  3.9G   0% /dev\cf1\highlight2 
+\par \cf0\highlight0 tmpfs                 4.0G     0  4.0G   0% /dev/shm\cf1\highlight2 
+\par \cf0\highlight0 tmpfs                 4.0G  9.6M  4.0G   1% /run\cf1\highlight2 
+\par \cf0\highlight0 tmpfs                 4.0G     0  4.0G   0% /sys/fs/cgroup\cf1\highlight2 
+\par \cf0\highlight0 /dev/mapper/ol-root    14G  9.9G  4.2G  71% /\cf1\highlight2 
+\par \cf0\highlight0 /dev/mapper/ol-u02     25G   33M   25G   1% /u02\cf1\highlight2 
+\par \cf0\highlight0 /dev/mapper/ol-u01     35G  7.1G   28G  21% /u01\cf1\highlight2 
+\par \cf0\highlight0 /dev/mapper/ol-tmp    5.0G   34M  5.0G   1% /tmp\cf1\highlight2 
+\par \cf0\highlight0 /dev/sda1            1014M  229M  786M  23% /boot\cf1\highlight2 
+\par \cf0\highlight0 19c_Soft_And_Patches  487G  329G  158G  68% /media/sf_19c_Soft_And_Patches\cf1\highlight2 
+\par \cf0\highlight0 tmpfs                 802M   32K  802M   1% /run/user/0\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test ~]$ cd /u01\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test u01]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test u01]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test u01]$ ls -lrth\cf1\highlight2 
+\par \cf0\highlight0 total 0\cf1\highlight2 
+\par \cf0\highlight0 drwxrwxr-x. 4 oracle oinstall 40 Jan 24 12:00 \cf8 app\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test u01]$ mkdir RESTORE\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test u01]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test u01]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test u01]$ cd RESTORE/\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RESTORE]$ pwd\cf1\highlight2 
+\par \cf0\highlight0 /u01/RESTORE\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RESTORE]$ ls -lrth\cf1\highlight2 
+\par \cf0\highlight0 total 4.0K\cf1\highlight2 
+\par \cf0\highlight0 drwxr-xr-x. 2 oracle oinstall 4.0K Feb 27 08:06 \cf8 RMAN1\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RESTORE]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RESTORE]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RESTORE]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RESTORE]$ cd RMAN1/\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$ ls -lrth\cf1\highlight2 
+\par \cf0\highlight0 total 413M\cf1\highlight2 
+\par \cf0\highlight0 -rwxr-xr-x. 1 oracle oinstall 1.2K Feb 27 08:06 \cf3 rman_backup.sh\cf1\highlight2 
+\par \cf0\highlight0 -rwxr-xr-x. 1 oracle oinstall 1.2K Feb 27 08:06 \cf3 rman_backup2.sh\cf1\highlight2 
+\par \cf0\highlight0 -rw-r--r--. 1 oracle oinstall  14K Feb 27 08:06 TEST_Rman_full_L0_270223.log\cf1\highlight2 
+\par \cf0\highlight0 -rw-r-----. 1 oracle oinstall 1.7M Feb 27 08:06 test_2g1lh7tf_80_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 -rw-r-----. 1 oracle oinstall 537K Feb 27 08:06 test_2h1lh7tf_81_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 -rw-r-----. 1 oracle oinstall  21K Feb 27 08:06 test_2i1lh7tf_82_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 -rw-r-----. 1 oracle oinstall 7.5K Feb 27 08:06 test_2j1lh7tf_83_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 -rw-r-----. 1 oracle oinstall 296M Feb 27 08:06 test_2k1lh7th_84_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 -rw-r-----. 1 oracle oinstall 1.1M Feb 27 08:06 test_2m1lh7th_86_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 -rw-r-----. 1 oracle oinstall 1.1M Feb 27 08:06 test_2n1lh7th_87_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 -rw-r-----. 1 oracle oinstall 103M Feb 27 08:06 test_2l1lh7th_85_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 -rw-r-----. 1 oracle oinstall 7.5K Feb 27 08:06 test_2o1lh7uk_88_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 -rw-r-----. 1 oracle oinstall  11M Feb 27 08:06 test_controlfile_2p1lh7um_89_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$ sqlplus / as sysdna\cf1\highlight2 
+\par 
+\par \cf0\highlight0 SQL*Plus: Release 19.0.0.0.0 - Production\cf1\highlight2 
+\par \cf0\highlight0 Version 19.3.0.0.0\cf1\highlight2 
+\par 
+\par \cf0\highlight0 Copyright (c) 1982, 2019, Oracle.  All rights reserved.\cf1\highlight2 
+\par 
+\par \cf0\highlight0 Use SQL*Plus to execute SQL, PL/SQL and SQL*Plus statements.\cf1\highlight2 
+\par 
+\par \cf0\highlight0 Usage 1: sqlplus -H | -V\cf1\highlight2 
+\par 
+\par \cf0\highlight0     -H             Displays the SQL*Plus version and the\cf1\highlight2 
+\par \cf0\highlight0                    usage help.\cf1\highlight2 
+\par \cf0\highlight0     -V             Displays the SQL*Plus version.\cf1\highlight2 
+\par 
+\par \cf0\highlight0 Usage 2: sqlplus [ [<option>] [\{logon | /nolog\}] [<start>] ]\cf1\highlight2 
+\par 
+\par \cf0\highlight0   <option> is: [-AC] [-C <version>] [-F] [-L] [-M "<options>"] [-NOLOGINTIME]\cf1\highlight2 
+\par \cf0\highlight0                [-R <level>] [-S]\cf1\highlight2 
+\par 
+\par \cf0\highlight0     -AC            Enable Application Continuity.\cf1\highlight2 
+\par \cf0\highlight0     -C <version>   Sets the compatibility of affected commands to the\cf1\highlight2 
+\par \cf0\highlight0                    version specified by <version>.  The version has\cf1\highlight2 
+\par \cf0\highlight0                    the form "x.y[.z]".  For example, -C 10.2.0\cf1\highlight2 
+\par \cf0\highlight0     -F             This option improves performance in general. It changes\cf1\highlight2 
+\par \cf0\highlight0                    the default values settings.\cf1\highlight2 
+\par \cf0\highlight0                    See SQL*Plus User's Guide for the detailed settings.\cf1\highlight2 
+\par \cf0\highlight0     -L             Attempts to log on just once, instead of\cf1\highlight2 
+\par \cf0\highlight0                    reprompting on error.\cf1\highlight2 
+\par \cf0\highlight0     -M "<options>" Sets automatic HTML or CSV markup of output.  The options\cf1\highlight2 
+\par \cf0\highlight0                    have the form:\cf1\highlight2 
+\par \cf0\highlight0                    \{HTML html_options|CSV csv_options\}\cf1\highlight2 
+\par \cf0\highlight0                    See SQL*Plus User's Guide for detailed HTML and CSV options.\cf1\highlight2 
+\par \cf0\highlight0     -NOLOGINTIME   Don't display Last Successful Login Time.\cf1\highlight2 
+\par \cf0\highlight0     -R <level>     Sets restricted mode to disable SQL*Plus commands\cf1\highlight2 
+\par \cf0\highlight0                    that interact with the file system.  The level can\cf1\highlight2 
+\par \cf0\highlight0                    be 1, 2 or 3.  The most restrictive is -R 3 which\cf1\highlight2 
+\par \cf0\highlight0                    disables all user commands interacting with the\cf1\highlight2 
+\par \cf0\highlight0                    file system.\cf1\highlight2 
+\par \cf0\highlight0     -S             Sets silent mode which suppresses the display of\cf1\highlight2 
+\par \cf0\highlight0                    the SQL*Plus banner, prompts, and echoing of\cf1\highlight2 
+\par \cf0\highlight0                    commands.\cf1\highlight2 
+\par 
+\par \cf0\highlight0   <logon> is: \{<username>[/<password>][@<connect_identifier>] | / \}\cf1\highlight2 
+\par \cf0\highlight0               [AS \{SYSDBA | SYSOPER | SYSASM | SYSBACKUP | SYSDG\cf1\highlight2 
+\par \cf0\highlight0               | SYSKM | SYSRAC\}] [EDITION=value]\cf1\highlight2 
+\par 
+\par \cf0\highlight0     Specifies the database account username, password and connect\cf1\highlight2 
+\par \cf0\highlight0     identifier for the database connection.  Without a connect\cf1\highlight2 
+\par \cf0\highlight0     identifier, SQL*Plus connects to the default database.\cf1\highlight2 
+\par 
+\par \cf0\highlight0     The AS SYSDBA, AS SYSOPER, AS SYSASM, AS SYSBACKUP, AS SYSDG,\cf1\highlight2 
+\par \cf0\highlight0     AS SYSKM and AS SYSRAC options are database administration privileges.\cf1\highlight2 
+\par 
+\par \cf0\highlight0     <connect_identifier> can be in the form of Net Service Name\cf1\highlight2 
+\par \cf0\highlight0     or Easy Connect.\cf1\highlight2 
+\par 
+\par \cf0\highlight0       @[<net_service_name> | [[//]Host[:Port]/<service_name>] |\cf1\highlight2 
+\par \cf0\highlight0         [[[protocol:]//]host1\{,host12\}[:port1]\{,host2:port2\}[/service_name]\cf1\highlight2 
+\par \cf0\highlight0          [:server][/instance_name][?[parameter_name=value]\cf1\highlight2 
+\par \cf0\highlight0          \{&parameter_name=value\}]]]\cf1\highlight2 
+\par 
+\par \cf0\highlight0         <net_service_name> is a simple name for a service that resolves\cf1\highlight2 
+\par \cf0\highlight0         to a connect descriptor.\cf1\highlight2 
+\par 
+\par \cf0\highlight0         Example: Connect to database using Net Service Name and the\cf1\highlight2 
+\par \cf0\highlight0                  database net service name is ORCL.\cf1\highlight2 
+\par 
+\par \cf0\highlight0            sqlplus myusername/mypassword@ORCL\cf1\highlight2 
+\par 
+\par \cf0\highlight0         Host specifies the host name or IP address of the database\cf1\highlight2 
+\par \cf0\highlight0         server computer.\cf1\highlight2 
+\par 
+\par \cf0\highlight0         Port specifies the listening port on the database server.\cf1\highlight2 
+\par 
+\par \cf0\highlight0         <service_name> specifies the service name of the database you\cf1\highlight2 
+\par \cf0\highlight0         want to access.\cf1\highlight2 
+\par 
+\par \cf0\highlight0         Example: Connect to database using Easy Connect and the\cf1\highlight2 
+\par \cf0\highlight0                  Service name is ORCL.\cf1\highlight2 
+\par 
+\par \cf0\highlight0            sqlplus myusername/mypassword@Host/ORCL\cf1\highlight2 
+\par 
+\par \cf0\highlight0     The /NOLOG option starts SQL*Plus without connecting to a\cf1\highlight2 
+\par \cf0\highlight0     database.\cf1\highlight2 
+\par 
+\par \cf0\highlight0     The EDITION specifies the value for Session Edition.\cf1\highlight2 
+\par 
+\par 
+\par \cf0\highlight0   <start> is: @<URL>|<filename>[.<ext>] [<parameter> ...]\cf1\highlight2 
+\par 
+\par \cf0\highlight0     Runs the specified SQL*Plus script from a web server (URL) or the\cf1\highlight2 
+\par \cf0\highlight0     local file system (filename.ext) with specified parameters that\cf1\highlight2 
+\par \cf0\highlight0     will be assigned to substitution variables in the script.\cf1\highlight2 
+\par 
+\par \cf0\highlight0 When SQL*Plus starts, and after CONNECT commands, the site profile\cf1\highlight2 
+\par \cf0\highlight0 (e.g. $ORACLE_HOME/sqlplus/admin/glogin.sql) and the user profile\cf1\highlight2 
+\par \cf0\highlight0 (e.g. login.sql in the working directory) are run.  The files may\cf1\highlight2 
+\par \cf0\highlight0 contain SQL*Plus commands.\cf1\highlight2 
+\par 
+\par \cf0\highlight0 Refer to the SQL*Plus User's Guide and Reference for more information.\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$ sqlplus / as sysdba\cf1\highlight2 
+\par 
+\par \cf0\highlight0 SQL*Plus: Release 19.0.0.0.0 - Production on Mon Feb 27 08:09:41 2023\cf1\highlight2 
+\par \cf0\highlight0 Version 19.3.0.0.0\cf1\highlight2 
+\par 
+\par \cf0\highlight0 Copyright (c) 1982, 2019, Oracle.  All rights reserved.\cf1\highlight2 
+\par 
+\par \cf0\highlight0 Connected to an idle instance.\cf1\highlight2 
+\par 
+\par \cf0\highlight0 SQL> startup mount restrict\cf1\highlight2 
+\par \cf0\highlight0 ORA-01078: failure in processing system parameters\cf1\highlight2 
+\par \cf0\highlight0 LRM-00109: could not open parameter file '/u01/app/oracle/product/19c/db_1/dbs/inittest.ora'\cf1\highlight2 
+\par \cf0\highlight0 SQL>\cf1\highlight2 
+\par \cf0\highlight0 SQL>\cf1\highlight2 
+\par \cf0\highlight0 SQL> exit\cf1\highlight2 
+\par \cf0\highlight0 Disconnected\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$ cd /u01/app/oracle/diag/rdbms/\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test rdbms]$ ls -lrth\cf1\highlight2 
+\par \cf0\highlight0 total 0\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test rdbms]$ cd\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test ~]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test ~]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test ~]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test ~]$ cd /u01/app/oracle/\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test oracle]$ ls -lrth\cf1\highlight2 
+\par \cf0\highlight0 total 4.0K\cf1\highlight2 
+\par \cf0\highlight0 drwxrwxr-x.  3 oracle oinstall   17 Jan 24 12:00 \cf8 product\cf1\highlight2 
+\par \cf0\highlight0 drwxrwxr-x.  2 oracle oinstall    6 Jan 24 12:00 \cf8 oradata\cf1\highlight2 
+\par \cf0\highlight0 drwxrwxr-x.  2 oracle oinstall    6 Jan 24 12:00 \cf8 FRA\cf1\highlight2 
+\par \cf0\highlight0 drwxr-xr-x.  2 oracle oinstall    6 Jan 24 12:12 \cf8 checkpoints\cf1\highlight2 
+\par \cf0\highlight0 drwxrwxr-x. 23 oracle oinstall 4.0K Jan 24 12:12 \cf8 diag\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test oracle]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test oracle]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test oracle]$ cd oradata/\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test oradata]$ ls -lrth\cf1\highlight2 
+\par \cf0\highlight0 total 0\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test oradata]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test oradata]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test oradata]$ cd ..\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test oracle]$ cd\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test ~]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test ~]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test ~]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test ~]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test ~]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test ~]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test ~]$ sqlplus / as sysdba\cf1\highlight2 
+\par 
+\par \cf0\highlight0 SQL*Plus: Release 19.0.0.0.0 - Production on Mon Feb 27 08:11:49 2023\cf1\highlight2 
+\par \cf0\highlight0 Version 19.3.0.0.0\cf1\highlight2 
+\par 
+\par \cf0\highlight0 Copyright (c) 1982, 2019, Oracle.  All rights reserved.\cf1\highlight2 
+\par 
+\par \cf0\highlight0 Connected to an idle instance.\cf1\highlight2 
+\par 
+\par \cf0\highlight0 SQL> drop database;\cf1\highlight2 
+\par \cf0\highlight0 drop database\cf1\highlight2 
+\par \cf0\highlight0 *\cf1\highlight2 
+\par \cf0\highlight0 ERROR at line 1:\cf1\highlight2 
+\par \cf0\highlight0 ORA-01034: ORACLE not available\cf1\highlight2 
+\par \cf0\highlight0 Process ID: 0\cf1\highlight2 
+\par \cf0\highlight0 Session ID: 0 Serial number: 0\cf1\highlight2 
+\par 
+\par 
+\par \cf0\highlight0 SQL>\cf1\highlight2 
+\par \cf0\highlight0 SQL>\cf1\highlight2 
+\par \cf0\highlight0 SQL> exit\cf1\highlight2 
+\par \cf0\highlight0 Disconnected\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test ~]$ cd /u01/RESTORE/\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RESTORE]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RESTORE]$ cd RMAN1/\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$ pwd\cf1\highlight2 
+\par \cf0\highlight0 /u01/RESTORE/RMAN1\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$ ls -lrth\cf1\highlight2 
+\par \cf0\highlight0 total 413M\cf1\highlight2 
+\par \cf0\highlight0 -rwxr-xr-x. 1 oracle oinstall 1.2K Feb 27 08:06 \cf3 rman_backup.sh\cf1\highlight2 
+\par \cf0\highlight0 -rwxr-xr-x. 1 oracle oinstall 1.2K Feb 27 08:06 \cf3 rman_backup2.sh\cf1\highlight2 
+\par \cf0\highlight0 -rw-r--r--. 1 oracle oinstall  14K Feb 27 08:06 TEST_Rman_full_L0_270223.log\cf1\highlight2 
+\par \cf0\highlight0 -rw-r-----. 1 oracle oinstall 1.7M Feb 27 08:06 test_2g1lh7tf_80_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 -rw-r-----. 1 oracle oinstall 537K Feb 27 08:06 test_2h1lh7tf_81_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 -rw-r-----. 1 oracle oinstall  21K Feb 27 08:06 test_2i1lh7tf_82_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 -rw-r-----. 1 oracle oinstall 7.5K Feb 27 08:06 test_2j1lh7tf_83_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 -rw-r-----. 1 oracle oinstall 296M Feb 27 08:06 test_2k1lh7th_84_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 -rw-r-----. 1 oracle oinstall 1.1M Feb 27 08:06 test_2m1lh7th_86_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 -rw-r-----. 1 oracle oinstall 1.1M Feb 27 08:06 test_2n1lh7th_87_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 -rw-r-----. 1 oracle oinstall 103M Feb 27 08:06 test_2l1lh7th_85_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 -rw-r-----. 1 oracle oinstall 7.5K Feb 27 08:06 test_2o1lh7uk_88_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 -rw-r-----. 1 oracle oinstall  11M Feb 27 08:06 test_controlfile_2p1lh7um_89_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$ env |grep ORA\cf1\highlight2 
+\par \cf7\highlight0 ORA\cf0 CLE_SID=test\cf1\highlight2 
+\par \cf7\highlight0 ORA\cf0 CLE_BASE=/u01/app/oracle\cf1\highlight2 
+\par \cf7\highlight0 ORA\cf0 CLE_TERM=xterm\cf1\highlight2 
+\par \cf7\highlight0 ORA\cf0 CLE_HOME=/u01/app/oracle/product/19c/db_1\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$ vi /u01/app/oracle/product/19c/db_1/dbs/inittest.ora\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$ cat /u01/app/oracle/product/19c/db_1/dbs/inittest.ora\cf1\highlight2 
+\par \cf0\highlight0 *.audit_file_dest='/u01/app/oracle/admin/test/adump'\cf1\highlight2 
+\par \cf0\highlight0 *.audit_trail='db'\cf1\highlight2 
+\par \cf0\highlight0 *.compatible='19.0.0'\cf1\highlight2 
+\par \cf0\highlight0 *.control_files='/u01/app/oracle/oradata/TEST/control01.ctl','/u01/app/oracle/FRA/TEST/control02.ctl'\cf1\highlight2 
+\par \cf0\highlight0 *.db_block_size=8192\cf1\highlight2 
+\par \cf0\highlight0 *.db_name='test'\cf1\highlight2 
+\par \cf0\highlight0 *.db_recovery_file_dest='/u01/app/oracle/FRA'\cf1\highlight2 
+\par \cf0\highlight0 *.db_recovery_file_dest_size=7851m\cf1\highlight2 
+\par \cf0\highlight0 *.diagnostic_dest='/u01/app/oracle'\cf1\highlight2 
+\par \cf0\highlight0 *.dispatchers='(PROTOCOL=TCP) (SERVICE=testXDB)'\cf1\highlight2 
+\par \cf0\highlight0 *.log_archive_dest_1='LOCATION=/u01/ARCHIVE'\cf1\highlight2 
+\par \cf0\highlight0 *.log_archive_format='%t_%s_%r.arc'\cf1\highlight2 
+\par \cf0\highlight0 *.log_archive_max_processes=30\cf1\highlight2 
+\par \cf0\highlight0 *.nls_language='AMERICAN'\cf1\highlight2 
+\par \cf0\highlight0 *.nls_territory='AMERICA'\cf1\highlight2 
+\par \cf0\highlight0 *.open_cursors=300\cf1\highlight2 
+\par \cf0\highlight0 *.pga_aggregate_target=969m\cf1\highlight2 
+\par \cf0\highlight0 *.processes=300\cf1\highlight2 
+\par \cf0\highlight0 *.remote_login_passwordfile='EXCLUSIVE'\cf1\highlight2 
+\par \cf0\highlight0 *.sga_target=2906m\cf1\highlight2 
+\par \cf0\highlight0 *.standby_file_management='AUTO'\cf1\highlight2 
+\par \cf0\highlight0 *.undo_tablespace='UNDOTBS1'\cf1\highlight2 
+\par 
+\par \cf0\highlight0 [oracle@test RMAN1]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$ mkdir -p /u01/app/oracle/admin/test/adump\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$ ls -lrth /u01/app/oracle/oradata/TEST/\cf1\highlight2 
+\par \cf0\highlight0 ls: cannot access /u01/app/oracle/oradata/TEST/: No such file or directory\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$ mkdir -p /u01/app/oracle/oradata/TEST/\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$ ls -lrth /u01/app/oracle/FRA/TEST/\cf1\highlight2 
+\par \cf0\highlight0 ls: cannot access /u01/app/oracle/FRA/TEST/: No such file or directory\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$ mkdir -p /u01/app/oracle/FRA/TEST/\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$ sqlplus / as sysdba\cf1\highlight2 
+\par 
+\par \cf0\highlight0 SQL*Plus: Release 19.0.0.0.0 - Production on Mon Feb 27 08:14:30 2023\cf1\highlight2 
+\par \cf0\highlight0 Version 19.3.0.0.0\cf1\highlight2 
+\par 
+\par \cf0\highlight0 Copyright (c) 1982, 2019, Oracle.  All rights reserved.\cf1\highlight2 
+\par 
+\par \cf0\highlight0 Connected to an idle instance.\cf1\highlight2 
+\par 
+\par \cf0\highlight0 SQL> startup nomount;\cf1\highlight2 
+\par \cf0\highlight0 ORACLE instance started.\cf1\highlight2 
+\par 
+\par \cf0\highlight0 Total System Global Area 3053449816 bytes\cf1\highlight2 
+\par \cf0\highlight0 Fixed Size                  8901208 bytes\cf1\highlight2 
+\par \cf0\highlight0 Variable Size             620756992 bytes\cf1\highlight2 
+\par \cf0\highlight0 Database Buffers         2415919104 bytes\cf1\highlight2 
+\par \cf0\highlight0 Redo Buffers                7872512 bytes\cf1\highlight2 
+\par \cf0\highlight0 SQL>\cf1\highlight2 
+\par \cf0\highlight0 SQL>\cf1\highlight2 
+\par \cf0\highlight0 SQL> exit\cf1\highlight2 
+\par \cf0\highlight0 Disconnected from Oracle Database 19c Enterprise Edition Release 19.0.0.0.0 - Production\cf1\highlight2 
+\par \cf0\highlight0 Version 19.3.0.0.0\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$ pwd\cf1\highlight2 
+\par \cf0\highlight0 /u01/RESTORE/RMAN1\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$ ls -lrth\cf1\highlight2 
+\par \cf0\highlight0 total 413M\cf1\highlight2 
+\par \cf0\highlight0 -rwxr-xr-x. 1 oracle oinstall 1.2K Feb 27 08:06 \cf3 rman_backup.sh\cf1\highlight2 
+\par \cf0\highlight0 -rwxr-xr-x. 1 oracle oinstall 1.2K Feb 27 08:06 \cf3 rman_backup2.sh\cf1\highlight2 
+\par \cf0\highlight0 -rw-r--r--. 1 oracle oinstall  14K Feb 27 08:06 TEST_Rman_full_L0_270223.log\cf1\highlight2 
+\par \cf0\highlight0 -rw-r-----. 1 oracle oinstall 1.7M Feb 27 08:06 test_2g1lh7tf_80_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 -rw-r-----. 1 oracle oinstall 537K Feb 27 08:06 test_2h1lh7tf_81_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 -rw-r-----. 1 oracle oinstall  21K Feb 27 08:06 test_2i1lh7tf_82_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 -rw-r-----. 1 oracle oinstall 7.5K Feb 27 08:06 test_2j1lh7tf_83_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 -rw-r-----. 1 oracle oinstall 296M Feb 27 08:06 test_2k1lh7th_84_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 -rw-r-----. 1 oracle oinstall 1.1M Feb 27 08:06 test_2m1lh7th_86_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 -rw-r-----. 1 oracle oinstall 1.1M Feb 27 08:06 test_2n1lh7th_87_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 -rw-r-----. 1 oracle oinstall 103M Feb 27 08:06 test_2l1lh7th_85_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 -rw-r-----. 1 oracle oinstall 7.5K Feb 27 08:06 test_2o1lh7uk_88_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 -rw-r-----. 1 oracle oinstall  11M Feb 27 08:06 test_controlfile_2p1lh7um_89_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$ rman target /\cf1\highlight2 
+\par 
+\par \cf0\highlight0 Recovery Manager: Release 19.0.0.0.0 - Production on Mon Feb 27 08:15:36 2023\cf1\highlight2 
+\par \cf0\highlight0 Version 19.3.0.0.0\cf1\highlight2 
+\par 
+\par \cf0\highlight0 Copyright (c) 1982, 2019, Oracle and/or its affiliates.  All rights reserved.\cf1\highlight2 
+\par 
+\par \cf0\highlight0 connected to target database: TEST (not mounted)\cf1\highlight2 
+\par 
+\par \cf0\highlight0 RMAN> restore controlfile from '/u01/RESTORE/RMAN1/test_controlfile_2p1lh7um_89_1_1_20230227.1';\cf1\highlight2 
+\par 
+\par \cf0\highlight0 Starting restore at 27-FEB-23\cf1\highlight2 
+\par \cf0\highlight0 using target database control file instead of recovery catalog\cf1\highlight2 
+\par \cf0\highlight0 allocated channel: ORA_DISK_1\cf1\highlight2 
+\par \cf0\highlight0 channel ORA_DISK_1: SID=21 device type=DISK\cf1\highlight2 
+\par 
+\par \cf0\highlight0 channel ORA_DISK_1: restoring control file\cf1\highlight2 
+\par \cf0\highlight0 channel ORA_DISK_1: restore complete, elapsed time: 00:00:01\cf1\highlight2 
+\par \cf0\highlight0 output file name=/u01/app/oracle/oradata/TEST/control01.ctl\cf1\highlight2 
+\par \cf0\highlight0 output file name=/u01/app/oracle/FRA/TEST/control02.ctl\cf1\highlight2 
+\par \cf0\highlight0 Finished restore at 27-FEB-23\cf1\highlight2 
+\par 
+\par \cf0\highlight0 RMAN> exit\cf1\highlight2 
+\par 
+\par 
+\par \cf0\highlight0 Recovery Manager complete.\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$ ls -lrth /u01/app/oracle/oradata/TEST/control01.ctl\cf1\highlight2 
+\par \cf0\highlight0 -rw-r-----. 1 oracle oinstall 11M Feb 27 08:16 /u01/app/oracle/oradata/TEST/control01.ctl\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$ ls -lrth /u01/app/oracle/FRA/TEST/control02.ctl\cf1\highlight2 
+\par \cf0\highlight0 -rw-r-----. 1 oracle oinstall 11M Feb 27 08:16 /u01/app/oracle/FRA/TEST/control02.ctl\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$ sqlplus / as sysdba\cf1\highlight2 
+\par 
+\par \cf0\highlight0 SQL*Plus: Release 19.0.0.0.0 - Production on Mon Feb 27 08:16:35 2023\cf1\highlight2 
+\par \cf0\highlight0 Version 19.3.0.0.0\cf1\highlight2 
+\par 
+\par \cf0\highlight0 Copyright (c) 1982, 2019, Oracle.  All rights reserved.\cf1\highlight2 
+\par 
+\par 
+\par \cf0\highlight0 Connected to:\cf1\highlight2 
+\par \cf0\highlight0 Oracle Database 19c Enterprise Edition Release 19.0.0.0.0 - Production\cf1\highlight2 
+\par \cf0\highlight0 Version 19.3.0.0.0\cf1\highlight2 
+\par 
+\par \cf0\highlight0 SQL> alter database mount;\cf1\highlight2 
+\par 
+\par \cf0\highlight0 Database altered.\cf1\highlight2 
+\par 
+\par \cf0\highlight0 SQL>\cf1\highlight2 
+\par \cf0\highlight0 SQL>\cf1\highlight2 
+\par \cf0\highlight0 SQL> select name,open_mode from v$database;\cf1\highlight2 
+\par 
+\par \cf0\highlight0 NAME      OPEN_MODE\cf1\highlight2 
+\par \cf0\highlight0 --------- --------------------\cf1\highlight2 
+\par \cf0\highlight0 TEST      MOUNTED\cf1\highlight2 
+\par 
+\par \cf0\highlight0 SQL>\cf1\highlight2 
+\par \cf0\highlight0 SQL>\cf1\highlight2 
+\par \cf0\highlight0 SQL> exit\cf1\highlight2 
+\par \cf0\highlight0 Disconnected from Oracle Database 19c Enterprise Edition Release 19.0.0.0.0 - Production\cf1\highlight2 
+\par \cf0\highlight0 Version 19.3.0.0.0\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$ sqlplus / as sysdba\cf1\highlight2 
+\par 
+\par \cf0\highlight0 SQL*Plus: Release 19.0.0.0.0 - Production on Mon Feb 27 08:17:07 2023\cf1\highlight2 
+\par \cf0\highlight0 Version 19.3.0.0.0\cf1\highlight2 
+\par 
+\par \cf0\highlight0 Copyright (c) 1982, 2019, Oracle.  All rights reserved.\cf1\highlight2 
+\par 
+\par 
+\par \cf0\highlight0 Connected to:\cf1\highlight2 
+\par \cf0\highlight0 Oracle Database 19c Enterprise Edition Release 19.0.0.0.0 - Production\cf1\highlight2 
+\par \cf0\highlight0 Version 19.3.0.0.0\cf1\highlight2 
+\par 
+\par \cf0\highlight0 SQL> select name from v$datafile;\cf1\highlight2 
+\par 
+\par \cf0\highlight0 NAME\cf1\highlight2 
+\par \cf0\highlight0 --------------------------------------------------------------------------------\cf1\highlight2 
+\par \cf0\highlight0 /u01/app/oracle/oradata/TEST/datafile/o1_mf_system_jf6dvm2j_.dbf\cf1\highlight2 
+\par \cf0\highlight0 /u01/app/oracle/oradata/TEST/datafile/o1_mf_sysaux_jf6dwpf2_.dbf\cf1\highlight2 
+\par \cf0\highlight0 /u01/app/oracle/oradata/TEST/datafile/o1_mf_undotbs1_jf6dx5ky_.dbf\cf1\highlight2 
+\par \cf0\highlight0 /u01/app/oracle/oradata/TEST/datafile/o1_mf_users_jf6dx7dq_.dbf\cf1\highlight2 
+\par 
+\par \cf0\highlight0 SQL> exit\cf1\highlight2 
+\par \cf0\highlight0 Disconnected from Oracle Database 19c Enterprise Edition Release 19.0.0.0.0 - Production\cf1\highlight2 
+\par \cf0\highlight0 Version 19.3.0.0.0\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$ ls -lrth /u01/app/oracle/oradata/TEST/datafile\\\cf1\highlight2 
+\par \cf0\highlight0 > ^C\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$ ls -lrth /u01/app/oracle/oradata/TEST/datafile\cf1\highlight2 
+\par \cf0\highlight0 ls: cannot access /u01/app/oracle/oradata/TEST/datafile: No such file or directory\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$ mkdir -p /u01/app/oracle/oradata/TEST/datafile\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$ rman target /\cf1\highlight2 
+\par 
+\par \cf0\highlight0 Recovery Manager: Release 19.0.0.0.0 - Production on Mon Feb 27 08:18:22 2023\cf1\highlight2 
+\par \cf0\highlight0 Version 19.3.0.0.0\cf1\highlight2 
+\par 
+\par \cf0\highlight0 Copyright (c) 1982, 2019, Oracle and/or its affiliates.  All rights reserved.\cf1\highlight2 
+\par 
+\par \cf0\highlight0 connected to target database: TEST (DBID=2374153116, not open)\cf1\highlight2 
+\par 
+\par \cf0\highlight0 RMAN>\cf1\highlight2 
+\par 
+\par \cf0\highlight0 RMAN> catalog start with '/u01/RESTORE/RMAN1/';\cf1\highlight2 
+\par 
+\par \cf0\highlight0 Starting implicit crosscheck backup at 27-FEB-23\cf1\highlight2 
+\par \cf0\highlight0 using target database control file instead of recovery catalog\cf1\highlight2 
+\par \cf0\highlight0 allocated channel: ORA_DISK_1\cf1\highlight2 
+\par \cf0\highlight0 channel ORA_DISK_1: SID=37 device type=DISK\cf1\highlight2 
+\par \cf0\highlight0 Crosschecked 25 objects\cf1\highlight2 
+\par \cf0\highlight0 Finished implicit crosscheck backup at 27-FEB-23\cf1\highlight2 
+\par 
+\par \cf0\highlight0 Starting implicit crosscheck copy at 27-FEB-23\cf1\highlight2 
+\par \cf0\highlight0 using channel ORA_DISK_1\cf1\highlight2 
+\par \cf0\highlight0 Finished implicit crosscheck copy at 27-FEB-23\cf1\highlight2 
+\par 
+\par \cf0\highlight0 searching for all files in the recovery area\cf1\highlight2 
+\par \cf0\highlight0 cataloging files...\cf1\highlight2 
+\par \cf0\highlight0 no files cataloged\cf1\highlight2 
+\par 
+\par \cf0\highlight0 searching for all files that match the pattern /u01/RESTORE/RMAN1/\cf1\highlight2 
+\par 
+\par \cf0\highlight0 List of Files Unknown to the Database\cf1\highlight2 
+\par \cf0\highlight0 =====================================\cf1\highlight2 
+\par \cf0\highlight0 File Name: /u01/RESTORE/RMAN1/rman_backup.sh\cf1\highlight2 
+\par \cf0\highlight0 File Name: /u01/RESTORE/RMAN1/rman_backup2.sh\cf1\highlight2 
+\par \cf0\highlight0 File Name: /u01/RESTORE/RMAN1/TEST_Rman_full_L0_270223.log\cf1\highlight2 
+\par \cf0\highlight0 File Name: /u01/RESTORE/RMAN1/test_2g1lh7tf_80_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 File Name: /u01/RESTORE/RMAN1/test_2h1lh7tf_81_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 File Name: /u01/RESTORE/RMAN1/test_2i1lh7tf_82_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 File Name: /u01/RESTORE/RMAN1/test_2j1lh7tf_83_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 File Name: /u01/RESTORE/RMAN1/test_2k1lh7th_84_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 File Name: /u01/RESTORE/RMAN1/test_2m1lh7th_86_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 File Name: /u01/RESTORE/RMAN1/test_2n1lh7th_87_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 File Name: /u01/RESTORE/RMAN1/test_2l1lh7th_85_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 File Name: /u01/RESTORE/RMAN1/test_2o1lh7uk_88_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 File Name: /u01/RESTORE/RMAN1/test_controlfile_2p1lh7um_89_1_1_20230227.1\cf1\highlight2 
+\par 
+\par \cf0\highlight0 Do you really want to catalog the above files (enter YES or NO)? yes\cf1\highlight2 
+\par \cf0\highlight0 cataloging files...\cf1\highlight2 
+\par \cf0\highlight0 cataloging done\cf1\highlight2 
+\par 
+\par \cf0\highlight0 List of Cataloged Files\cf1\highlight2 
+\par \cf0\highlight0 =======================\cf1\highlight2 
+\par \cf0\highlight0 File Name: /u01/RESTORE/RMAN1/test_2g1lh7tf_80_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 File Name: /u01/RESTORE/RMAN1/test_2h1lh7tf_81_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 File Name: /u01/RESTORE/RMAN1/test_2i1lh7tf_82_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 File Name: /u01/RESTORE/RMAN1/test_2j1lh7tf_83_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 File Name: /u01/RESTORE/RMAN1/test_2k1lh7th_84_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 File Name: /u01/RESTORE/RMAN1/test_2m1lh7th_86_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 File Name: /u01/RESTORE/RMAN1/test_2n1lh7th_87_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 File Name: /u01/RESTORE/RMAN1/test_2l1lh7th_85_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 File Name: /u01/RESTORE/RMAN1/test_2o1lh7uk_88_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 File Name: /u01/RESTORE/RMAN1/test_controlfile_2p1lh7um_89_1_1_20230227.1\cf1\highlight2 
+\par 
+\par \cf0\highlight0 List of Files Which Were Not Cataloged\cf1\highlight2 
+\par \cf0\highlight0 =======================================\cf1\highlight2 
+\par \cf0\highlight0 File Name: /u01/RESTORE/RMAN1/rman_backup.sh\cf1\highlight2 
+\par \cf0\highlight0   RMAN-07517: Reason: The file header is corrupted\cf1\highlight2 
+\par \cf0\highlight0 File Name: /u01/RESTORE/RMAN1/rman_backup2.sh\cf1\highlight2 
+\par \cf0\highlight0   RMAN-07517: Reason: The file header is corrupted\cf1\highlight2 
+\par \cf0\highlight0 File Name: /u01/RESTORE/RMAN1/TEST_Rman_full_L0_270223.log\cf1\highlight2 
+\par \cf0\highlight0   RMAN-07517: Reason: The file header is corrupted\cf1\highlight2 
+\par 
+\par \cf0\highlight0 RMAN> list backup;\cf1\highlight2 
+\par 
+\par 
+\par \cf0\highlight0 List of Backup Sets\cf1\highlight2 
+\par \cf0\highlight0 ===================\cf1\highlight2 
+\par 
+\par 
+\par \cf0\highlight0 BS Key  Type LV Size       Device Type Elapsed Time Completion Time\cf1\highlight2 
+\par \cf0\highlight0 ------- ---- -- ---------- ----------- ------------ ---------------\cf1\highlight2 
+\par \cf0\highlight0 52      Incr 0  1.19M      DISK        00:00:01     27-FEB-23\cf1\highlight2 
+\par \cf0\highlight0         BP Key: 52   Status: EXPIRED  Compressed: YES  Tag: TAG20230227T071515\cf1\highlight2 
+\par \cf0\highlight0         Piece Name: /u01/BACKUP/RMAN1/test_1r1lh5c3_59_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0   List of Datafiles in backup set 52\cf1\highlight2 
+\par \cf0\highlight0   File LV Type Ckp SCN    Ckp Time  Abs Fuz SCN Sparse Name\cf1\highlight2 
+\par \cf0\highlight0   ---- -- ---- ---------- --------- ----------- ------ ----\cf1\highlight2 
+\par \cf0\highlight0   7    0  Incr 2377662    27-FEB-23              NO    /u01/app/oracle/oradata/TEST/datafile/o1_mf_users_jf6dx7dq_.dbf\cf1\highlight2 
+\par 
+\par \cf0\highlight0 BS Key  Type LV Size       Device Type Elapsed Time Completion Time\cf1\highlight2 
+\par \cf0\highlight0 ------- ---- -- ---------- ----------- ------------ ---------------\cf1\highlight2 
+\par \cf0\highlight0 53      Incr 0  1.15M      DISK        00:00:03     27-FEB-23\cf1\highlight2 
+\par \cf0\highlight0         BP Key: 53   Status: EXPIRED  Compressed: YES  Tag: TAG20230227T071515\cf1\highlight2 
+\par \cf0\highlight0         Piece Name: /u01/BACKUP/RMAN1/test_1q1lh5c3_58_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0   List of Datafiles in backup set 53\cf1\highlight2 
+\par \cf0\highlight0   File LV Type Ckp SCN    Ckp Time  Abs Fuz SCN Sparse Name\cf1\highlight2 
+\par \cf0\highlight0   ---- -- ---- ---------- --------- ----------- ------ ----\cf1\highlight2 
+\par \cf0\highlight0   4    0  Incr 2377660    27-FEB-23              NO    /u01/app/oracle/oradata/TEST/datafile/o1_mf_undotbs1_jf6dx5ky_.dbf\cf1\highlight2 
+\par 
+\par \cf0\highlight0 BS Key  Type LV Size       Device Type Elapsed Time Completion Time\cf1\highlight2 
+\par \cf0\highlight0 ------- ---- -- ---------- ----------- ------------ ---------------\cf1\highlight2 
+\par \cf0\highlight0 54      Incr 0  102.52M    DISK        00:00:13     27-FEB-23\cf1\highlight2 
+\par \cf0\highlight0         BP Key: 54   Status: EXPIRED  Compressed: YES  Tag: TAG20230227T071515\cf1\highlight2 
+\par \cf0\highlight0         Piece Name: /u01/BACKUP/RMAN1/test_1p1lh5c3_57_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0   List of Datafiles in backup set 54\cf1\highlight2 
+\par \cf0\highlight0   File LV Type Ckp SCN    Ckp Time  Abs Fuz SCN Sparse Name\cf1\highlight2 
+\par \cf0\highlight0   ---- -- ---- ---------- --------- ----------- ------ ----\cf1\highlight2 
+\par \cf0\highlight0   3    0  Incr 2377657    27-FEB-23              NO    /u01/app/oracle/oradata/TEST/datafile/o1_mf_sysaux_jf6dwpf2_.dbf\cf1\highlight2 
+\par 
+\par \cf0\highlight0 BS Key  Type LV Size       Device Type Elapsed Time Completion Time\cf1\highlight2 
+\par \cf0\highlight0 ------- ---- -- ---------- ----------- ------------ ---------------\cf1\highlight2 
+\par \cf0\highlight0 55      Incr 0  295.22M    DISK        00:00:31     27-FEB-23\cf1\highlight2 
+\par \cf0\highlight0         BP Key: 55   Status: EXPIRED  Compressed: YES  Tag: TAG20230227T071515\cf1\highlight2 
+\par \cf0\highlight0         Piece Name: /u01/BACKUP/RMAN1/test_1o1lh5c3_56_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0   List of Datafiles in backup set 55\cf1\highlight2 
+\par \cf0\highlight0   File LV Type Ckp SCN    Ckp Time  Abs Fuz SCN Sparse Name\cf1\highlight2 
+\par \cf0\highlight0   ---- -- ---- ---------- --------- ----------- ------ ----\cf1\highlight2 
+\par \cf0\highlight0   1    0  Incr 2377654    27-FEB-23              NO    /u01/app/oracle/oradata/TEST/datafile/o1_mf_system_jf6dvm2j_.dbf\cf1\highlight2 
+\par 
+\par \cf0\highlight0 BS Key  Size       Device Type Elapsed Time Completion Time\cf1\highlight2 
+\par \cf0\highlight0 ------- ---------- ----------- ------------ ---------------\cf1\highlight2 
+\par \cf0\highlight0 56      7.00K      DISK        00:00:00     27-FEB-23\cf1\highlight2 
+\par \cf0\highlight0         BP Key: 56   Status: EXPIRED  Compressed: YES  Tag: TAG20230227T071551\cf1\highlight2 
+\par \cf0\highlight0         Piece Name: /u01/BACKUP/RMAN1/test_1s1lh5d7_60_1_1_20230227.1\cf1\highlight2 
+\par 
+\par \cf0\highlight0   List of Archived Logs in backup set 56\cf1\highlight2 
+\par \cf0\highlight0   Thrd Seq     Low SCN    Low Time  Next SCN   Next Time\cf1\highlight2 
+\par \cf0\highlight0   ---- ------- ---------- --------- ---------- ---------\cf1\highlight2 
+\par \cf0\highlight0   1    27      2377630    27-FEB-23 2377684    27-FEB-23\cf1\highlight2 
+\par 
+\par \cf0\highlight0 BS Key  Size       Device Type Elapsed Time Completion Time\cf1\highlight2 
+\par \cf0\highlight0 ------- ---------- ----------- ------------ ---------------\cf1\highlight2 
+\par \cf0\highlight0 59      6.08M      DISK        00:00:01     27-FEB-23\cf1\highlight2 
+\par \cf0\highlight0         BP Key: 59   Status: EXPIRED  Compressed: YES  Tag: TAG20230227T072005\cf1\highlight2 
+\par \cf0\highlight0         Piece Name: /u01/BACKUP/RMAN1/test_211lh5l5_65_1_1_20230227.1\cf1\highlight2 
+\par 
+\par \cf0\highlight0   List of Archived Logs in backup set 59\cf1\highlight2 
+\par \cf0\highlight0   Thrd Seq     Low SCN    Low Time  Next SCN   Next Time\cf1\highlight2 
+\par \cf0\highlight0   ---- ------- ---------- --------- ---------- ---------\cf1\highlight2 
+\par \cf0\highlight0   1    23      2372018    25-FEB-23 2372059    25-FEB-23\cf1\highlight2 
+\par \cf0\highlight0   1    24      2372059    25-FEB-23 2372644    25-FEB-23\cf1\highlight2 
+\par \cf0\highlight0   1    25      2372644    25-FEB-23 2372682    25-FEB-23\cf1\highlight2 
+\par \cf0\highlight0   1    26      2372682    25-FEB-23 2377630    27-FEB-23\cf1\highlight2 
+\par \cf0\highlight0   1    27      2377630    27-FEB-23 2377684    27-FEB-23\cf1\highlight2 
+\par 
+\par \cf0\highlight0 BS Key  Size       Device Type Elapsed Time Completion Time\cf1\highlight2 
+\par \cf0\highlight0 ------- ---------- ----------- ------------ ---------------\cf1\highlight2 
+\par \cf0\highlight0 62      1.63M      DISK        00:00:00     27-FEB-23\cf1\highlight2 
+\par \cf0\highlight0         BP Key: 62   Status: EXPIRED  Compressed: YES  Tag: TAG20230227T072005\cf1\highlight2 
+\par \cf0\highlight0         Piece Name: /u01/BACKUP/RMAN1/test_231lh5l7_67_1_1_20230227.1\cf1\highlight2 
+\par 
+\par \cf0\highlight0   List of Archived Logs in backup set 62\cf1\highlight2 
+\par \cf0\highlight0   Thrd Seq     Low SCN    Low Time  Next SCN   Next Time\cf1\highlight2 
+\par \cf0\highlight0   ---- ------- ---------- --------- ---------- ---------\cf1\highlight2 
+\par \cf0\highlight0   1    28      2377684    27-FEB-23 2378098    27-FEB-23\cf1\highlight2 
+\par 
+\par \cf0\highlight0 BS Key  Type LV Size       Device Type Elapsed Time Completion Time\cf1\highlight2 
+\par \cf0\highlight0 ------- ---- -- ---------- ----------- ------------ ---------------\cf1\highlight2 
+\par \cf0\highlight0 64      Incr 1  136.00K    DISK        00:00:01     27-FEB-23\cf1\highlight2 
+\par \cf0\highlight0         BP Key: 64   Status: EXPIRED  Compressed: YES  Tag: TAG20230227T072014\cf1\highlight2 
+\par \cf0\highlight0         Piece Name: /u01/BACKUP/RMAN1/test_241lh5le_68_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0   List of Datafiles in backup set 64\cf1\highlight2 
+\par \cf0\highlight0   File LV Type Ckp SCN    Ckp Time  Abs Fuz SCN Sparse Name\cf1\highlight2 
+\par \cf0\highlight0   ---- -- ---- ---------- --------- ----------- ------ ----\cf1\highlight2 
+\par \cf0\highlight0   1    1  Incr 2378116    27-FEB-23              NO    /u01/app/oracle/oradata/TEST/datafile/o1_mf_system_jf6dvm2j_.dbf\cf1\highlight2 
+\par 
+\par \cf0\highlight0 BS Key  Type LV Size       Device Type Elapsed Time Completion Time\cf1\highlight2 
+\par \cf0\highlight0 ------- ---- -- ---------- ----------- ------------ ---------------\cf1\highlight2 
+\par \cf0\highlight0 65      Incr 1  48.00K     DISK        00:00:00     27-FEB-23\cf1\highlight2 
+\par \cf0\highlight0         BP Key: 65   Status: EXPIRED  Compressed: YES  Tag: TAG20230227T072014\cf1\highlight2 
+\par \cf0\highlight0         Piece Name: /u01/BACKUP/RMAN1/test_271lh5lf_71_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0   List of Datafiles in backup set 65\cf1\highlight2 
+\par \cf0\highlight0   File LV Type Ckp SCN    Ckp Time  Abs Fuz SCN Sparse Name\cf1\highlight2 
+\par \cf0\highlight0   ---- -- ---- ---------- --------- ----------- ------ ----\cf1\highlight2 
+\par \cf0\highlight0   7    1  Incr 2378124    27-FEB-23              NO    /u01/app/oracle/oradata/TEST/datafile/o1_mf_users_jf6dx7dq_.dbf\cf1\highlight2 
+\par 
+\par \cf0\highlight0 BS Key  Type LV Size       Device Type Elapsed Time Completion Time\cf1\highlight2 
+\par \cf0\highlight0 ------- ---- -- ---------- ----------- ------------ ---------------\cf1\highlight2 
+\par \cf0\highlight0 66      Incr 1  1.13M      DISK        00:00:00     27-FEB-23\cf1\highlight2 
+\par \cf0\highlight0         BP Key: 66   Status: EXPIRED  Compressed: YES  Tag: TAG20230227T072014\cf1\highlight2 
+\par \cf0\highlight0         Piece Name: /u01/BACKUP/RMAN1/test_261lh5lf_70_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0   List of Datafiles in backup set 66\cf1\highlight2 
+\par \cf0\highlight0   File LV Type Ckp SCN    Ckp Time  Abs Fuz SCN Sparse Name\cf1\highlight2 
+\par \cf0\highlight0   ---- -- ---- ---------- --------- ----------- ------ ----\cf1\highlight2 
+\par \cf0\highlight0   4    1  Incr 2378122    27-FEB-23              NO    /u01/app/oracle/oradata/TEST/datafile/o1_mf_undotbs1_jf6dx5ky_.dbf\cf1\highlight2 
+\par 
+\par \cf0\highlight0 BS Key  Type LV Size       Device Type Elapsed Time Completion Time\cf1\highlight2 
+\par \cf0\highlight0 ------- ---- -- ---------- ----------- ------------ ---------------\cf1\highlight2 
+\par \cf0\highlight0 67      Incr 1  1.38M      DISK        00:00:01     27-FEB-23\cf1\highlight2 
+\par \cf0\highlight0         BP Key: 67   Status: EXPIRED  Compressed: YES  Tag: TAG20230227T072014\cf1\highlight2 
+\par \cf0\highlight0         Piece Name: /u01/BACKUP/RMAN1/test_251lh5le_69_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0   List of Datafiles in backup set 67\cf1\highlight2 
+\par \cf0\highlight0   File LV Type Ckp SCN    Ckp Time  Abs Fuz SCN Sparse Name\cf1\highlight2 
+\par \cf0\highlight0   ---- -- ---- ---------- --------- ----------- ------ ----\cf1\highlight2 
+\par \cf0\highlight0   3    1  Incr 2378119    27-FEB-23              NO    /u01/app/oracle/oradata/TEST/datafile/o1_mf_sysaux_jf6dwpf2_.dbf\cf1\highlight2 
+\par 
+\par \cf0\highlight0 BS Key  Size       Device Type Elapsed Time Completion Time\cf1\highlight2 
+\par \cf0\highlight0 ------- ---------- ----------- ------------ ---------------\cf1\highlight2 
+\par \cf0\highlight0 68      20.00K     DISK        00:00:00     27-FEB-23\cf1\highlight2 
+\par \cf0\highlight0         BP Key: 68   Status: EXPIRED  Compressed: YES  Tag: TAG20230227T072016\cf1\highlight2 
+\par \cf0\highlight0         Piece Name: /u01/BACKUP/RMAN1/test_281lh5lg_72_1_1_20230227.1\cf1\highlight2 
+\par 
+\par \cf0\highlight0   List of Archived Logs in backup set 68\cf1\highlight2 
+\par \cf0\highlight0   Thrd Seq     Low SCN    Low Time  Next SCN   Next Time\cf1\highlight2 
+\par \cf0\highlight0   ---- ------- ---------- --------- ---------- ---------\cf1\highlight2 
+\par \cf0\highlight0   1    29      2378098    27-FEB-23 2378131    27-FEB-23\cf1\highlight2 
+\par 
+\par \cf0\highlight0 BS Key  Type LV Size       Device Type Elapsed Time Completion Time\cf1\highlight2 
+\par \cf0\highlight0 ------- ---- -- ---------- ----------- ------------ ---------------\cf1\highlight2 
+\par \cf0\highlight0 70      Full    10.20M     DISK        00:00:00     27-FEB-23\cf1\highlight2 
+\par \cf0\highlight0         BP Key: 70   Status: EXPIRED  Compressed: NO  Tag: TAG20230227T072020\cf1\highlight2 
+\par \cf0\highlight0         Piece Name: /u01/app/c-2374153116-20230227-01\cf1\highlight2 
+\par \cf0\highlight0   SPFILE Included: Modification time: 27-FEB-23\cf1\highlight2 
+\par \cf0\highlight0   SPFILE db_unique_name: TEST\cf1\highlight2 
+\par \cf0\highlight0   Control File Included: Ckp SCN: 2378157      Ckp time: 27-FEB-23\cf1\highlight2 
+\par 
+\par \cf0\highlight0 BS Key  Type LV Size       Device Type Elapsed Time Completion Time\cf1\highlight2 
+\par \cf0\highlight0 ------- ---- -- ---------- ----------- ------------ ---------------\cf1\highlight2 
+\par \cf0\highlight0 71      Full    2.48M      DISK        00:00:00     27-FEB-23\cf1\highlight2 
+\par \cf0\highlight0         BP Key: 71   Status: EXPIRED  Compressed: NO  Tag: TAG20230227T073339\cf1\highlight2 
+\par \cf0\highlight0         Piece Name: /u01/app/FRA/TEST/backupset/2023_02_27/o1_mf_nnndf_TAG20230227T073339_kzr3vvb5_.bkp\cf1\highlight2 
+\par \cf0\highlight0   List of Datafiles in backup set 71\cf1\highlight2 
+\par \cf0\highlight0   File LV Type Ckp SCN    Ckp Time  Abs Fuz SCN Sparse Name\cf1\highlight2 
+\par \cf0\highlight0   ---- -- ---- ---------- --------- ----------- ------ ----\cf1\highlight2 
+\par \cf0\highlight0   7       Full 2379387    27-FEB-23              NO    /u01/app/oracle/oradata/TEST/datafile/o1_mf_users_jf6dx7dq_.dbf\cf1\highlight2 
+\par 
+\par \cf0\highlight0 BS Key  Type LV Size       Device Type Elapsed Time Completion Time\cf1\highlight2 
+\par \cf0\highlight0 ------- ---- -- ---------- ----------- ------------ ---------------\cf1\highlight2 
+\par \cf0\highlight0 72      Full    10.20M     DISK        00:00:00     27-FEB-23\cf1\highlight2 
+\par \cf0\highlight0         BP Key: 72   Status: EXPIRED  Compressed: NO  Tag: TAG20230227T073340\cf1\highlight2 
+\par \cf0\highlight0         Piece Name: /u01/app/c-2374153116-20230227-02\cf1\highlight2 
+\par \cf0\highlight0   SPFILE Included: Modification time: 27-FEB-23\cf1\highlight2 
+\par \cf0\highlight0   SPFILE db_unique_name: TEST\cf1\highlight2 
+\par \cf0\highlight0   Control File Included: Ckp SCN: 2379395      Ckp time: 27-FEB-23\cf1\highlight2 
+\par 
+\par \cf0\highlight0 BS Key  Type LV Size       Device Type Elapsed Time Completion Time\cf1\highlight2 
+\par \cf0\highlight0 ------- ---- -- ---------- ----------- ------------ ---------------\cf1\highlight2 
+\par \cf0\highlight0 73      Full    10.20M     DISK        00:00:01     27-FEB-23\cf1\highlight2 
+\par \cf0\highlight0         BP Key: 73   Status: EXPIRED  Compressed: NO  Tag: TAG20230227T074150\cf1\highlight2 
+\par \cf0\highlight0         Piece Name: /u01/app/c-2374153116-20230227-03\cf1\highlight2 
+\par \cf0\highlight0   SPFILE Included: Modification time: 27-FEB-23\cf1\highlight2 
+\par \cf0\highlight0   SPFILE db_unique_name: TEST\cf1\highlight2 
+\par \cf0\highlight0   Control File Included: Ckp SCN: 2379748      Ckp time: 27-FEB-23\cf1\highlight2 
+\par 
+\par \cf0\highlight0 BS Key  Size\cf1\highlight2 
+\par \cf0\highlight0 ------- ----------\cf1\highlight2 
+\par \cf0\highlight0 74      536.50K\cf1\highlight2 
+\par 
+\par \cf0\highlight0   List of Archived Logs in backup set 74\cf1\highlight2 
+\par \cf0\highlight0   Thrd Seq     Low SCN    Low Time  Next SCN   Next Time\cf1\highlight2 
+\par \cf0\highlight0   ---- ------- ---------- --------- ---------- ---------\cf1\highlight2 
+\par \cf0\highlight0   1    30      2378131    27-FEB-23 2380440    27-FEB-23\cf1\highlight2 
+\par 
+\par \cf0\highlight0   Backup Set Copy #1 of backup set 74\cf1\highlight2 
+\par \cf0\highlight0   Device Type Elapsed Time Completion Time Compressed Tag\cf1\highlight2 
+\par \cf0\highlight0   ----------- ------------ --------------- ---------- ---\cf1\highlight2 
+\par \cf0\highlight0   DISK        00:00:00     27-FEB-23       YES        TAG20230227T075839\cf1\highlight2 
+\par 
+\par \cf0\highlight0     List of Backup Pieces for backup set 74 Copy #1\cf1\highlight2 
+\par \cf0\highlight0     BP Key  Pc# Status      Piece Name\cf1\highlight2 
+\par \cf0\highlight0     ------- --- ----------- ----------\cf1\highlight2 
+\par \cf0\highlight0     74      1   EXPIRED     /u01/BACKUP/RMAN1/test_2h1lh7tf_81_1_1_20230227.1\cf1\highlight2 
+\par 
+\par \cf0\highlight0   Backup Set Copy #2 of backup set 74\cf1\highlight2 
+\par \cf0\highlight0   Device Type Elapsed Time Completion Time Compressed Tag\cf1\highlight2 
+\par \cf0\highlight0   ----------- ------------ --------------- ---------- ---\cf1\highlight2 
+\par \cf0\highlight0   DISK        00:00:00     27-FEB-23       YES        TAG20230227T075839\cf1\highlight2 
+\par 
+\par \cf0\highlight0     List of Backup Pieces for backup set 74 Copy #2\cf1\highlight2 
+\par \cf0\highlight0     BP Key  Pc# Status      Piece Name\cf1\highlight2 
+\par \cf0\highlight0     ------- --- ----------- ----------\cf1\highlight2 
+\par \cf0\highlight0     84      1   AVAILABLE   /u01/RESTORE/RMAN1/test_2h1lh7tf_81_1_1_20230227.1\cf1\highlight2 
+\par 
+\par \cf0\highlight0 BS Key  Size\cf1\highlight2 
+\par \cf0\highlight0 ------- ----------\cf1\highlight2 
+\par \cf0\highlight0 75      20.00K\cf1\highlight2 
+\par 
+\par \cf0\highlight0   List of Archived Logs in backup set 75\cf1\highlight2 
+\par \cf0\highlight0   Thrd Seq     Low SCN    Low Time  Next SCN   Next Time\cf1\highlight2 
+\par \cf0\highlight0   ---- ------- ---------- --------- ---------- ---------\cf1\highlight2 
+\par \cf0\highlight0   1    29      2378098    27-FEB-23 2378131    27-FEB-23\cf1\highlight2 
+\par 
+\par \cf0\highlight0   Backup Set Copy #1 of backup set 75\cf1\highlight2 
+\par \cf0\highlight0   Device Type Elapsed Time Completion Time Compressed Tag\cf1\highlight2 
+\par \cf0\highlight0   ----------- ------------ --------------- ---------- ---\cf1\highlight2 
+\par \cf0\highlight0   DISK        00:00:00     27-FEB-23       YES        TAG20230227T075839\cf1\highlight2 
+\par 
+\par \cf0\highlight0     List of Backup Pieces for backup set 75 Copy #1\cf1\highlight2 
+\par \cf0\highlight0     BP Key  Pc# Status      Piece Name\cf1\highlight2 
+\par \cf0\highlight0     ------- --- ----------- ----------\cf1\highlight2 
+\par \cf0\highlight0     75      1   EXPIRED     /u01/BACKUP/RMAN1/test_2i1lh7tf_82_1_1_20230227.1\cf1\highlight2 
+\par 
+\par \cf0\highlight0   Backup Set Copy #2 of backup set 75\cf1\highlight2 
+\par \cf0\highlight0   Device Type Elapsed Time Completion Time Compressed Tag\cf1\highlight2 
+\par \cf0\highlight0   ----------- ------------ --------------- ---------- ---\cf1\highlight2 
+\par \cf0\highlight0   DISK        00:00:00     27-FEB-23       YES        TAG20230227T075839\cf1\highlight2 
+\par 
+\par \cf0\highlight0     List of Backup Pieces for backup set 75 Copy #2\cf1\highlight2 
+\par \cf0\highlight0     BP Key  Pc# Status      Piece Name\cf1\highlight2 
+\par \cf0\highlight0     ------- --- ----------- ----------\cf1\highlight2 
+\par \cf0\highlight0     85      1   AVAILABLE   /u01/RESTORE/RMAN1/test_2i1lh7tf_82_1_1_20230227.1\cf1\highlight2 
+\par 
+\par \cf0\highlight0 BS Key  Size\cf1\highlight2 
+\par \cf0\highlight0 ------- ----------\cf1\highlight2 
+\par \cf0\highlight0 76      7.00K\cf1\highlight2 
+\par 
+\par \cf0\highlight0   List of Archived Logs in backup set 76\cf1\highlight2 
+\par \cf0\highlight0   Thrd Seq     Low SCN    Low Time  Next SCN   Next Time\cf1\highlight2 
+\par \cf0\highlight0   ---- ------- ---------- --------- ---------- ---------\cf1\highlight2 
+\par \cf0\highlight0   1    27      2377630    27-FEB-23 2377684    27-FEB-23\cf1\highlight2 
+\par 
+\par \cf0\highlight0   Backup Set Copy #1 of backup set 76\cf1\highlight2 
+\par \cf0\highlight0   Device Type Elapsed Time Completion Time Compressed Tag\cf1\highlight2 
+\par \cf0\highlight0   ----------- ------------ --------------- ---------- ---\cf1\highlight2 
+\par \cf0\highlight0   DISK        00:00:00     27-FEB-23       YES        TAG20230227T075839\cf1\highlight2 
+\par 
+\par \cf0\highlight0     List of Backup Pieces for backup set 76 Copy #1\cf1\highlight2 
+\par \cf0\highlight0     BP Key  Pc# Status      Piece Name\cf1\highlight2 
+\par \cf0\highlight0     ------- --- ----------- ----------\cf1\highlight2 
+\par \cf0\highlight0     76      1   EXPIRED     /u01/BACKUP/RMAN1/test_2j1lh7tf_83_1_1_20230227.1\cf1\highlight2 
+\par 
+\par \cf0\highlight0   Backup Set Copy #2 of backup set 76\cf1\highlight2 
+\par \cf0\highlight0   Device Type Elapsed Time Completion Time Compressed Tag\cf1\highlight2 
+\par \cf0\highlight0   ----------- ------------ --------------- ---------- ---\cf1\highlight2 
+\par \cf0\highlight0   DISK        00:00:00     27-FEB-23       YES        TAG20230227T075839\cf1\highlight2 
+\par 
+\par \cf0\highlight0     List of Backup Pieces for backup set 76 Copy #2\cf1\highlight2 
+\par \cf0\highlight0     BP Key  Pc# Status      Piece Name\cf1\highlight2 
+\par \cf0\highlight0     ------- --- ----------- ----------\cf1\highlight2 
+\par \cf0\highlight0     86      1   AVAILABLE   /u01/RESTORE/RMAN1/test_2j1lh7tf_83_1_1_20230227.1\cf1\highlight2 
+\par 
+\par \cf0\highlight0 BS Key  Size\cf1\highlight2 
+\par \cf0\highlight0 ------- ----------\cf1\highlight2 
+\par \cf0\highlight0 77      1.63M\cf1\highlight2 
+\par 
+\par \cf0\highlight0   List of Archived Logs in backup set 77\cf1\highlight2 
+\par \cf0\highlight0   Thrd Seq     Low SCN    Low Time  Next SCN   Next Time\cf1\highlight2 
+\par \cf0\highlight0   ---- ------- ---------- --------- ---------- ---------\cf1\highlight2 
+\par \cf0\highlight0   1    28      2377684    27-FEB-23 2378098    27-FEB-23\cf1\highlight2 
+\par 
+\par \cf0\highlight0   Backup Set Copy #1 of backup set 77\cf1\highlight2 
+\par \cf0\highlight0   Device Type Elapsed Time Completion Time Compressed Tag\cf1\highlight2 
+\par \cf0\highlight0   ----------- ------------ --------------- ---------- ---\cf1\highlight2 
+\par \cf0\highlight0   DISK        00:00:00     27-FEB-23       YES        TAG20230227T075839\cf1\highlight2 
+\par 
+\par \cf0\highlight0     List of Backup Pieces for backup set 77 Copy #1\cf1\highlight2 
+\par \cf0\highlight0     BP Key  Pc# Status      Piece Name\cf1\highlight2 
+\par \cf0\highlight0     ------- --- ----------- ----------\cf1\highlight2 
+\par \cf0\highlight0     77      1   EXPIRED     /u01/BACKUP/RMAN1/test_2g1lh7tf_80_1_1_20230227.1\cf1\highlight2 
+\par 
+\par \cf0\highlight0   Backup Set Copy #2 of backup set 77\cf1\highlight2 
+\par \cf0\highlight0   Device Type Elapsed Time Completion Time Compressed Tag\cf1\highlight2 
+\par \cf0\highlight0   ----------- ------------ --------------- ---------- ---\cf1\highlight2 
+\par \cf0\highlight0   DISK        00:00:00     27-FEB-23       YES        TAG20230227T075839\cf1\highlight2 
+\par 
+\par \cf0\highlight0     List of Backup Pieces for backup set 77 Copy #2\cf1\highlight2 
+\par \cf0\highlight0     BP Key  Pc# Status      Piece Name\cf1\highlight2 
+\par \cf0\highlight0     ------- --- ----------- ----------\cf1\highlight2 
+\par \cf0\highlight0     83      1   AVAILABLE   /u01/RESTORE/RMAN1/test_2g1lh7tf_80_1_1_20230227.1\cf1\highlight2 
+\par 
+\par \cf0\highlight0 BS Key  Type LV Size\cf1\highlight2 
+\par \cf0\highlight0 ------- ---- -- ----------\cf1\highlight2 
+\par \cf0\highlight0 78      Incr 0  1.02M\cf1\highlight2 
+\par \cf0\highlight0   List of Datafiles in backup set 78\cf1\highlight2 
+\par \cf0\highlight0   File LV Type Ckp SCN    Ckp Time  Abs Fuz SCN Sparse Name\cf1\highlight2 
+\par \cf0\highlight0   ---- -- ---- ---------- --------- ----------- ------ ----\cf1\highlight2 
+\par \cf0\highlight0   7    0  Incr 2380466    27-FEB-23              NO    /u01/app/oracle/oradata/TEST/datafile/o1_mf_users_jf6dx7dq_.dbf\cf1\highlight2 
+\par 
+\par \cf0\highlight0   Backup Set Copy #1 of backup set 78\cf1\highlight2 
+\par \cf0\highlight0   Device Type Elapsed Time Completion Time Compressed Tag\cf1\highlight2 
+\par \cf0\highlight0   ----------- ------------ --------------- ---------- ---\cf1\highlight2 
+\par \cf0\highlight0   DISK        00:00:00     27-FEB-23       YES        TAG20230227T075840\cf1\highlight2 
+\par 
+\par \cf0\highlight0     List of Backup Pieces for backup set 78 Copy #1\cf1\highlight2 
+\par \cf0\highlight0     BP Key  Pc# Status      Piece Name\cf1\highlight2 
+\par \cf0\highlight0     ------- --- ----------- ----------\cf1\highlight2 
+\par \cf0\highlight0     78      1   EXPIRED     /u01/BACKUP/RMAN1/test_2n1lh7th_87_1_1_20230227.1\cf1\highlight2 
+\par 
+\par \cf0\highlight0   Backup Set Copy #2 of backup set 78\cf1\highlight2 
+\par \cf0\highlight0   Device Type Elapsed Time Completion Time Compressed Tag\cf1\highlight2 
+\par \cf0\highlight0   ----------- ------------ --------------- ---------- ---\cf1\highlight2 
+\par \cf0\highlight0   DISK        00:00:00     27-FEB-23       YES        TAG20230227T075840\cf1\highlight2 
+\par 
+\par \cf0\highlight0     List of Backup Pieces for backup set 78 Copy #2\cf1\highlight2 
+\par \cf0\highlight0     BP Key  Pc# Status      Piece Name\cf1\highlight2 
+\par \cf0\highlight0     ------- --- ----------- ----------\cf1\highlight2 
+\par \cf0\highlight0     89      1   AVAILABLE   /u01/RESTORE/RMAN1/test_2n1lh7th_87_1_1_20230227.1\cf1\highlight2 
+\par 
+\par \cf0\highlight0 BS Key  Type LV Size\cf1\highlight2 
+\par \cf0\highlight0 ------- ---- -- ----------\cf1\highlight2 
+\par \cf0\highlight0 79      Incr 0  1.04M\cf1\highlight2 
+\par \cf0\highlight0   List of Datafiles in backup set 79\cf1\highlight2 
+\par \cf0\highlight0   File LV Type Ckp SCN    Ckp Time  Abs Fuz SCN Sparse Name\cf1\highlight2 
+\par \cf0\highlight0   ---- -- ---- ---------- --------- ----------- ------ ----\cf1\highlight2 
+\par \cf0\highlight0   4    0  Incr 2380464    27-FEB-23              NO    /u01/app/oracle/oradata/TEST/datafile/o1_mf_undotbs1_jf6dx5ky_.dbf\cf1\highlight2 
+\par 
+\par \cf0\highlight0   Backup Set Copy #1 of backup set 79\cf1\highlight2 
+\par \cf0\highlight0   Device Type Elapsed Time Completion Time Compressed Tag\cf1\highlight2 
+\par \cf0\highlight0   ----------- ------------ --------------- ---------- ---\cf1\highlight2 
+\par \cf0\highlight0   DISK        00:00:00     27-FEB-23       YES        TAG20230227T075840\cf1\highlight2 
+\par 
+\par \cf0\highlight0     List of Backup Pieces for backup set 79 Copy #1\cf1\highlight2 
+\par \cf0\highlight0     BP Key  Pc# Status      Piece Name\cf1\highlight2 
+\par \cf0\highlight0     ------- --- ----------- ----------\cf1\highlight2 
+\par \cf0\highlight0     79      1   EXPIRED     /u01/BACKUP/RMAN1/test_2m1lh7th_86_1_1_20230227.1\cf1\highlight2 
+\par 
+\par \cf0\highlight0   Backup Set Copy #2 of backup set 79\cf1\highlight2 
+\par \cf0\highlight0   Device Type Elapsed Time Completion Time Compressed Tag\cf1\highlight2 
+\par \cf0\highlight0   ----------- ------------ --------------- ---------- ---\cf1\highlight2 
+\par \cf0\highlight0   DISK        00:00:00     27-FEB-23       YES        TAG20230227T075840\cf1\highlight2 
+\par 
+\par \cf0\highlight0     List of Backup Pieces for backup set 79 Copy #2\cf1\highlight2 
+\par \cf0\highlight0     BP Key  Pc# Status      Piece Name\cf1\highlight2 
+\par \cf0\highlight0     ------- --- ----------- ----------\cf1\highlight2 
+\par \cf0\highlight0     88      1   AVAILABLE   /u01/RESTORE/RMAN1/test_2m1lh7th_86_1_1_20230227.1\cf1\highlight2 
+\par 
+\par \cf0\highlight0 BS Key  Type LV Size\cf1\highlight2 
+\par \cf0\highlight0 ------- ---- -- ----------\cf1\highlight2 
+\par \cf0\highlight0 80      Incr 0  102.65M\cf1\highlight2 
+\par \cf0\highlight0   List of Datafiles in backup set 80\cf1\highlight2 
+\par \cf0\highlight0   File LV Type Ckp SCN    Ckp Time  Abs Fuz SCN Sparse Name\cf1\highlight2 
+\par \cf0\highlight0   ---- -- ---- ---------- --------- ----------- ------ ----\cf1\highlight2 
+\par \cf0\highlight0   3    0  Incr 2380462    27-FEB-23              NO    /u01/app/oracle/oradata/TEST/datafile/o1_mf_sysaux_jf6dwpf2_.dbf\cf1\highlight2 
+\par 
+\par \cf0\highlight0   Backup Set Copy #1 of backup set 80\cf1\highlight2 
+\par \cf0\highlight0   Device Type Elapsed Time Completion Time Compressed Tag\cf1\highlight2 
+\par \cf0\highlight0   ----------- ------------ --------------- ---------- ---\cf1\highlight2 
+\par \cf0\highlight0   DISK        00:00:12     27-FEB-23       YES        TAG20230227T075840\cf1\highlight2 
+\par 
+\par \cf0\highlight0     List of Backup Pieces for backup set 80 Copy #1\cf1\highlight2 
+\par \cf0\highlight0     BP Key  Pc# Status      Piece Name\cf1\highlight2 
+\par \cf0\highlight0     ------- --- ----------- ----------\cf1\highlight2 
+\par \cf0\highlight0     80      1   EXPIRED     /u01/BACKUP/RMAN1/test_2l1lh7th_85_1_1_20230227.1\cf1\highlight2 
+\par 
+\par \cf0\highlight0   Backup Set Copy #2 of backup set 80\cf1\highlight2 
+\par \cf0\highlight0   Device Type Elapsed Time Completion Time Compressed Tag\cf1\highlight2 
+\par \cf0\highlight0   ----------- ------------ --------------- ---------- ---\cf1\highlight2 
+\par \cf0\highlight0   DISK        00:00:12     27-FEB-23       YES        TAG20230227T075840\cf1\highlight2 
+\par 
+\par \cf0\highlight0     List of Backup Pieces for backup set 80 Copy #2\cf1\highlight2 
+\par \cf0\highlight0     BP Key  Pc# Status      Piece Name\cf1\highlight2 
+\par \cf0\highlight0     ------- --- ----------- ----------\cf1\highlight2 
+\par \cf0\highlight0     90      1   AVAILABLE   /u01/RESTORE/RMAN1/test_2l1lh7th_85_1_1_20230227.1\cf1\highlight2 
+\par 
+\par \cf0\highlight0 BS Key  Type LV Size\cf1\highlight2 
+\par \cf0\highlight0 ------- ---- -- ----------\cf1\highlight2 
+\par \cf0\highlight0 81      Incr 0  295.20M\cf1\highlight2 
+\par \cf0\highlight0   List of Datafiles in backup set 81\cf1\highlight2 
+\par \cf0\highlight0   File LV Type Ckp SCN    Ckp Time  Abs Fuz SCN Sparse Name\cf1\highlight2 
+\par \cf0\highlight0   ---- -- ---- ---------- --------- ----------- ------ ----\cf1\highlight2 
+\par \cf0\highlight0   1    0  Incr 2380458    27-FEB-23              NO    /u01/app/oracle/oradata/TEST/datafile/o1_mf_system_jf6dvm2j_.dbf\cf1\highlight2 
+\par 
+\par \cf0\highlight0   Backup Set Copy #1 of backup set 81\cf1\highlight2 
+\par \cf0\highlight0   Device Type Elapsed Time Completion Time Compressed Tag\cf1\highlight2 
+\par \cf0\highlight0   ----------- ------------ --------------- ---------- ---\cf1\highlight2 
+\par \cf0\highlight0   DISK        00:00:29     27-FEB-23       YES        TAG20230227T075840\cf1\highlight2 
+\par 
+\par \cf0\highlight0     List of Backup Pieces for backup set 81 Copy #1\cf1\highlight2 
+\par \cf0\highlight0     BP Key  Pc# Status      Piece Name\cf1\highlight2 
+\par \cf0\highlight0     ------- --- ----------- ----------\cf1\highlight2 
+\par \cf0\highlight0     81      1   EXPIRED     /u01/BACKUP/RMAN1/test_2k1lh7th_84_1_1_20230227.1\cf1\highlight2 
+\par 
+\par \cf0\highlight0   Backup Set Copy #2 of backup set 81\cf1\highlight2 
+\par \cf0\highlight0   Device Type Elapsed Time Completion Time Compressed Tag\cf1\highlight2 
+\par \cf0\highlight0   ----------- ------------ --------------- ---------- ---\cf1\highlight2 
+\par \cf0\highlight0   DISK        00:00:29     27-FEB-23       YES        TAG20230227T075840\cf1\highlight2 
+\par 
+\par \cf0\highlight0     List of Backup Pieces for backup set 81 Copy #2\cf1\highlight2 
+\par \cf0\highlight0     BP Key  Pc# Status      Piece Name\cf1\highlight2 
+\par \cf0\highlight0     ------- --- ----------- ----------\cf1\highlight2 
+\par \cf0\highlight0     87      1   AVAILABLE   /u01/RESTORE/RMAN1/test_2k1lh7th_84_1_1_20230227.1\cf1\highlight2 
+\par 
+\par \cf0\highlight0 BS Key  Size\cf1\highlight2 
+\par \cf0\highlight0 ------- ----------\cf1\highlight2 
+\par \cf0\highlight0 82      7.00K\cf1\highlight2 
+\par 
+\par \cf0\highlight0   List of Archived Logs in backup set 82\cf1\highlight2 
+\par \cf0\highlight0   Thrd Seq     Low SCN    Low Time  Next SCN   Next Time\cf1\highlight2 
+\par \cf0\highlight0   ---- ------- ---------- --------- ---------- ---------\cf1\highlight2 
+\par \cf0\highlight0   1    31      2380440    27-FEB-23 2380487    27-FEB-23\cf1\highlight2 
+\par 
+\par \cf0\highlight0   Backup Set Copy #1 of backup set 82\cf1\highlight2 
+\par \cf0\highlight0   Device Type Elapsed Time Completion Time Compressed Tag\cf1\highlight2 
+\par \cf0\highlight0   ----------- ------------ --------------- ---------- ---\cf1\highlight2 
+\par \cf0\highlight0   DISK        00:00:00     27-FEB-23       YES        TAG20230227T075916\cf1\highlight2 
+\par 
+\par \cf0\highlight0     List of Backup Pieces for backup set 82 Copy #1\cf1\highlight2 
+\par \cf0\highlight0     BP Key  Pc# Status      Piece Name\cf1\highlight2 
+\par \cf0\highlight0     ------- --- ----------- ----------\cf1\highlight2 
+\par \cf0\highlight0     82      1   EXPIRED     /u01/BACKUP/RMAN1/test_2o1lh7uk_88_1_1_20230227.1\cf1\highlight2 
+\par 
+\par \cf0\highlight0   Backup Set Copy #2 of backup set 82\cf1\highlight2 
+\par \cf0\highlight0   Device Type Elapsed Time Completion Time Compressed Tag\cf1\highlight2 
+\par \cf0\highlight0   ----------- ------------ --------------- ---------- ---\cf1\highlight2 
+\par \cf0\highlight0   DISK        00:00:00     27-FEB-23       YES        TAG20230227T075916\cf1\highlight2 
+\par 
+\par \cf0\highlight0     List of Backup Pieces for backup set 82 Copy #2\cf1\highlight2 
+\par \cf0\highlight0     BP Key  Pc# Status      Piece Name\cf1\highlight2 
+\par \cf0\highlight0     ------- --- ----------- ----------\cf1\highlight2 
+\par \cf0\highlight0     91      1   AVAILABLE   /u01/RESTORE/RMAN1/test_2o1lh7uk_88_1_1_20230227.1\cf1\highlight2 
+\par 
+\par \cf0\highlight0 BS Key  Type LV Size       Device Type Elapsed Time Completion Time\cf1\highlight2 
+\par \cf0\highlight0 ------- ---- -- ---------- ----------- ------------ ---------------\cf1\highlight2 
+\par \cf0\highlight0 83      Full    10.17M     DISK        00:00:01     27-FEB-23\cf1\highlight2 
+\par \cf0\highlight0         BP Key: 92   Status: AVAILABLE  Compressed: NO  Tag: TAG20230227T075918\cf1\highlight2 
+\par \cf0\highlight0         Piece Name: /u01/RESTORE/RMAN1/test_controlfile_2p1lh7um_89_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0   Control File Included: Ckp SCN: 2380504      Ckp time: 27-FEB-23\cf1\highlight2 
+\par 
+\par \cf0\highlight0 RMAN> delete exipred backup;\cf1\highlight2 
+\par 
+\par \cf0\highlight0 RMAN-00571: ===========================================================\cf1\highlight2 
+\par \cf0\highlight0 RMAN-00569: =============== ERROR MESSAGE STACK FOLLOWS ===============\cf1\highlight2 
+\par \cf0\highlight0 RMAN-00571: ===========================================================\cf1\highlight2 
+\par \cf0\highlight0 RMAN-00558: error encountered while parsing input commands\cf1\highlight2 
+\par \cf0\highlight0 RMAN-01009: syntax error: found "identifier": expecting one of: "archivelog, backuppiece, backupset, backup, controlfilecopy, copy, datafilecopy, expired, force, foreign, global, noprompt, obsolete, proxy, preplugin, script"\cf1\highlight2 
+\par \cf0\highlight0 RMAN-01008: the bad identifier was: exipred\cf1\highlight2 
+\par \cf0\highlight0 RMAN-01007: at line 1 column 8 file: standard input\cf1\highlight2 
+\par 
+\par \cf0\highlight0 RMAN>\cf1\highlight2 
+\par 
+\par \cf0\highlight0 RMAN>\cf1\highlight2 
+\par 
+\par \cf0\highlight0 RMAN> delete expired backup;\cf1\highlight2 
+\par 
+\par \cf0\highlight0 using channel ORA_DISK_1\cf1\highlight2 
+\par 
+\par \cf0\highlight0 List of Backup Pieces\cf1\highlight2 
+\par \cf0\highlight0 BP Key  BS Key  Pc# Cp# Status      Device Type Piece Name\cf1\highlight2 
+\par \cf0\highlight0 ------- ------- --- --- ----------- ----------- ----------\cf1\highlight2 
+\par \cf0\highlight0 52      52      1   1   EXPIRED     DISK        /u01/BACKUP/RMAN1/test_1r1lh5c3_59_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 53      53      1   1   EXPIRED     DISK        /u01/BACKUP/RMAN1/test_1q1lh5c3_58_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 54      54      1   1   EXPIRED     DISK        /u01/BACKUP/RMAN1/test_1p1lh5c3_57_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 55      55      1   1   EXPIRED     DISK        /u01/BACKUP/RMAN1/test_1o1lh5c3_56_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 56      56      1   1   EXPIRED     DISK        /u01/BACKUP/RMAN1/test_1s1lh5d7_60_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 59      59      1   1   EXPIRED     DISK        /u01/BACKUP/RMAN1/test_211lh5l5_65_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 62      62      1   1   EXPIRED     DISK        /u01/BACKUP/RMAN1/test_231lh5l7_67_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 64      64      1   1   EXPIRED     DISK        /u01/BACKUP/RMAN1/test_241lh5le_68_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 65      65      1   1   EXPIRED     DISK        /u01/BACKUP/RMAN1/test_271lh5lf_71_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 66      66      1   1   EXPIRED     DISK        /u01/BACKUP/RMAN1/test_261lh5lf_70_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 67      67      1   1   EXPIRED     DISK        /u01/BACKUP/RMAN1/test_251lh5le_69_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 68      68      1   1   EXPIRED     DISK        /u01/BACKUP/RMAN1/test_281lh5lg_72_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 70      70      1   1   EXPIRED     DISK        /u01/app/c-2374153116-20230227-01\cf1\highlight2 
+\par \cf0\highlight0 71      71      1   1   EXPIRED     DISK        /u01/app/FRA/TEST/backupset/2023_02_27/o1_mf_nnndf_TAG20230227T073339_kzr3vvb5_.bkp\cf1\highlight2 
+\par \cf0\highlight0 72      72      1   1   EXPIRED     DISK        /u01/app/c-2374153116-20230227-02\cf1\highlight2 
+\par \cf0\highlight0 73      73      1   1   EXPIRED     DISK        /u01/app/c-2374153116-20230227-03\cf1\highlight2 
+\par \cf0\highlight0 74      74      1   1   EXPIRED     DISK        /u01/BACKUP/RMAN1/test_2h1lh7tf_81_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 75      75      1   1   EXPIRED     DISK        /u01/BACKUP/RMAN1/test_2i1lh7tf_82_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 76      76      1   1   EXPIRED     DISK        /u01/BACKUP/RMAN1/test_2j1lh7tf_83_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 77      77      1   1   EXPIRED     DISK        /u01/BACKUP/RMAN1/test_2g1lh7tf_80_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 78      78      1   1   EXPIRED     DISK        /u01/BACKUP/RMAN1/test_2n1lh7th_87_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 79      79      1   1   EXPIRED     DISK        /u01/BACKUP/RMAN1/test_2m1lh7th_86_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 80      80      1   1   EXPIRED     DISK        /u01/BACKUP/RMAN1/test_2l1lh7th_85_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 81      81      1   1   EXPIRED     DISK        /u01/BACKUP/RMAN1/test_2k1lh7th_84_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 82      82      1   1   EXPIRED     DISK        /u01/BACKUP/RMAN1/test_2o1lh7uk_88_1_1_20230227.1\cf1\highlight2 
+\par 
+\par \cf0\highlight0 Do you really want to delete the above objects (enter YES or NO)? YES\cf1\highlight2 
+\par \cf0\highlight0 deleted backup piece\cf1\highlight2 
+\par \cf0\highlight0 backup piece handle=/u01/BACKUP/RMAN1/test_1r1lh5c3_59_1_1_20230227.1 RECID=52 STAMP=1129878915\cf1\highlight2 
+\par \cf0\highlight0 deleted backup piece\cf1\highlight2 
+\par \cf0\highlight0 backup piece handle=/u01/BACKUP/RMAN1/test_1q1lh5c3_58_1_1_20230227.1 RECID=53 STAMP=1129878915\cf1\highlight2 
+\par \cf0\highlight0 deleted backup piece\cf1\highlight2 
+\par \cf0\highlight0 backup piece handle=/u01/BACKUP/RMAN1/test_1p1lh5c3_57_1_1_20230227.1 RECID=54 STAMP=1129878915\cf1\highlight2 
+\par \cf0\highlight0 deleted backup piece\cf1\highlight2 
+\par \cf0\highlight0 backup piece handle=/u01/BACKUP/RMAN1/test_1o1lh5c3_56_1_1_20230227.1 RECID=55 STAMP=1129878915\cf1\highlight2 
+\par \cf0\highlight0 deleted backup piece\cf1\highlight2 
+\par \cf0\highlight0 backup piece handle=/u01/BACKUP/RMAN1/test_1s1lh5d7_60_1_1_20230227.1 RECID=56 STAMP=1129878951\cf1\highlight2 
+\par \cf0\highlight0 deleted backup piece\cf1\highlight2 
+\par \cf0\highlight0 backup piece handle=/u01/BACKUP/RMAN1/test_211lh5l5_65_1_1_20230227.1 RECID=59 STAMP=1129879205\cf1\highlight2 
+\par \cf0\highlight0 deleted backup piece\cf1\highlight2 
+\par \cf0\highlight0 backup piece handle=/u01/BACKUP/RMAN1/test_231lh5l7_67_1_1_20230227.1 RECID=62 STAMP=1129879207\cf1\highlight2 
+\par \cf0\highlight0 deleted backup piece\cf1\highlight2 
+\par \cf0\highlight0 backup piece handle=/u01/BACKUP/RMAN1/test_241lh5le_68_1_1_20230227.1 RECID=64 STAMP=1129879215\cf1\highlight2 
+\par \cf0\highlight0 deleted backup piece\cf1\highlight2 
+\par \cf0\highlight0 backup piece handle=/u01/BACKUP/RMAN1/test_271lh5lf_71_1_1_20230227.1 RECID=65 STAMP=1129879215\cf1\highlight2 
+\par \cf0\highlight0 deleted backup piece\cf1\highlight2 
+\par \cf0\highlight0 backup piece handle=/u01/BACKUP/RMAN1/test_261lh5lf_70_1_1_20230227.1 RECID=66 STAMP=1129879215\cf1\highlight2 
+\par \cf0\highlight0 deleted backup piece\cf1\highlight2 
+\par \cf0\highlight0 backup piece handle=/u01/BACKUP/RMAN1/test_251lh5le_69_1_1_20230227.1 RECID=67 STAMP=1129879215\cf1\highlight2 
+\par \cf0\highlight0 deleted backup piece\cf1\highlight2 
+\par \cf0\highlight0 backup piece handle=/u01/BACKUP/RMAN1/test_281lh5lg_72_1_1_20230227.1 RECID=68 STAMP=1129879216\cf1\highlight2 
+\par \cf0\highlight0 deleted backup piece\cf1\highlight2 
+\par \cf0\highlight0 backup piece handle=/u01/app/c-2374153116-20230227-01 RECID=70 STAMP=1129879220\cf1\highlight2 
+\par \cf0\highlight0 deleted backup piece\cf1\highlight2 
+\par \cf0\highlight0 backup piece handle=/u01/app/FRA/TEST/backupset/2023_02_27/o1_mf_nnndf_TAG20230227T073339_kzr3vvb5_.bkp RECID=71 STAMP=1129880019\cf1\highlight2 
+\par \cf0\highlight0 deleted backup piece\cf1\highlight2 
+\par \cf0\highlight0 backup piece handle=/u01/app/c-2374153116-20230227-02 RECID=72 STAMP=1129880020\cf1\highlight2 
+\par \cf0\highlight0 deleted backup piece\cf1\highlight2 
+\par \cf0\highlight0 backup piece handle=/u01/app/c-2374153116-20230227-03 RECID=73 STAMP=1129880511\cf1\highlight2 
+\par \cf0\highlight0 deleted backup piece\cf1\highlight2 
+\par \cf0\highlight0 backup piece handle=/u01/BACKUP/RMAN1/test_2h1lh7tf_81_1_1_20230227.1 RECID=74 STAMP=1129881519\cf1\highlight2 
+\par \cf0\highlight0 deleted backup piece\cf1\highlight2 
+\par \cf0\highlight0 backup piece handle=/u01/BACKUP/RMAN1/test_2i1lh7tf_82_1_1_20230227.1 RECID=75 STAMP=1129881519\cf1\highlight2 
+\par \cf0\highlight0 deleted backup piece\cf1\highlight2 
+\par \cf0\highlight0 backup piece handle=/u01/BACKUP/RMAN1/test_2j1lh7tf_83_1_1_20230227.1 RECID=76 STAMP=1129881519\cf1\highlight2 
+\par \cf0\highlight0 deleted backup piece\cf1\highlight2 
+\par \cf0\highlight0 backup piece handle=/u01/BACKUP/RMAN1/test_2g1lh7tf_80_1_1_20230227.1 RECID=77 STAMP=1129881519\cf1\highlight2 
+\par \cf0\highlight0 deleted backup piece\cf1\highlight2 
+\par \cf0\highlight0 backup piece handle=/u01/BACKUP/RMAN1/test_2n1lh7th_87_1_1_20230227.1 RECID=78 STAMP=1129881521\cf1\highlight2 
+\par \cf0\highlight0 deleted backup piece\cf1\highlight2 
+\par \cf0\highlight0 backup piece handle=/u01/BACKUP/RMAN1/test_2m1lh7th_86_1_1_20230227.1 RECID=79 STAMP=1129881521\cf1\highlight2 
+\par \cf0\highlight0 deleted backup piece\cf1\highlight2 
+\par \cf0\highlight0 backup piece handle=/u01/BACKUP/RMAN1/test_2l1lh7th_85_1_1_20230227.1 RECID=80 STAMP=1129881521\cf1\highlight2 
+\par \cf0\highlight0 deleted backup piece\cf1\highlight2 
+\par \cf0\highlight0 backup piece handle=/u01/BACKUP/RMAN1/test_2k1lh7th_84_1_1_20230227.1 RECID=81 STAMP=1129881521\cf1\highlight2 
+\par \cf0\highlight0 deleted backup piece\cf1\highlight2 
+\par \cf0\highlight0 backup piece handle=/u01/BACKUP/RMAN1/test_2o1lh7uk_88_1_1_20230227.1 RECID=82 STAMP=1129881556\cf1\highlight2 
+\par \cf0\highlight0 Deleted 25 EXPIRED objects\cf1\highlight2 
+\par 
+\par 
+\par \cf0\highlight0 RMAN>\cf1\highlight2 
+\par 
+\par \cf0\highlight0 RMAN>\cf1\highlight2 
+\par 
+\par \cf0\highlight0 RMAN>\cf1\highlight2 
+\par 
+\par \cf0\highlight0 RMAN> list backup\cf1\highlight2 
+\par \cf0\highlight0 2> ;\cf1\highlight2 
+\par 
+\par 
+\par \cf0\highlight0 List of Backup Sets\cf1\highlight2 
+\par \cf0\highlight0 ===================\cf1\highlight2 
+\par 
+\par 
+\par \cf0\highlight0 BS Key  Size       Device Type Elapsed Time Completion Time\cf1\highlight2 
+\par \cf0\highlight0 ------- ---------- ----------- ------------ ---------------\cf1\highlight2 
+\par \cf0\highlight0 74      536.50K    DISK        00:00:00     27-FEB-23\cf1\highlight2 
+\par \cf0\highlight0         BP Key: 84   Status: AVAILABLE  Compressed: YES  Tag: TAG20230227T075839\cf1\highlight2 
+\par \cf0\highlight0         Piece Name: /u01/RESTORE/RMAN1/test_2h1lh7tf_81_1_1_20230227.1\cf1\highlight2 
+\par 
+\par \cf0\highlight0   List of Archived Logs in backup set 74\cf1\highlight2 
+\par \cf0\highlight0   Thrd Seq     Low SCN    Low Time  Next SCN   Next Time\cf1\highlight2 
+\par \cf0\highlight0   ---- ------- ---------- --------- ---------- ---------\cf1\highlight2 
+\par \cf0\highlight0   1    30      2378131    27-FEB-23 2380440    27-FEB-23\cf1\highlight2 
+\par 
+\par \cf0\highlight0 BS Key  Size       Device Type Elapsed Time Completion Time\cf1\highlight2 
+\par \cf0\highlight0 ------- ---------- ----------- ------------ ---------------\cf1\highlight2 
+\par \cf0\highlight0 75      20.00K     DISK        00:00:00     27-FEB-23\cf1\highlight2 
+\par \cf0\highlight0         BP Key: 85   Status: AVAILABLE  Compressed: YES  Tag: TAG20230227T075839\cf1\highlight2 
+\par \cf0\highlight0         Piece Name: /u01/RESTORE/RMAN1/test_2i1lh7tf_82_1_1_20230227.1\cf1\highlight2 
+\par 
+\par \cf0\highlight0   List of Archived Logs in backup set 75\cf1\highlight2 
+\par \cf0\highlight0   Thrd Seq     Low SCN    Low Time  Next SCN   Next Time\cf1\highlight2 
+\par \cf0\highlight0   ---- ------- ---------- --------- ---------- ---------\cf1\highlight2 
+\par \cf0\highlight0   1    29      2378098    27-FEB-23 2378131    27-FEB-23\cf1\highlight2 
+\par 
+\par \cf0\highlight0 BS Key  Size       Device Type Elapsed Time Completion Time\cf1\highlight2 
+\par \cf0\highlight0 ------- ---------- ----------- ------------ ---------------\cf1\highlight2 
+\par \cf0\highlight0 76      7.00K      DISK        00:00:00     27-FEB-23\cf1\highlight2 
+\par \cf0\highlight0         BP Key: 86   Status: AVAILABLE  Compressed: YES  Tag: TAG20230227T075839\cf1\highlight2 
+\par \cf0\highlight0         Piece Name: /u01/RESTORE/RMAN1/test_2j1lh7tf_83_1_1_20230227.1\cf1\highlight2 
+\par 
+\par \cf0\highlight0   List of Archived Logs in backup set 76\cf1\highlight2 
+\par \cf0\highlight0   Thrd Seq     Low SCN    Low Time  Next SCN   Next Time\cf1\highlight2 
+\par \cf0\highlight0   ---- ------- ---------- --------- ---------- ---------\cf1\highlight2 
+\par \cf0\highlight0   1    27      2377630    27-FEB-23 2377684    27-FEB-23\cf1\highlight2 
+\par 
+\par \cf0\highlight0 BS Key  Size       Device Type Elapsed Time Completion Time\cf1\highlight2 
+\par \cf0\highlight0 ------- ---------- ----------- ------------ ---------------\cf1\highlight2 
+\par \cf0\highlight0 77      1.63M      DISK        00:00:00     27-FEB-23\cf1\highlight2 
+\par \cf0\highlight0         BP Key: 83   Status: AVAILABLE  Compressed: YES  Tag: TAG20230227T075839\cf1\highlight2 
+\par \cf0\highlight0         Piece Name: /u01/RESTORE/RMAN1/test_2g1lh7tf_80_1_1_20230227.1\cf1\highlight2 
+\par 
+\par \cf0\highlight0   List of Archived Logs in backup set 77\cf1\highlight2 
+\par \cf0\highlight0   Thrd Seq     Low SCN    Low Time  Next SCN   Next Time\cf1\highlight2 
+\par \cf0\highlight0   ---- ------- ---------- --------- ---------- ---------\cf1\highlight2 
+\par \cf0\highlight0   1    28      2377684    27-FEB-23 2378098    27-FEB-23\cf1\highlight2 
+\par 
+\par \cf0\highlight0 BS Key  Type LV Size       Device Type Elapsed Time Completion Time\cf1\highlight2 
+\par \cf0\highlight0 ------- ---- -- ---------- ----------- ------------ ---------------\cf1\highlight2 
+\par \cf0\highlight0 78      Incr 0  1.02M      DISK        00:00:00     27-FEB-23\cf1\highlight2 
+\par \cf0\highlight0         BP Key: 89   Status: AVAILABLE  Compressed: YES  Tag: TAG20230227T075840\cf1\highlight2 
+\par \cf0\highlight0         Piece Name: /u01/RESTORE/RMAN1/test_2n1lh7th_87_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0   List of Datafiles in backup set 78\cf1\highlight2 
+\par \cf0\highlight0   File LV Type Ckp SCN    Ckp Time  Abs Fuz SCN Sparse Name\cf1\highlight2 
+\par \cf0\highlight0   ---- -- ---- ---------- --------- ----------- ------ ----\cf1\highlight2 
+\par \cf0\highlight0   7    0  Incr 2380466    27-FEB-23              NO    /u01/app/oracle/oradata/TEST/datafile/o1_mf_users_jf6dx7dq_.dbf\cf1\highlight2 
+\par 
+\par \cf0\highlight0 BS Key  Type LV Size       Device Type Elapsed Time Completion Time\cf1\highlight2 
+\par \cf0\highlight0 ------- ---- -- ---------- ----------- ------------ ---------------\cf1\highlight2 
+\par \cf0\highlight0 79      Incr 0  1.04M      DISK        00:00:00     27-FEB-23\cf1\highlight2 
+\par \cf0\highlight0         BP Key: 88   Status: AVAILABLE  Compressed: YES  Tag: TAG20230227T075840\cf1\highlight2 
+\par \cf0\highlight0         Piece Name: /u01/RESTORE/RMAN1/test_2m1lh7th_86_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0   List of Datafiles in backup set 79\cf1\highlight2 
+\par \cf0\highlight0   File LV Type Ckp SCN    Ckp Time  Abs Fuz SCN Sparse Name\cf1\highlight2 
+\par \cf0\highlight0   ---- -- ---- ---------- --------- ----------- ------ ----\cf1\highlight2 
+\par \cf0\highlight0   4    0  Incr 2380464    27-FEB-23              NO    /u01/app/oracle/oradata/TEST/datafile/o1_mf_undotbs1_jf6dx5ky_.dbf\cf1\highlight2 
+\par 
+\par \cf0\highlight0 BS Key  Type LV Size       Device Type Elapsed Time Completion Time\cf1\highlight2 
+\par \cf0\highlight0 ------- ---- -- ---------- ----------- ------------ ---------------\cf1\highlight2 
+\par \cf0\highlight0 80      Incr 0  102.65M    DISK        00:00:12     27-FEB-23\cf1\highlight2 
+\par \cf0\highlight0         BP Key: 90   Status: AVAILABLE  Compressed: YES  Tag: TAG20230227T075840\cf1\highlight2 
+\par \cf0\highlight0         Piece Name: /u01/RESTORE/RMAN1/test_2l1lh7th_85_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0   List of Datafiles in backup set 80\cf1\highlight2 
+\par \cf0\highlight0   File LV Type Ckp SCN    Ckp Time  Abs Fuz SCN Sparse Name\cf1\highlight2 
+\par \cf0\highlight0   ---- -- ---- ---------- --------- ----------- ------ ----\cf1\highlight2 
+\par \cf0\highlight0   3    0  Incr 2380462    27-FEB-23              NO    /u01/app/oracle/oradata/TEST/datafile/o1_mf_sysaux_jf6dwpf2_.dbf\cf1\highlight2 
+\par 
+\par \cf0\highlight0 BS Key  Type LV Size       Device Type Elapsed Time Completion Time\cf1\highlight2 
+\par \cf0\highlight0 ------- ---- -- ---------- ----------- ------------ ---------------\cf1\highlight2 
+\par \cf0\highlight0 81      Incr 0  295.20M    DISK        00:00:29     27-FEB-23\cf1\highlight2 
+\par \cf0\highlight0         BP Key: 87   Status: AVAILABLE  Compressed: YES  Tag: TAG20230227T075840\cf1\highlight2 
+\par \cf0\highlight0         Piece Name: /u01/RESTORE/RMAN1/test_2k1lh7th_84_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0   List of Datafiles in backup set 81\cf1\highlight2 
+\par \cf0\highlight0   File LV Type Ckp SCN    Ckp Time  Abs Fuz SCN Sparse Name\cf1\highlight2 
+\par \cf0\highlight0   ---- -- ---- ---------- --------- ----------- ------ ----\cf1\highlight2 
+\par \cf0\highlight0   1    0  Incr 2380458    27-FEB-23              NO    /u01/app/oracle/oradata/TEST/datafile/o1_mf_system_jf6dvm2j_.dbf\cf1\highlight2 
+\par 
+\par \cf0\highlight0 BS Key  Size       Device Type Elapsed Time Completion Time\cf1\highlight2 
+\par \cf0\highlight0 ------- ---------- ----------- ------------ ---------------\cf1\highlight2 
+\par \cf0\highlight0 82      7.00K      DISK        00:00:00     27-FEB-23\cf1\highlight2 
+\par \cf0\highlight0         BP Key: 91   Status: AVAILABLE  Compressed: YES  Tag: TAG20230227T075916\cf1\highlight2 
+\par \cf0\highlight0         Piece Name: /u01/RESTORE/RMAN1/test_2o1lh7uk_88_1_1_20230227.1\cf1\highlight2 
+\par 
+\par \cf0\highlight0   List of Archived Logs in backup set 82\cf1\highlight2 
+\par \cf0\highlight0   Thrd Seq     Low SCN    Low Time  Next SCN   Next Time\cf1\highlight2 
+\par \cf0\highlight0   ---- ------- ---------- --------- ---------- ---------\cf1\highlight2 
+\par \cf0\highlight0   1    31      2380440    27-FEB-23 2380487    27-FEB-23\cf1\highlight2 
+\par 
+\par \cf0\highlight0 BS Key  Type LV Size       Device Type Elapsed Time Completion Time\cf1\highlight2 
+\par \cf0\highlight0 ------- ---- -- ---------- ----------- ------------ ---------------\cf1\highlight2 
+\par \cf0\highlight0 83      Full    10.17M     DISK        00:00:01     27-FEB-23\cf1\highlight2 
+\par \cf0\highlight0         BP Key: 92   Status: AVAILABLE  Compressed: NO  Tag: TAG20230227T075918\cf1\highlight2 
+\par \cf0\highlight0         Piece Name: /u01/RESTORE/RMAN1/test_controlfile_2p1lh7um_89_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0   Control File Included: Ckp SCN: 2380504      Ckp time: 27-FEB-23\cf1\highlight2 
+\par 
+\par \cf0\highlight0 RMAN>\cf1\highlight2 
+\par 
+\par \cf0\highlight0 RMAN>\cf1\highlight2 
+\par 
+\par \cf0\highlight0 RMAN>\cf1\highlight2 
+\par 
+\par \cf0\highlight0 RMAN> run\cf1\highlight2 
+\par \cf0\highlight0     \{\cf1\highlight2 
+\par \cf0\highlight0         ALLOCATE CHANNEL disk1 DEVICE TYPE DISK;\cf1\highlight2 
+\par \cf0\highlight0     ALLOCATE CHANNEL disk2 DEVICE TYPE DISK;\cf1\highlight2 
+\par \cf0\highlight0     ALLOCATE CHANNEL disk3 DEVICE TYPE DISK;\cf1\highlight2 
+\par \cf0\highlight0     ALLOCATE CHANNEL disk4 DEVICE TYPE DISK;\cf1\highlight2 
+\par \cf0\highlight0         restore database;\cf1\highlight2 
+\par \cf0\highlight0 2> 3>   release channel disk1;\cf1\highlight2 
+\par \cf0\highlight0         release channel disk2;\cf1\highlight2 
+\par \cf0\highlight0         release channel disk3;\cf1\highlight2 
+\par \cf0\highlight0 4> 5>     release channel disk4;\cf1\highlight2 
+\par \cf0\highlight0     \}6> 7> 8> 9> 10> 11> 12>\cf1\highlight2 
+\par 
+\par \cf0\highlight0 released channel: ORA_DISK_1\cf1\highlight2 
+\par \cf0\highlight0 allocated channel: disk1\cf1\highlight2 
+\par \cf0\highlight0 channel disk1: SID=37 device type=DISK\cf1\highlight2 
+\par 
+\par \cf0\highlight0 allocated channel: disk2\cf1\highlight2 
+\par \cf0\highlight0 channel disk2: SID=20 device type=DISK\cf1\highlight2 
+\par 
+\par \cf0\highlight0 allocated channel: disk3\cf1\highlight2 
+\par \cf0\highlight0 channel disk3: SID=272 device type=DISK\cf1\highlight2 
+\par 
+\par \cf0\highlight0 allocated channel: disk4\cf1\highlight2 
+\par \cf0\highlight0 channel disk4: SID=38 device type=DISK\cf1\highlight2 
+\par 
+\par \cf0\highlight0 Starting restore at 27-FEB-23\cf1\highlight2 
+\par 
+\par \cf0\highlight0 channel disk1: starting datafile backup set restore\cf1\highlight2 
+\par \cf0\highlight0 channel disk1: specifying datafile(s) to restore from backup set\cf1\highlight2 
+\par \cf0\highlight0 channel disk1: restoring datafile 00007 to /u01/app/oracle/oradata/TEST/datafile/o1_mf_users_jf6dx7dq_.dbf\cf1\highlight2 
+\par \cf0\highlight0 channel disk1: reading from backup piece /u01/RESTORE/RMAN1/test_2n1lh7th_87_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 channel disk2: starting datafile backup set restore\cf1\highlight2 
+\par \cf0\highlight0 channel disk2: specifying datafile(s) to restore from backup set\cf1\highlight2 
+\par \cf0\highlight0 channel disk2: restoring datafile 00004 to /u01/app/oracle/oradata/TEST/datafile/o1_mf_undotbs1_jf6dx5ky_.dbf\cf1\highlight2 
+\par \cf0\highlight0 channel disk2: reading from backup piece /u01/RESTORE/RMAN1/test_2m1lh7th_86_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 channel disk3: starting datafile backup set restore\cf1\highlight2 
+\par \cf0\highlight0 channel disk3: specifying datafile(s) to restore from backup set\cf1\highlight2 
+\par \cf0\highlight0 channel disk3: restoring datafile 00003 to /u01/app/oracle/oradata/TEST/datafile/o1_mf_sysaux_jf6dwpf2_.dbf\cf1\highlight2 
+\par \cf0\highlight0 channel disk3: reading from backup piece /u01/RESTORE/RMAN1/test_2l1lh7th_85_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 channel disk4: starting datafile backup set restore\cf1\highlight2 
+\par \cf0\highlight0 channel disk4: specifying datafile(s) to restore from backup set\cf1\highlight2 
+\par \cf0\highlight0 channel disk4: restoring datafile 00001 to /u01/app/oracle/oradata/TEST/datafile/o1_mf_system_jf6dvm2j_.dbf\cf1\highlight2 
+\par \cf0\highlight0 channel disk4: reading from backup piece /u01/RESTORE/RMAN1/test_2k1lh7th_84_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 channel disk1: piece handle=/u01/RESTORE/RMAN1/test_2n1lh7th_87_1_1_20230227.1 tag=TAG20230227T075840\cf1\highlight2 
+\par \cf0\highlight0 channel disk1: restored backup piece 1\cf1\highlight2 
+\par \cf0\highlight0 channel disk1: restore complete, elapsed time: 00:00:01\cf1\highlight2 
+\par \cf0\highlight0 channel disk2: piece handle=/u01/RESTORE/RMAN1/test_2m1lh7th_86_1_1_20230227.1 tag=TAG20230227T075840\cf1\highlight2 
+\par \cf0\highlight0 channel disk2: restored backup piece 1\cf1\highlight2 
+\par \cf0\highlight0 channel disk2: restore complete, elapsed time: 00:00:03\cf1\highlight2 
+\par \cf0\highlight0 channel disk3: piece handle=/u01/RESTORE/RMAN1/test_2l1lh7th_85_1_1_20230227.1 tag=TAG20230227T075840\cf1\highlight2 
+\par \cf0\highlight0 channel disk3: restored backup piece 1\cf1\highlight2 
+\par \cf0\highlight0 channel disk3: restore complete, elapsed time: 00:00:25\cf1\highlight2 
+\par \cf0\highlight0 channel disk4: piece handle=/u01/RESTORE/RMAN1/test_2k1lh7th_84_1_1_20230227.1 tag=TAG20230227T075840\cf1\highlight2 
+\par \cf0\highlight0 channel disk4: restored backup piece 1\cf1\highlight2 
+\par \cf0\highlight0 channel disk4: restore complete, elapsed time: 00:00:45\cf1\highlight2 
+\par \cf0\highlight0 Finished restore at 27-FEB-23\cf1\highlight2 
+\par 
+\par \cf0\highlight0 released channel: disk1\cf1\highlight2 
+\par 
+\par \cf0\highlight0 released channel: disk2\cf1\highlight2 
+\par 
+\par \cf0\highlight0 released channel: disk3\cf1\highlight2 
+\par 
+\par \cf0\highlight0 released channel: disk4\cf1\highlight2 
+\par 
+\par \cf0\highlight0 RMAN>\cf1\highlight2 
+\par 
+\par \cf0\highlight0 RMAN>\cf1\highlight2 
+\par 
+\par \cf0\highlight0 RMAN> recover database;\cf1\highlight2 
+\par 
+\par \cf0\highlight0 Starting recover at 27-FEB-23\cf1\highlight2 
+\par \cf0\highlight0 allocated channel: ORA_DISK_1\cf1\highlight2 
+\par \cf0\highlight0 channel ORA_DISK_1: SID=37 device type=DISK\cf1\highlight2 
+\par 
+\par \cf0\highlight0 starting media recovery\cf1\highlight2 
+\par 
+\par \cf0\highlight0 channel ORA_DISK_1: starting archived log restore to default destination\cf1\highlight2 
+\par \cf0\highlight0 channel ORA_DISK_1: restoring archived log\cf1\highlight2 
+\par \cf0\highlight0 archived log thread=1 sequence=31\cf1\highlight2 
+\par \cf0\highlight0 channel ORA_DISK_1: reading from backup piece /u01/RESTORE/RMAN1/test_2o1lh7uk_88_1_1_20230227.1\cf1\highlight2 
+\par \cf0\highlight0 channel ORA_DISK_1: piece handle=/u01/RESTORE/RMAN1/test_2o1lh7uk_88_1_1_20230227.1 tag=TAG20230227T075916\cf1\highlight2 
+\par \cf0\highlight0 channel ORA_DISK_1: restored backup piece 1\cf1\highlight2 
+\par \cf0\highlight0 channel ORA_DISK_1: restore complete, elapsed time: 00:00:01\cf1\highlight2 
+\par \cf0\highlight0 archived log file name=/u01/ARCHIVE1_31_1076006686.arc thread=1 sequence=31\cf1\highlight2 
+\par \cf0\highlight0 unable to find archived log\cf1\highlight2 
+\par \cf0\highlight0 archived log thread=1 sequence=32\cf1\highlight2 
+\par \cf0\highlight0 RMAN-00571: ===========================================================\cf1\highlight2 
+\par \cf0\highlight0 RMAN-00569: =============== ERROR MESSAGE STACK FOLLOWS ===============\cf1\highlight2 
+\par \cf0\highlight0 RMAN-00571: ===========================================================\cf1\highlight2 
+\par \cf0\highlight0 RMAN-03002: failure of recover command at 02/27/2023 08:23:41\cf1\highlight2 
+\par \cf0\highlight0 RMAN-06054: media recovery requesting unknown archived log for thread 1 with sequence 32 and starting SCN of 2380487\cf1\highlight2 
+\par 
+\par \cf0\highlight0 RMAN> exit\cf1\highlight2 
+\par 
+\par 
+\par \cf0\highlight0 Recovery Manager complete.\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$ sqlplus / as sysdba\cf1\highlight2 
+\par 
+\par \cf0\highlight0 SQL*Plus: Release 19.0.0.0.0 - Production on Mon Feb 27 08:25:11 2023\cf1\highlight2 
+\par \cf0\highlight0 Version 19.3.0.0.0\cf1\highlight2 
+\par 
+\par \cf0\highlight0 Copyright (c) 1982, 2019, Oracle.  All rights reserved.\cf1\highlight2 
+\par 
+\par 
+\par \cf0\highlight0 Connected to:\cf1\highlight2 
+\par \cf0\highlight0 Oracle Database 19c Enterprise Edition Release 19.0.0.0.0 - Production\cf1\highlight2 
+\par \cf0\highlight0 Version 19.3.0.0.0\cf1\highlight2 
+\par 
+\par \cf0\highlight0 SQL>\cf1\highlight2 
+\par \cf0\highlight0 SQL>\cf1\highlight2 
+\par \cf0\highlight0 SQL> alter database open resetlogs;\cf1\highlight2 
+\par 
+\par \cf0\highlight0 Database altered.\cf1\highlight2 
+\par 
+\par \cf0\highlight0 SQL>\cf1\highlight2 
+\par \cf0\highlight0 SQL>\cf1\highlight2 
+\par \cf0\highlight0 SQL>\cf1\highlight2 
+\par \cf0\highlight0 SQL> select name,open_mode,log_mode from v$database;\cf1\highlight2 
+\par 
+\par \cf0\highlight0 NAME      OPEN_MODE            LOG_MODE\cf1\highlight2 
+\par \cf0\highlight0 --------- -------------------- ------------\cf1\highlight2 
+\par \cf0\highlight0 TEST      READ WRITE           ARCHIVELOG\cf1\highlight2 
+\par 
+\par \cf0\highlight0 SQL>\cf1\highlight2 
+\par \cf0\highlight0 SQL>\cf1\highlight2 
+\par \cf0\highlight0 SQL>\cf1\highlight2 
+\par \cf0\highlight0 SQL> select * from v$tempfile;\cf1\highlight2 
+\par 
+\par \cf0\highlight0      FILE# CREATION_CHANGE# CREATION_        TS#     RFILE# STATUS  ENABLED\cf1\highlight2 
+\par \cf0\highlight0 ---------- ---------------- --------- ---------- ---------- ------- ----------\cf1\highlight2 
+\par \cf0\highlight0      BYTES     BLOCKS CREATE_BYTES BLOCK_SIZE\cf1\highlight2 
+\par \cf0\highlight0 ---------- ---------- ------------ ----------\cf1\highlight2 
+\par \cf0\highlight0 NAME\cf1\highlight2 
+\par \cf0\highlight0 --------------------------------------------------------------------------------\cf1\highlight2 
+\par \cf0\highlight0     CON_ID\cf1\highlight2 
+\par \cf0\highlight0 ----------\cf1\highlight2 
+\par \cf0\highlight0          1          1921146 23-JUN-21          3          1 ONLINE  READ WRITE\cf1\highlight2 
+\par \cf0\highlight0   20971520       2560     20971520       8192\cf1\highlight2 
+\par \cf0\highlight0 /u01/app/oracle/oradata/TEST/datafile/o1_mf_temp_jf6dyldt_.tmp\cf1\highlight2 
+\par \cf0\highlight0          0\cf1\highlight2 
+\par 
+\par 
+\par \cf0\highlight0 SQL>\cf1\highlight2 
+\par \cf0\highlight0 SQL>\cf1\highlight2 
+\par \cf0\highlight0 SQL> !ls -lrth ^?\cf1\highlight2 
+\par \cf0\highlight0 ls: cannot access: No such file or directory\cf1\highlight2 
+\par 
+\par \cf0\highlight0 SQL> !ls -lrth /u01/app/oracle/oradata/TEST/datafile/o1_mf_temp_jf6dyldt_.tmp\cf1\highlight2 
+\par \cf0\highlight0 -rw-r-----. 1 oracle oinstall 21M Feb 27 08:25 /u01/app/oracle/oradata/TEST/datafile/o1_mf_temp_jf6dyldt_.tmp\cf1\highlight2 
+\par 
+\par \cf0\highlight0 SQL>\cf1\highlight2 
+\par \cf0\highlight0 SQL>\cf1\highlight2 
+\par \cf0\highlight0 SQL> show parameter spfile\cf1\highlight2 
+\par 
+\par \cf0\highlight0 NAME                                 TYPE        VALUE\cf1\highlight2 
+\par \cf0\highlight0 ------------------------------------ ----------- ------------------------------\cf1\highlight2 
+\par \cf0\highlight0 spfile                               string\cf1\highlight2 
+\par \cf0\highlight0 SQL>\cf1\highlight2 
+\par \cf0\highlight0 SQL>\cf1\highlight2 
+\par \cf0\highlight0 SQL> create spfile from pfile;\cf1\highlight2 
+\par 
+\par \cf0\highlight0 File created.\cf1\highlight2 
+\par 
+\par \cf0\highlight0 SQL>\cf1\highlight2 
+\par \cf0\highlight0 SQL>\cf1\highlight2 
+\par \cf0\highlight0 SQL> shut immediate;\cf1\highlight2 
+\par \cf0\highlight0 startup;\cf1\highlight2 
+\par \cf0\highlight0 Database closed.\cf1\highlight2 
+\par \cf0\highlight0 Database dismounted.\cf1\highlight2 
+\par \cf0\highlight0 ORACLE instance shut down.\cf1\highlight2 
+\par \cf0\highlight0 SQL> ORACLE instance started.\cf1\highlight2 
+\par 
+\par \cf0\highlight0 Total System Global Area 3053449816 bytes\cf1\highlight2 
+\par \cf0\highlight0 Fixed Size                  8901208 bytes\cf1\highlight2 
+\par \cf0\highlight0 Variable Size             620756992 bytes\cf1\highlight2 
+\par \cf0\highlight0 Database Buffers         2415919104 bytes\cf1\highlight2 
+\par \cf0\highlight0 Redo Buffers                7872512 bytes\cf1\highlight2 
+\par \cf0\highlight0 Database mounted.\cf1\highlight2 
+\par \cf0\highlight0 Database opened.\cf1\highlight2 
+\par \cf0\highlight0 SQL>\cf1\highlight2 
+\par \cf0\highlight0 SQL>\cf1\highlight2 
+\par \cf0\highlight0 SQL> show parameter spfile\cf1\highlight2 
+\par 
+\par \cf0\highlight0 NAME                                 TYPE        VALUE\cf1\highlight2 
+\par \cf0\highlight0 ------------------------------------ ----------- ------------------------------\cf1\highlight2 
+\par \cf0\highlight0 spfile                               string      /u01/app/oracle/product/19c/db\cf1\highlight2 
+\par \cf0\highlight0                                                  _1/dbs/spfiletest.ora\cf1\highlight2 
+\par \cf0\highlight0 SQL>\cf1\highlight2 
+\par \cf0\highlight0 SQL>\cf1\highlight2 
+\par \cf0\highlight0 SQL> exit\cf1\highlight2 
+\par \cf0\highlight0 Disconnected from Oracle Database 19c Enterprise Edition Release 19.0.0.0.0 - Production\cf1\highlight2 
+\par \cf0\highlight0 Version 19.3.0.0.0\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$ cat /etc/oratab\cf1\highlight2 
+\par \cf0\highlight0 #\cf1\highlight2 
+\par 
+\par 
+\par 
+\par \cf0\highlight0 # This file is used by ORACLE utilities.  It is created by root.sh\cf1\highlight2 
+\par \cf0\highlight0 # and updated by either Database Configuration Assistant while creating\cf1\highlight2 
+\par \cf0\highlight0 # a database or ASM Configuration Assistant while creating ASM instance.\cf1\highlight2 
+\par 
+\par \cf0\highlight0 # A colon, ':', is used as the field terminator.  A new line terminates\cf1\highlight2 
+\par \cf0\highlight0 # the entry.  Lines beginning with a pound sign, '#', are comments.\cf1\highlight2 
+\par \cf0\highlight0 #\cf1\highlight2 
+\par \cf0\highlight0 # Entries are of the form:\cf1\highlight2 
+\par \cf0\highlight0 #   $ORACLE_SID:$ORACLE_HOME:<N|Y>:\cf1\highlight2 
+\par \cf0\highlight0 #\cf1\highlight2 
+\par \cf0\highlight0 # The first and second fields are the system identifier and home\cf1\highlight2 
+\par \cf0\highlight0 # directory of the database respectively.  The third field indicates\cf1\highlight2 
+\par \cf0\highlight0 # to the dbstart utility that the database should , "Y", or should not,\cf1\highlight2 
+\par \cf0\highlight0 # "N", be brought up at system boot time.\cf1\highlight2 
+\par \cf0\highlight0 #\cf1\highlight2 
+\par \cf0\highlight0 # Multiple entries with the same $ORACLE_SID are not allowed.\cf1\highlight2 
+\par \cf0\highlight0 #\cf1\highlight2 
+\par \cf0\highlight0 #\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$ vi /etc/oratab\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$ cat /etc/oratab\cf1\highlight2 
+\par \cf0\highlight0 #\cf1\highlight2 
+\par 
+\par \cf0\highlight0 test:/u01/app/oracle/product/19c/db_1:Y\cf1\highlight2 
+\par 
+\par \cf0\highlight0 # This file is used by ORACLE utilities.  It is created by root.sh\cf1\highlight2 
+\par \cf0\highlight0 # and updated by either Database Configuration Assistant while creating\cf1\highlight2 
+\par \cf0\highlight0 # a database or ASM Configuration Assistant while creating ASM instance.\cf1\highlight2 
+\par 
+\par \cf0\highlight0 # A colon, ':', is used as the field terminator.  A new line terminates\cf1\highlight2 
+\par \cf0\highlight0 # the entry.  Lines beginning with a pound sign, '#', are comments.\cf1\highlight2 
+\par \cf0\highlight0 #\cf1\highlight2 
+\par \cf0\highlight0 # Entries are of the form:\cf1\highlight2 
+\par \cf0\highlight0 #   $ORACLE_SID:$ORACLE_HOME:<N|Y>:\cf1\highlight2 
+\par \cf0\highlight0 #\cf1\highlight2 
+\par \cf0\highlight0 # The first and second fields are the system identifier and home\cf1\highlight2 
+\par \cf0\highlight0 # directory of the database respectively.  The third field indicates\cf1\highlight2 
+\par \cf0\highlight0 # to the dbstart utility that the database should , "Y", or should not,\cf1\highlight2 
+\par \cf0\highlight0 # "N", be brought up at system boot time.\cf1\highlight2 
+\par \cf0\highlight0 #\cf1\highlight2 
+\par \cf0\highlight0 # Multiple entries with the same $ORACLE_SID are not allowed.\cf1\highlight2 
+\par \cf0\highlight0 #\cf1\highlight2 
+\par \cf0\highlight0 #\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$ . oraenv\cf1\highlight2 
+\par \cf0\highlight0 ORACLE_SID = [test] ? test\cf1\highlight2 
+\par \cf0\highlight0 The Oracle base remains unchanged with value /u01/app/oracle\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test RMAN1]$ cd\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test ~]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test ~]$\cf1\highlight2 
+\par \cf0\highlight0 [oracle@test ~]$ sqlplus / as sysdba\cf1\highlight2 
+\par 
+\par \cf0\highlight0 SQL*Plus: Release 19.0.0.0.0 - Production on Mon Feb 27 08:31:16 2023\cf1\highlight2 
+\par \cf0\highlight0 Version 19.3.0.0.0\cf1\highlight2 
+\par 
+\par \cf0\highlight0 Copyright (c) 1982, 2019, Oracle.  All rights reserved.\cf1\highlight2 
+\par 
+\par 
+\par \cf0\highlight0 Connected to:\cf1\highlight2 
+\par \cf0\highlight0 Oracle Database 19c Enterprise Edition Release 19.0.0.0.0 - Production\cf1\highlight2 
+\par \cf0\highlight0 Version 19.3.0.0.0\cf1\highlight2 
+\par 
+\par \cf0\highlight0 SQL> shut immediate\cf1\highlight2 
+\par \cf0\highlight0 Database closed.\cf1\highlight2 
+\par \cf0\highlight0 Database dismounted.\cf1\highlight2 
+\par \cf0\highlight0 ORACLE instance shut down.\cf1\highlight2 
+\par \cf0\highlight0 SQL>\cf1\highlight2 
+\par \pard\cf0\highlight0\f2\fs14 
+\par }
+ 
