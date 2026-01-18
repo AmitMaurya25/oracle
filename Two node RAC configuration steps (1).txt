@@ -1,0 +1,422 @@
+##########################################
+
+Kindly check the below links and download all the software:
+
+Please download VirtualBox from the below link:
+
+https://www.virtualbox.org/wiki/Downloads
+
+Also, You can download Mobaxterm :(Download free version)
+
+https://mobaxterm.mobatek.net/download.html
+
+For downloading software refer to the below links:
+
+1. For Oracle grid and RDBMS 19c software check the below link:
+
+https://www.oracle.com/in/database/technologies/oracle19c-linux-downloads.html
+
+2. Download Oracle Linux 7.8 from the below link:
+
+https://yum.oracle.com/oracle-linux-isos.html
+
+3.Download the most recent version of CVU
+
+https://www.oracle.com/database/technologies/cvu-downloads.html
+
+#################################################################
+The high-level steps for RAC configuration prerequisites include:
+#################################################################
+
+1)Verify hardware and software requirements: Ensure that the hardware and software requirements for Oracle Grid Infrastructure and RAC database are met. This includes hardware components like CPU, memory, disk space, and network cards, as well as software components like operating system version, Oracle software versions, and patches.
+
+2)Verify network requirements: Verify the network configuration and ensure that it meets the requirements for RAC. This includes setting up the private interconnect for RAC communication, configuring the public network, and ensuring that the network has adequate bandwidth and low latency.
+
+3)Verify storage requirements: Ensure that the storage requirements for RAC are met. This includes setting up shared storage for the database files and configuring storage options like ASM (Automatic Storage Management) or cluster file system.
+
+4)Configure user accounts and permissions: Create user accounts for the Oracle Grid Infrastructure and RAC database software, and configure the necessary permissions for those accounts.
+
+5)Configure operating system prerequisites: Configure the operating system prerequisites for Oracle Grid Infrastructure and RAC database, including setting up kernel parameters, disabling unnecessary services, and configuring firewalls.
+
+6)Verify DNS and hostname resolution: Verify that the DNS (Domain Name System) and hostname resolution are set up correctly, so that the nodes in the RAC cluster can communicate with each other.
+
+7)Verify software prerequisites: Verify that the required software prerequisites for Oracle Grid Infrastructure and RAC database are installed on all nodes in the cluster, including packages like libaio, libstdc++, and libgcc.
+
+##########################################
+
+STEPS for TWO NODE RAC setup creation
+
+##########################################
+
+All steps will be carried out on one of the node (node1) and later we will clone to other nodes or machines:
+
+Install the system Linux prerequisites: 
+
+The package oracle-database-preinstall-19c contains all the prerequisites on Oracle Linux using the Oracle Unbreakable Enterprise Kernel (UEK).
+
+yum install -y oracle-database-preinstall-19c
+
+yum install -y oracleasm-support
+
+sysctl -p
+
+crosscheck >>> cat  /etc/sysctl.conf 
+
+
+Group Creation: –
+
+groupadd -g 5001 oinstall
+groupadd -g 5002 dba
+groupadd -g 5003 oper
+groupadd -g 5004 asmadmin
+groupadd -g 5005 asmdba
+groupadd -g 5006 asmoper
+
+
+User Creation: –
+
+useradd -u 5007 -g oinstall -G dba,oper,asmdba oracle
+useradd -u 5008 -g oinstall -G asmadmin,asmdba,asmoper,dba grid
+
+usermod -g oinstall -G dba,oper,asmdba oracle
+usermod -g oinstall -G asmadmin,asmdba,asmoper,dba grid
+
+passwd oracle
+passwd grid
+
+
+Add below entries in /etc/security/limits.conf file which will detine limits 
+
+oracle   soft   nofile    1024
+oracle   hard   nofile    65536
+oracle   soft   nproc    16384
+oracle   hard   nproc    16384
+oracle   soft   stack    10240
+oracle   hard   stack    32768
+oracle   hard   memlock    134217728
+oracle   soft   memlock    134217728
+
+
+grid   soft   nofile    1024
+grid   hard   nofile    65536
+grid   soft   nproc    16384
+grid   hard   nproc    16384
+grid   soft   stack    10240
+grid   hard   stack    32768
+grid   hard   memlock    134217728
+grid   soft   memlock    134217728
+
+
+Create the directories in which the Oracle / Grid software will be installed.
+
+mkdir -p /u01/app/grid
+mkdir -p /u01/app/19c/gridhome_1
+mkdir -p /u02/app/oracle
+mkdir -p /u02/app/oracle/product/19c/dbhome_1
+mkdir -p /u01/app/oraInventory
+mkdir -p /u01/LATEST_PATCH/
+chown -R grid:oinstall /u01
+chown -R oracle:oinstall /u02
+chown -R grid:oinstall /u01/app/oraInventory
+chmod -R 775 /u01
+chmod -R 775 /u02
+
+
+Set bash_profile for grid and oracle user
+
+login to grid user and set .bash_profile :
+
+export TMP=/tmp
+export TMPDIR=$TMP
+export ORACLE_BASE=/u01/app/grid
+export ORACLE_HOME=/u01/app/19c/gridhome_1
+export ORACLE_SID=+ASM1
+export ORACLE_TERM=xterm
+export BASE_PATH=/usr/sbin:$PATH
+export PATH=$ORACLE_HOME/bin:$BASE_PATH
+export PATH=$ORACLE_HOME/OPatch:$PATH
+export LD_LIBRARY_PATH=$ORACLE_HOME/lib:/lib:/usr/lib
+export CLASSPATH=$ORACLE_HOME/JRE:$ORACLE_HOME/jlib:$ORACLE_HOME/rdbms/jlib
+
+
+login to oracle user and set .bash_profile :
+
+export TMP=/tmp
+export TMPDIR=$TMP
+export ORACLE_BASE=/u02/app/oracle
+export ORACLE_HOME=/u02/app/oracle/product/19c/dbhome_1
+export ORACLE_SID=racdb1
+export ORACLE_TERM=xterm
+export BASE_PATH=/usr/sbin:$PATH
+export PATH=$ORACLE_HOME/bin:$BASE_PATH
+export PATH=$ORACLE_HOME/OPatch:$PATH
+export LD_LIBRARY_PATH=$ORACLE_HOME/lib:/lib:/usr/lib
+export CLASSPATH=$ORACLE_HOME/JRE:$ORACLE_HOME/jlib:$ORACLE_HOME/rdbms/jlib
+
+
+
+Add the following entry in /etc/hosts file and crosscheck node reachability
+Primary Site:
+
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+
+# Private
+192.168.10.1    node1-priv.localdomain   node1-priv
+192.168.10.2    node2-priv.localdomain   node2-priv
+
+# Public
+192.168.56.71    node1.localdomain        node1
+192.168.56.72    node2.localdomain        node2
+
+# Virtual
+192.168.56.81    node1-vip.localdomain    node1-vip
+192.168.56.82    node2-vip.localdomain    node2-vip
+
+# SCAN
+192.168.56.91    node-scan.localdomain    node-scan
+192.168.56.92    node-scan.localdomain    node-scan
+192.168.56.93    node-scan.localdomain    node-scan
+
+
+Firewall Stop and Disable
+
+We can open firewall after installation
+
+systemctl stop firewalld.service
+systemctl disable firewalld.service
+
+Chrony NTP Configuration
+
+systemctl enable chronyd.service
+systemctl restart chronyd.service
+
+chronyc -a 'burst 4/4'
+chronyc -a makestep
+
+
+
+Now we will Bring Down Node1 i.e. node1 and clone it to 1 more nodes i.e node2
+After cloning start each node one by one and make changes i.e. modify Hostname, ORACLE_SID in bash_profile, Network file on standby side.
+Use below command to change Hostnames:
+
+nmcli general hostname
+nmcli general hostname node1.localdomain
+nmcli general hostname
+service systemd-hostnamed restart
+
+
+nmcli general hostname
+nmcli general hostname node2.localdomain
+nmcli general hostname
+service systemd-hostnamed restart
+
+
+Create shared ASM Disk FOR OCR, DATAFILE and ARCHIVE on Both Sites
+
+Add new shared disk to virtual box machines it should be sharable  
+
+Login to system and run ls /dev/sd* 
+
+/dev/sda /dev/sda1 /dev/sda2 /dev/sdb 
+
+fdisk /dev/sdb 
+
+The sequence of answers is "n", "p", "1", "Return", "Return" and "w". 
+
+Set ASM disks >>>> oracleasm configure -i
+Initialization of oracleasm >>> oracleasm init 
+Create ASM disks >>>> oracleasm createdisk ASM1 /dev/sdb1
+Scan ASM disks >>>> oracleasm scandisks 
+List ASM disks >>>> oracleasm listdisks
+
+
+oracleasm createdisk ASM1 /dev/sdb1
+
+oracleasm createdisk ASM2 /dev/sdc1
+
+oracleasm createdisk ASM3 /dev/sdd1
+
+######### On Primary Site ##########
+
+Copy software to node1 on primary site and unzip software at grid home location and rdbms home locations by login to respective users
+Setup passwordless ssh configuration
+
+cd /u01/app/19c/gridhome_1/deinstall
+
+./sshUserSetup.sh -user grid -hosts "node1 node2" -noPromptPassphrase -confirm -advanced
+
+Similarly do it for oracle user
+
+cd /u02/app/oracle/product/19c/dbhome_1/deinstall
+
+./sshUserSetup.sh -user oracle -hosts "node1 node2" -noPromptPassphrase -confirm –advanced
+
+
+Set profile and go to ORACLE_HOME location from grid user and run following command and follow the steps.
+
+cd $ORACLE_HOME
+
+****************************************
+For cluvfy download from below patch no.
+****************************************
+
+Patch 30839369: Standalone CVU version 21.8 October 2022
+
+copy downloaded file in temp directory and unzip from grid user and cd to below path
+
+/tmp/cluvfy/bin
+
+./cluvfy stage -pre crsinst -n node1,node2 -fixup -verbose
+
+
+###########################
+
+Copy Patches and OPatch utility:
+
+cd /media/sf_19c_Soft_And_Patches
+ls -lrth
+cp LINUX.X64_193000_grid_home.zip /u01/app/19c/gridhome_1/
+cp p32545008_190000_Linux-x86-64.zip /u01/LATEST_PATCH/
+cp p6880880_190000_Linux-x86-64.zip /u01/app/19c/gridhome_1/
+cd /u01/app/19c/gridhome_1/
+ls -lrth
+cd OPatch/
+ls -lrth
+./opatch version
+cd ..
+ls -lrth
+mv OPatch OPatch_bkp
+unzip p6880880_190000_Linux-x86-64.zip
+ls -ld OPatch
+chown -R grid:oinstall OPatch
+ls -ld OPatch
+cd OPatch
+./opatch version
+
+
+####################
+
+su - grid
+cd /u01/LATEST_PATCH/
+ls -lrth
+chown grid:oinstall p32545008_190000_Linux-x86-64.zip
+ls -lrth
+
+cd /u01/LATEST_PATCH/
+ls -lrth
+exit
+cd /u01/LATEST_PATCH/
+ls -lrth
+unzip p32545008_190000_Linux-x86-64.zip
+ls -lrth
+cd 32545008
+ls -lrth
+
+###########################
+cd ..
+pwd
+ls -lrth
+rm -rf p32545008_190000_Linux-x86-64.zip
+cd $ORACLE_HOME
+ls -lrth
+rm -rf p6880880_190000_Linux-x86-64.zip
+ls -lrth
+
+################################
+
+Actual Installation step:
+
+cd $ORACLE_HOME
+
+./gridSetup.sh
+
+or 
+
+./gridSetup.sh -applyRU /u01/LATEST_PATCH/32545008
+
+
+Monitoring of patching can be done by 
+
+/u01/app/19c/gridhome_1/cfgtoollogs/opatchauto/core/opatch
+
+
+Once Grid Installation done, Install RDBMS Software through oracle user and create RAC database prod (check our previous video’s for more detail)
+
+#############################
+
+For database software:
+
+Copy software and unzip :
+
+cd /media/sf_19c_Soft_And_Patches
+ls -lrth
+cp LINUX.X64_193000_db_home.zip /u02/app/oracle/product/19c/dbhome_1/
+cd /u02/app/oracle/product/19c/dbhome_1/
+ls -lrth
+chown oracle:oinstall LINUX.X64_193000_db_home.zip
+ls -lrth
+su - oracle
+
+cd /u02/app/oracle/product/19c/dbhome_1/
+ls -lrth
+unzip LINUX.X64_193000_db_home.zip
+ls -lrth
+rm -rf LINUX.X64_193000_db_home.zip
+
+
+cd $ORACLE_HOME
+
+./runInstaller
+
+or
+
+./runInstaller -applyRU  /u01/LATEST_PATCH/32545008
+
+Use DBCA to create database prod
+
+run dbca command from oracle user
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+NOTE: For 19.12 patches use below commands:
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+Grid:
+
+cd $ORACLE_HOME
+./gridSetup.sh -applyRU /u01/LATEST_PATCH/32900083/32895426
+
+RDBMS:
+
+cd $ORACLE_HOME
+./runInstaller -applyRU  /u01/LATEST_PATCH/32900083/32895426
+
+
+Use DBCA to create database racdb
+
+srvctl status database -d racdb -v
+srvctl start database -d racdb 
+srvctl stop database -d racdb 
+
+###############################################
+
+SQL> !cat db.sql
+set lines 200 pages 1000
+col host_name for a12
+col db_name for a10
+col instance_number for 9999
+col open_mode for a10
+col version for a10
+col "INST_NAME" for a10
+col DATABASE_ROLE for a10
+alter session set nls_date_format='DD-MON-YY HH24:MI:SS';
+select i.instance_number "INST_ID", d.name "DB_NAME", i.instance_name "INST_NAME",i.startup_time, i.host_name, d.open_mode,d.log_mode,d.controlfile_type,d.database_role,i.version,d.protection_mode,d.switchover_status
+from gv$database d,gv$instance i where d.inst_id=i.instance_number order by d.inst_id;
+
+@db.sql
+
+##############################################
+
+DONE....!!!!
+
+############################################################
