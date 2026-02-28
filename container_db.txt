@@ -1,0 +1,1362 @@
+Create Pluggable Database Manually
+
+##################################
+ 
+ 
+C:\Users\azureuser>set oracle_sid=cdbblr
+ 
+C:\Users\azureuser>sqlplus /  as sysdba
+ 
+SQL*Plus: Release 19.0.0.0.0 - Production on Fri Feb 6 10:23:43 2026
+
+Version 19.3.0.0.0
+ 
+Copyright (c) 1982, 2019, Oracle.  All rights reserved.
+ 
+ 
+Connected to:
+
+Oracle Database 19c Enterprise Edition Release 19.0.0.0.0 - Production
+
+Version 19.3.0.0.0
+ 
+ 
+ 
+SQL> select name, open_mode, cdb from v$database;
+ 
+NAME      OPEN_MODE            CDB
+
+--------- -------------------- ---
+
+CDBBLR    READ WRITE           YES
+ 
+SQL> set line 32000
+
+SQL> col name format a20
+
+SQL> select con_id, dbid, name, open_mode from v$containers;
+ 
+    CON_ID       DBID NAME                 OPEN_MODE
+
+---------- ---------- -------------------- ----------
+
+         1 2790068456 CDB$ROOT             READ WRITE
+
+         2  685308051 PDB$SEED             READ ONLY
+ 
+SQL> show con_name
+ 
+CON_NAME
+
+------------------------------
+
+CDB$ROOT
+ 
+SQL> show user
+
+USER is "SYS"
+ 
+ 
+SQL> column container format a10
+
+SQL> column name format a100
+
+SQL> select c.con_id, c.name container,d.name from v$containers c, v$datafile d where c.con_id=d.con_id order by 1;
+ 
+    CON_ID CONTAINER  NAME
+
+---------- ---------- ----------------------------------------------------------------------------------------------------
+
+         1 CDB$ROOT   C:\APP\AZUREUSER\ORADATA\CDBBLR\DATAFILE\O1_MF_SYSTEM_NR8W3FX2_.DBF
+
+         1 CDB$ROOT   C:\APP\AZUREUSER\ORADATA\CDBBLR\DATAFILE\O1_MF_SYSAUX_NR8W3QPV_.DBF
+
+         1 CDB$ROOT   C:\APP\AZUREUSER\ORADATA\CDBBLR\DATAFILE\O1_MF_UNDOTBS1_NR8W3T7R_.DBF
+
+         2 PDB$SEED   C:\APP\AZUREUSER\ORADATA\CDBBLR\2258E9F0C63344BCAACFEA1425B562D3\DATAFILE\O1_MF_SYSAUX_NR8W3S3T_.DBF
+
+         2 PDB$SEED   C:\APP\AZUREUSER\ORADATA\CDBBLR\2258E9F0C63344BCAACFEA1425B562D3\DATAFILE\O1_MF_USERS_NR8W3V7Y_.DBF
+
+         2 PDB$SEED   C:\APP\AZUREUSER\ORADATA\CDBBLR\2258E9F0C63344BCAACFEA1425B562D3\DATAFILE\O1_MF_SYSTEM_NR8W3J08_.DBF
+ 
+6 rows selected.
+ 
+ 
+SQL> select c.con_id, c.name container,d.name from v$containers c, v$tempfile d where c.con_id=d.con_id order by 1;
+ 
+    CON_ID CONTAINER  NAME
+
+---------- ---------- ----------------------------------------------------------------------------------------------------
+
+         1 CDB$ROOT   C:\APP\AZUREUSER\ORADATA\CDBBLR\DATAFILE\O1_MF_TEMP_NR8W3TKK_.TMP
+
+         2 PDB$SEED   C:\APP\AZUREUSER\ORADATA\CDBBLR\2258E9F0C63344BCAACFEA1425B562D3\DATAFILE\O1_MF_TEMP_NR8W3TVY_.TMP
+ 
+ 
+ 
+ 
+SQL> CREATE PLUGGABLE DATABASE pdbhr ADMIN USER pdbadmin IDENTIFIED BY admin ROLES=(CONNECT);
+ 
+Pluggable database created.
+
+------------------------------------------------------------------------------------
+ CREATE PLUGGABLE DATABASE pdbsales 
+ADMIN USER pdbadmin IDENTIFIED BY admin 
+ROLES=(CONNECT)
+FILE_NAME_CONVERT = ('C:\APP\ADMINISTRATOR\ORADATA\HCLNOIDA\PDBSEED', 'C:\APP\ADMINISTRATOR\ORADATA\HCLNOIDA\PDBSEED\pdbsales');
+ -----------------------------------------------------------------------------------------
+SQL> CREATE PLUGGABLE DATABASE pdbsales ADMIN USER pdbadmin IDENTIFIED BY admin ROLES=(CONNECT);
+ 
+Pluggable database created.
+ 
+ 
+SQL> col name format a20
+
+SQL> select con_id, dbid, name, open_mode from v$containers;
+ 
+    CON_ID       DBID NAME                 OPEN_MODE
+
+---------- ---------- -------------------- ----------
+
+         1 2790068456 CDB$ROOT             READ WRITE
+
+         2  685308051 PDB$SEED             READ ONLY
+
+         3 1687604359 PDBHR                MOUNTED
+
+         4 3825283319 PDBSALES             MOUNTED
+ 
+ 
+SQL> col name format a20
+
+SQL> select con_id, dbid, name, open_mode from v$containers;
+ 
+    CON_ID       DBID NAME                 OPEN_MODE
+
+---------- ---------- -------------------- ----------
+
+         1 2790068456 CDB$ROOT             READ WRITE
+
+         2  685308051 PDB$SEED             READ ONLY
+
+         3 1687604359 PDBHR                MOUNTED
+
+         4 3825283319 PDBSALES             MOUNTED
+ 
+SQL> alter pluggable database all open;
+ 
+Pluggable database altered.
+ 
+SQL> select con_id, dbid, name, open_mode from v$containers;
+ 
+    CON_ID       DBID NAME                 OPEN_MODE
+
+---------- ---------- -------------------- ----------
+
+         1 2790068456 CDB$ROOT             READ WRITE
+
+         2  685308051 PDB$SEED             READ ONLY
+
+         3 1687604359 PDBHR                READ WRITE
+
+         4 3825283319 PDBSALES             READ WRITE
+ 
+ 
+SQL> CREATE PLUGGABLE DATABASE pdbmkt ADMIN USER pdbadmin IDENTIFIED BY admin ROLES=(CONNECT);
+ 
+Pluggable database created.
+ 
+ 
+SQL> select con_id, dbid, name, open_mode from v$containers;
+ 
+    CON_ID       DBID NAME                 OPEN_MODE
+
+---------- ---------- -------------------- ----------
+
+         1 2790068456 CDB$ROOT             READ WRITE
+
+         2  685308051 PDB$SEED             READ ONLY
+
+         3 1687604359 PDBHR                READ WRITE
+
+         4 3825283319 PDBSALES             READ WRITE
+
+         5  557098411 PDBMKT               MOUNTED
+ 
+ 
+SQL> CREATE PLUGGABLE DATABASE pdbtrg ADMIN USER pdbadmin IDENTIFIED BY admin ROLES=(CONNECT);
+
+CREATE PLUGGABLE DATABASE pdbtrg ADMIN USER pdbadmin IDENTIFIED BY admin ROLES=(CONNECT)
+
+                          *
+
+ERROR at line 1:
+
+ORA-65010: maximum number of pluggable databases created
+ 
+ 
+ 
+SQL> drop pluggable database pdbmkt including datafiles;
+ 
+Pluggable database dropped.
+ 
+ 
+SQL> select con_id, dbid, name, open_mode from v$containers;
+ 
+    CON_ID       DBID NAME                 OPEN_MODE
+
+---------- ---------- -------------------- ----------
+
+         1 2790068456 CDB$ROOT             READ WRITE
+
+         2  685308051 PDB$SEED             READ ONLY
+
+         3 1687604359 PDBHR                READ WRITE
+
+         4 3825283319 PDBSALES             READ WRITE
+ 
+ 
+SQL> CREATE PLUGGABLE DATABASE pdbtrg ADMIN USER pdbadmin IDENTIFIED BY admin ROLES=(CONNECT);
+ 
+Pluggable database created.
+ 
+ 
+SQL> select con_id, dbid, name, open_mode from v$containers;
+ 
+    CON_ID       DBID NAME                 OPEN_MODE
+
+---------- ---------- -------------------- ----------
+
+         1 2790068456 CDB$ROOT             READ WRITE
+
+         2  685308051 PDB$SEED             READ ONLY
+
+         3 1687604359 PDBHR                READ WRITE
+
+         4 3825283319 PDBSALES             READ WRITE
+
+         5  469893118 PDBTRG               MOUNTED
+ 
+ 
+SQL> CREATE PLUGGABLE DATABASE pdbmkt ADMIN USER pdbadmin IDENTIFIED BY admin ROLES=(CONNECT);
+
+CREATE PLUGGABLE DATABASE pdbmkt ADMIN USER pdbadmin IDENTIFIED BY admin ROLES=(CONNECT)
+
+                          *
+
+ERROR at line 1:
+
+ORA-65010: maximum number of pluggable databases created
+
+ Drop All PDBs in CDBBLR Database for this demo.
+ 
+SQL> drop pluggable database pdbtrg including datafiles;
+ 
+Pluggable database dropped.
+ 
+ 
+SQL> alter pluggable database pdbsales close;
+ 
+Pluggable database altered.
+ 
+SQL> alter pluggable database pdbhr close;
+ 
+Pluggable database altered.
+ 
+ 
+SQL> drop pluggable database pdbsales including datafiles;
+ 
+Pluggable database dropped.
+ 
+SQL> drop pluggable database pdbhr including datafiles;
+ 
+Pluggable database dropped.
+ 
+SQL> select con_id, dbid, name, open_mode from v$containers;
+ 
+    CON_ID       DBID NAME                 OPEN_MODE
+
+---------- ---------- -------------------- ----------
+
+         1 2790068456 CDB$ROOT             READ WRITE
+
+         2  685308051 PDB$SEED             READ ONLY
+ 
+SQL>
+ 
+ 
+ 
+ ##########################################
+
+Unplug a Pluggable Database (PDB) Manually
+
+##########################################
+ 
+Before attempting to unplug a PDB, you must make sure it is closed. 
+
+To unplug the database use the ALTER PLUGGABLE DATABASE command with the UNPLUG INTO clause to specify the location of the XML metadata file.
+ 
+ 
+C:\Users\azureuser>set oracle_sid=cdblko
+ 
+C:\Users\azureuser>sqlplus sys/Admin#1234 as sysdba
+ 
+ 
+SQL> select con_id, dbid, name, open_mode from v$containers;
+ 
+    CON_ID       DBID NAME                 OPEN_MODE
+
+---------- ---------- -------------------- ----------
+
+         1  269010937 CDB$ROOT             READ WRITE
+
+         2 2945249032 PDB$SEED             READ ONLY
+
+         4   43385732 PDBSALES             READ WRITE
+ 
+ 
+SQL> alter pluggable database pdbsales close;
+ 
+Pluggable database altered.
+ 
+ 
+SQL> select con_id, dbid, name, open_mode from v$containers;
+ 
+    CON_ID       DBID NAME                 OPEN_MODE
+
+---------- ---------- -------------------- ----------
+
+         1  269010937 CDB$ROOT             READ WRITE
+
+         2 2945249032 PDB$SEED             READ ONLY
+
+         4   43385732 PDBSALES             MOUNTED
+ 
+ 
+SQL> alter pluggable database pdbsales
+
+     unplug into 'C:\app\azureuser\oradata\unplug_db\pdbsales.xml';
+ 
+Pluggable database altered.
+ 
+ 
+SQL> select con_id, dbid, name, open_mode from v$containers;
+ 
+    CON_ID       DBID NAME                 OPEN_MODE
+
+---------- ---------- -------------------- ----------
+
+         1  269010937 CDB$ROOT             READ WRITE
+
+         2 2945249032 PDB$SEED             READ ONLY
+
+         4   43385732 PDBSALES             MOUNTED
+ 
+ 
+NOTE: You can take backup of this pdb for future cloning.
+ 
+ 
+SQL> DROP PLUGGABLE DATABASE pdbsales KEEP DATAFILES;
+ 
+Pluggable database dropped.
+ 
+ 
+SQL> select con_id, dbid, name, open_mode from v$containers;
+ 
+    CON_ID       DBID NAME                 OPEN_MODE
+
+---------- ---------- -------------------- ----------
+
+         1  269010937 CDB$ROOT             READ WRITE
+
+         2 2945249032 PDB$SEED             READ ONLY
+ 
+ 
+ 
+Plugin a Pluggable Database (PDB) which is already detached manually.
+
+#####################################################################
+ 
+ 
+C:\Users\azureuser>set oracle_sid=cdbblr
+ 
+C:\Users\azureuser>sqlplus sys/Admin#1234 as sysdba
+ 
+ 
+SQL> select con_id, dbid, name, open_mode from v$containers;
+ 
+    CON_ID       DBID NAME                 OPEN_MODE
+
+---------- ---------- -------------------- ----------
+
+         1 2790068456 CDB$ROOT             READ WRITE
+
+         2  685308051 PDB$SEED             READ ONLY
+
+         3 2946104304 PDBHR                READ WRITE
+
+         4 1031819978 PDBTRG               READ WRITE
+ 
+ 
+Plugging in a PDB into the CDB is similar to creating a new PDB. First check the PBD is compatible with the CDB by calling the 
+
+DBMS_PDB.CHECK_PLUG_COMPATIBILITY function, passing in the XML metadata file and the name of the PDB you want to create using it.
+ 
+ 
+SQL> set serveroutput on
+ 
+SQL> DECLARE
+
+      l_result BOOLEAN;
+
+    BEGIN
+
+      l_result := DBMS_PDB.check_plug_compatibility(
+
+                    pdb_descr_file => 'C:\app\azureuser\oradata\unplug_db\pdbsales.xml',
+
+                    pdb_name       => 'pdbsales');
+
+      IF l_result THEN
+
+        DBMS_OUTPUT.PUT_LINE('compatible');
+
+      ELSE
+
+       DBMS_OUTPUT.PUT_LINE('incompatible');
+
+     END IF;
+
+   END;
+
+/
+ 
+ 
+SQL> select * from PDB_PLUG_IN_VIOLATIONS WHERE NAME='PDBSALES';
+ 
+ 
+SQL> select con_id, dbid, name, open_mode from v$containers;
+ 
+    CON_ID       DBID NAME                 OPEN_MODE
+
+---------- ---------- -------------------- ----------
+
+         1 2790068456 CDB$ROOT             READ WRITE
+
+         2  685308051 PDB$SEED             READ ONLY
+
+         3 2946104304 PDBHR                READ WRITE
+
+         4 1031819978 PDBTRG               READ WRITE
+ 
+SQL> CREATE PLUGGABLE DATABASE pdbsales USING 'C:\app\azureuser\oradata\unplug_db\pdbsales.xml' NOCOPY TEMPFILE REUSE;
+ 
+Pluggable database created.
+ 
+ 
+SQL> select con_id, dbid, name, open_mode from v$containers;
+ 
+    CON_ID       DBID NAME                 OPEN_MODE
+
+---------- ---------- -------------------- ----------
+
+         1 2790068456 CDB$ROOT             READ WRITE
+
+         2  685308051 PDB$SEED             READ ONLY
+
+         3 2946104304 PDBHR                READ WRITE
+
+         4 1031819978 PDBTRG               READ WRITE
+
+         5   43385732 PDBSALES             MOUNTED
+ 
+SQL> alter pluggable database pdbsales open;
+ 
+Warning: PDB altered with errors.
+ 
+ 
+SQL> select con_id, dbid, name, open_mode from v$containers;
+ 
+    CON_ID       DBID NAME                 OPEN_MODE
+
+---------- ---------- -------------------- ----------
+
+         1 2790068456 CDB$ROOT             READ WRITE
+
+         2  685308051 PDB$SEED             READ ONLY
+
+         3 2946104304 PDBHR                READ WRITE
+
+         4 1031819978 PDBTRG               READ WRITE
+
+         5   43385732 PDBSALES             READ WRITE
+
+ #########################
+
+Rename Pluggable Database
+
+#########################
+ 
+SQL> select con_id, dbid, name, open_mode from v$containers;
+ 
+    CON_ID       DBID NAME                 OPEN_MODE
+
+---------- ---------- -------------------- ----------
+
+         1 2790068456 CDB$ROOT             READ WRITE
+
+         2  685308051 PDB$SEED             READ ONLY
+
+         3 2946104304 PDBHR                READ WRITE
+
+         4 1031819978 PDBTRG               READ WRITE
+
+         5   43385732 PDBSALES             READ WRITE
+ 
+ 
+SQL> alter pluggable database pdbhr close;
+ 
+Pluggable database altered.
+ 
+ 
+SQL> select con_id, dbid, name, open_mode from v$containers;
+ 
+    CON_ID       DBID NAME                 OPEN_MODE
+
+---------- ---------- -------------------- ----------
+
+         1 2790068456 CDB$ROOT             READ WRITE
+
+         2  685308051 PDB$SEED             READ ONLY
+
+         3 2946104304 PDBHR                MOUNTED
+
+         4 1031819978 PDBTRG               READ WRITE
+
+         5   43385732 PDBSALES             READ WRITE
+ 
+ 
+SQL> alter pluggable database pdbhr open restricted;
+ 
+ 
+SQL> select con_id, dbid, name, open_mode from v$containers;
+ 
+    CON_ID       DBID NAME                 OPEN_MODE
+
+---------- ---------- -------------------- ----------
+
+         1 2790068456 CDB$ROOT             READ WRITE
+
+         2  685308051 PDB$SEED             READ ONLY
+
+         3 2946104304 PDBHR                READ WRITE
+
+         4 1031819978 PDBTRG               READ WRITE
+
+         5   43385732 PDBSALES             READ WRITE
+ 
+ 
+SQL> alter session set container=pdbhr;
+ 
+Session altered.
+ 
+ 
+SQL> alter pluggable database rename global_name to hrm;
+ 
+ 
+SQL> select con_id, dbid, name, open_mode from v$containers;
+ 
+    CON_ID       DBID NAME                 OPEN_MODE
+
+---------- ---------- -------------------- ----------
+
+         3 2946104304 HRM                  READ WRITE
+ 
+ 
+SQL> alter session set container=cdb$root;
+ 
+Session altered.
+ 
+ 
+SQL> select con_id, dbid, name, open_mode from v$containers;
+ 
+    CON_ID       DBID NAME                 OPEN_MODE
+
+---------- ---------- -------------------- ----------
+
+         1 2790068456 CDB$ROOT             READ WRITE
+
+         2  685308051 PDB$SEED             READ ONLY
+
+         3 2946104304 HRM                  READ WRITE
+
+         4 1031819978 PDBTRG               READ WRITE
+
+         5   43385732 PDBSALES             READ WRITE
+ 
+ 
+SQL> alter pluggable database hrm close;
+ 
+Pluggable database altered.
+ 
+ 
+SQL> alter pluggable database hrm open;
+ 
+ 
+SQL> select con_id, dbid, name, open_mode from v$containers;
+ 
+    CON_ID       DBID NAME                 OPEN_MODE
+
+---------- ---------- -------------------- ----------
+
+         1 2790068456 CDB$ROOT             READ WRITE
+
+         2  685308051 PDB$SEED             READ ONLY
+
+         3 2946104304 HRM                  READ WRITE
+
+         4 1031819978 PDBTRG               READ WRITE
+
+         5   43385732 PDBSALES             READ WRITE
+ 
+ 
+ #########################
+
+Rename Pluggable Database
+
+#########################
+ 
+SQL> select con_id, dbid, name, open_mode from v$containers;
+ 
+    CON_ID       DBID NAME                 OPEN_MODE
+
+---------- ---------- -------------------- ----------
+
+         1 2790068456 CDB$ROOT             READ WRITE
+
+         2  685308051 PDB$SEED             READ ONLY
+
+         3 2946104304 PDBHR                READ WRITE
+
+         4 1031819978 PDBTRG               READ WRITE
+
+         5   43385732 PDBSALES             READ WRITE
+ 
+ 
+SQL> alter pluggable database pdbhr close;
+ 
+Pluggable database altered.
+ 
+ 
+SQL> select con_id, dbid, name, open_mode from v$containers;
+ 
+    CON_ID       DBID NAME                 OPEN_MODE
+
+---------- ---------- -------------------- ----------
+
+         1 2790068456 CDB$ROOT             READ WRITE
+
+         2  685308051 PDB$SEED             READ ONLY
+
+         3 2946104304 PDBHR                MOUNTED
+
+         4 1031819978 PDBTRG               READ WRITE
+
+         5   43385732 PDBSALES             READ WRITE
+ 
+ 
+SQL> alter pluggable database pdbhr open restricted;
+ 
+ 
+SQL> select con_id, dbid, name, open_mode from v$containers;
+ 
+    CON_ID       DBID NAME                 OPEN_MODE
+
+---------- ---------- -------------------- ----------
+
+         1 2790068456 CDB$ROOT             READ WRITE
+
+         2  685308051 PDB$SEED             READ ONLY
+
+         3 2946104304 PDBHR                READ WRITE
+
+         4 1031819978 PDBTRG               READ WRITE
+
+         5   43385732 PDBSALES             READ WRITE
+ 
+ 
+SQL> alter session set container=pdbhr;
+ 
+Session altered.
+ 
+ 
+SQL> alter pluggable database rename global_name to hrm;
+ 
+ 
+SQL> select con_id, dbid, name, open_mode from v$containers;
+ 
+    CON_ID       DBID NAME                 OPEN_MODE
+
+---------- ---------- -------------------- ----------
+
+         3 2946104304 HRM                  READ WRITE
+ 
+ 
+SQL> alter session set container=cdb$root;
+ 
+Session altered.
+ 
+ 
+SQL> select con_id, dbid, name, open_mode from v$containers;
+ 
+    CON_ID       DBID NAME                 OPEN_MODE
+
+---------- ---------- -------------------- ----------
+
+         1 2790068456 CDB$ROOT             READ WRITE
+
+         2  685308051 PDB$SEED             READ ONLY
+
+         3 2946104304 HRM                  READ WRITE
+
+         4 1031819978 PDBTRG               READ WRITE
+
+         5   43385732 PDBSALES             READ WRITE
+ 
+ 
+SQL> alter pluggable database hrm close;
+ 
+Pluggable database altered.
+ 
+ 
+SQL> alter pluggable database hrm open;
+ 
+ 
+SQL> select con_id, dbid, name, open_mode from v$containers;
+ 
+    CON_ID       DBID NAME                 OPEN_MODE
+
+---------- ---------- -------------------- ----------
+
+         1 2790068456 CDB$ROOT             READ WRITE
+
+         2  685308051 PDB$SEED             READ ONLY
+
+         3 2946104304 HRM                  READ WRITE
+
+         4 1031819978 PDBTRG               READ WRITE
+
+         5   43385732 PDBSALES             READ WRITE
+ 
+ 
+ #########################
+
+Rename Pluggable Database
+
+#########################
+ 
+SQL> select con_id, dbid, name, open_mode from v$containers;
+ 
+    CON_ID       DBID NAME                 OPEN_MODE
+
+---------- ---------- -------------------- ----------
+
+         1 2790068456 CDB$ROOT             READ WRITE
+
+         2  685308051 PDB$SEED             READ ONLY
+
+         3 2946104304 PDBHR                READ WRITE
+
+         4 1031819978 PDBTRG               READ WRITE
+
+         5   43385732 PDBSALES             READ WRITE
+ 
+ 
+SQL> alter pluggable database pdbhr close;
+ 
+Pluggable database altered.
+ 
+ 
+SQL> select con_id, dbid, name, open_mode from v$containers;
+ 
+    CON_ID       DBID NAME                 OPEN_MODE
+
+---------- ---------- -------------------- ----------
+
+         1 2790068456 CDB$ROOT             READ WRITE
+
+         2  685308051 PDB$SEED             READ ONLY
+
+         3 2946104304 PDBHR                MOUNTED
+
+         4 1031819978 PDBTRG               READ WRITE
+
+         5   43385732 PDBSALES             READ WRITE
+ 
+ 
+SQL> alter pluggable database pdbhr open restricted;
+ 
+ 
+SQL> select con_id, dbid, name, open_mode from v$containers;
+ 
+    CON_ID       DBID NAME                 OPEN_MODE
+
+---------- ---------- -------------------- ----------
+
+         1 2790068456 CDB$ROOT             READ WRITE
+
+         2  685308051 PDB$SEED             READ ONLY
+
+         3 2946104304 PDBHR                READ WRITE
+
+         4 1031819978 PDBTRG               READ WRITE
+
+         5   43385732 PDBSALES             READ WRITE
+ 
+ 
+SQL> alter session set container=pdbhr;
+ 
+Session altered.
+ 
+ 
+SQL> alter pluggable database rename global_name to hrm;
+ 
+ 
+SQL> select con_id, dbid, name, open_mode from v$containers;
+ 
+    CON_ID       DBID NAME                 OPEN_MODE
+
+---------- ---------- -------------------- ----------
+
+         3 2946104304 HRM                  READ WRITE
+ 
+ 
+SQL> alter session set container=cdb$root;
+ 
+Session altered.
+ 
+ 
+SQL> select con_id, dbid, name, open_mode from v$containers;
+ 
+    CON_ID       DBID NAME                 OPEN_MODE
+
+---------- ---------- -------------------- ----------
+
+         1 2790068456 CDB$ROOT             READ WRITE
+
+         2  685308051 PDB$SEED             READ ONLY
+
+         3 2946104304 HRM                  READ WRITE
+
+         4 1031819978 PDBTRG               READ WRITE
+
+         5   43385732 PDBSALES             READ WRITE
+ 
+ 
+SQL> alter pluggable database hrm close;
+ 
+Pluggable database altered.
+ 
+ 
+SQL> alter pluggable database hrm open;
+ 
+ 
+SQL> select con_id, dbid, name, open_mode from v$containers;
+ 
+    CON_ID       DBID NAME                 OPEN_MODE
+
+---------- ---------- -------------------- ----------
+
+         1 2790068456 CDB$ROOT             READ WRITE
+
+         2  685308051 PDB$SEED             READ ONLY
+
+         3 2946104304 HRM                  READ WRITE
+
+         4 1031819978 PDBTRG               READ WRITE
+
+         5   43385732 PDBSALES             READ WRITE
+ 
+ 
+ ###################################
+
+Create Common and LOcal User in CDB
+
+###################################
+ 
+ 
+ 
+C:\Users\azureuser>set oracle_sid=cdblko
+ 
+C:\Users\azureuser>sqlplus sys as sysdba
+ 
+SQL*Plus: Release 19.0.0.0.0 - Production on Tue Feb 10 14:12:52 2026
+
+Version 19.3.0.0.0
+ 
+Copyright (c) 1982, 2019, Oracle.  All rights reserved.
+ 
+Enter password:
+ 
+Connected to:
+
+Oracle Database 19c Enterprise Edition Release 19.0.0.0.0 - Production
+
+Version 19.3.0.0.0
+ 
+SQL> show con_name
+ 
+CON_NAME
+
+------------------------------
+
+CDB$ROOT
+ 
+SQL> set line 32000
+
+SQL> set pagesize 100
+
+SQL> col name format a20
+ 
+ 
+SQL> select name , open_mode from v$containers;
+ 
+NAME                 OPEN_MODE
+
+-------------------- ----------
+
+CDB$ROOT             READ WRITE
+
+PDB$SEED             READ ONLY
+
+PDBTECH              READ WRITE
+
+PDBHR                READ WRITE
+
+PDBSALES             READ WRITE
+ 
+ 
+SQL> col username format a30
+
+SQL> select username, account_status, common from dba_users order by 2 desc;
+ 
+USERNAME                       ACCOUNT_STATUS                   COM
+
+------------------------------ -------------------------------- ---
+
+SYSTEM                         OPEN                             YES
+
+SYS                            OPEN                             YES
+ 
+ 
+SQL> create user c##backupop1 identified by admin container=all;
+ 
+User created.
+ 
+SQL> create user c##backupop2 identified by admin;
+ 
+User created.
+ 
+SQL> grant create session , create table, create view to c##backupop1, c##backupop2;
+ 
+Grant succeeded.
+ 
+SQL> select username, account_status, common from dba_users where account_status='OPEN' order by 2 desc;
+ 
+USERNAME                       ACCOUNT_STATUS                   COM
+
+------------------------------ -------------------------------- ---
+
+SYS                            OPEN                             YES
+
+SYSTEM                         OPEN                             YES
+
+C##BACKUPOP1                   OPEN                             YES
+
+C##BACKUPOP2                   OPEN                             YES
+ 
+ 
+SQL> create user jaya identified by admin container=current;
+
+create user jaya identified by admin container=current
+
+*
+
+ERROR at line 1:
+
+ORA-65049: Creation of local user or role is not allowed in this container.
+
+
+#####################################################
+ Login to each PDB and check these common users.
+
+###############################################
+ 
+SQL> alter session set container=pdbhr;
+ 
+Session altered.
+ 
+SQL> show con_name
+ 
+CON_NAME
+
+------------------------------
+
+PDBHR
+ 
+SQL> select username, account_status, common from dba_users where account_status='OPEN' order by 2 desc;
+ 
+USERNAME                       ACCOUNT_STATUS                   COM
+
+------------------------------ -------------------------------- ---
+
+SYS                            OPEN                             YES
+
+SYSTEM                         OPEN                             YES
+
+C##BACKUPOP1                   OPEN                             YES
+
+PDBADMIN                       OPEN                             NO
+
+C##BACKUPOP2                   OPEN                             YES
+ 
+SQL> alter session set container=pdbsales;
+ 
+Session altered.
+ 
+SQL> show con_name
+ 
+CON_NAME
+
+------------------------------
+
+PDBSALES
+ 
+SQL> select username, account_status, common from dba_users where account_status='OPEN' order by 2 desc;
+ 
+USERNAME                       ACCOUNT_STATUS                   COM
+
+------------------------------ -------------------------------- ---
+
+SYS                            OPEN                             YES
+
+SYSTEM                         OPEN                             YES
+
+C##BACKUPOP1                   OPEN                             YES
+
+PDBADMIN                       OPEN                             NO
+
+C##BACKUPOP2                   OPEN                             YES
+ 
+SQL> alter session set container=pdbtech;
+ 
+Session altered.
+ 
+SQL> show con_name
+ 
+CON_NAME
+
+------------------------------
+
+PDBTECH
+ 
+SQL> select username, account_status, common from dba_users where account_status='OPEN' order by 2 desc;
+ 
+USERNAME                       ACCOUNT_STATUS                   COM
+
+------------------------------ -------------------------------- ---
+
+SYS                            OPEN                             YES
+
+SYSTEM                         OPEN                             YES
+
+C##BACKUPOP1                   OPEN                             YES
+
+PDBADMIN                       OPEN                             NO
+
+C##BACKUPOP2                   OPEN                             YES
+
+ ##################
+
+Create Local User
+
+##################
+ 
+SQL> alter session set container=cdb$root;
+ 
+Session altered.
+ 
+SQL> show con_name
+ 
+CON_NAME
+
+------------------------------
+
+CDB$ROOT
+ 
+ 
+SQL> create user hari identified by admin container=all;
+
+create user hari identified by admin container=all
+
+            *
+
+ERROR at line 1:
+
+ORA-65096: invalid common user or role name
+ 
+ 
+SQL> create user hari identified by admin container=current;
+
+create user hari identified by admin container=current
+
+*
+
+ERROR at line 1:
+
+ORA-65049: Creation of local user or role is not allowed in this container.
+ 
+ 
+SQL> create user hari identified by admin;
+
+create user hari identified by admin
+
+            *
+
+ERROR at line 1:
+
+ORA-65096: invalid common user or role name
+ 
+ 
+NOTE: Local user cannot be created in root container.
+ 
+ 
+ 
+SQL> alter session set container=pdbhr;
+ 
+Session altered.
+ 
+SQL> show con_name
+ 
+CON_NAME
+
+------------------------------
+
+PDBHR
+ 
+SQL> create user hari identified by admin;
+ 
+User created.
+ 
+ 
+SQL> create user irshad identified by admin container=current;
+ 
+User created.
+ 
+ 
+SQL> grant create session, create table, unlimited tablespace to hari, irshad;
+ 
+ 
+SQL> create user john identified by admin container=all;
+
+create user john identified by admin container=all
+
+*
+
+ERROR at line 1:
+
+ORA-65050: Common DDLs only allowed in root.
+ 
+ 
+SQL> create user c##john identified by admin container=all;
+
+create user c##john identified by admin container=all
+
+*
+
+ERROR at line 1:
+
+ORA-65050: Common DDLs only allowed in root.
+ 
+ 
+SQL> select username, account_status, common from dba_users where account_status='OPEN' order by 2 desc;
+ 
+USERNAME                       ACCOUNT_STATUS                   COM
+
+------------------------------ -------------------------------- ---
+
+SYS                            OPEN                             YES
+
+SYSTEM                         OPEN                             YES
+
+C##BACKUPOP1                   OPEN                             YES
+
+PDBADMIN                       OPEN                             NO
+
+C##BACKUPOP2                   OPEN                             YES
+
+HARI                           OPEN                             NO
+
+IRSHAD                         OPEN                             NO
+ 
+7 rows selected.
+ 
+ 
+ 
+SQL> alter session set container=pdbsales;
+ 
+Session altered.
+ 
+SQL> show con_name
+ 
+CON_NAME
+
+------------------------------
+
+PDBSALES
+ 
+SQL> create user jai identified by admin;
+ 
+User created.
+ 
+SQL> grant create session, create table, unlimited tablespace to jai;
+ 
+Grant succeeded.
+ 
+SQL> select username, account_status, common from dba_users where account_status='OPEN' order by 2 desc;
+ 
+USERNAME                       ACCOUNT_STATUS                   COM
+
+------------------------------ -------------------------------- ---
+
+SYS                            OPEN                             YES
+
+SYSTEM                         OPEN                             YES
+
+C##BACKUPOP1                   OPEN                             YES
+
+PDBADMIN                       OPEN                             NO
+
+C##BACKUPOP2                   OPEN                             YES
+
+JAI                            OPEN                             NO
+ 
+6 rows selected.
+ 
+ 
+ 
+SQL> alter session set container=pdbtech;
+ 
+Session altered.
+ 
+SQL> show con_name
+ 
+CON_NAME
+
+------------------------------
+
+PDBTECH
+
+SQL> create user dev1 identified by admin;
+ 
+User created.
+ 
+SQL> create user dev2 identified by admin;
+ 
+User created.
+ 
+SQL> grant create session, create table, unlimited tablespace to dev1, dev2;
+ 
+Grant succeeded.
+ 
+SQL> select username, account_status, common from dba_users where account_status='OPEN' order by 2 desc;
+ 
+USERNAME                       ACCOUNT_STATUS                   COM
+
+------------------------------ -------------------------------- ---
+
+SYS                            OPEN                             YES
+
+SYSTEM                         OPEN                             YES
+
+C##BACKUPOP1                   OPEN                             YES
+
+PDBADMIN                       OPEN                             NO
+
+C##BACKUPOP2                   OPEN                             YES
+
+DEV1                           OPEN                             NO
+
+DEV2                           OPEN                             NO
+ 
+7 rows selected.
+ 
+ 
+ 
+SQL> alter session set container=cdb$root;
+ 
+Session altered.
+ 
+ 
+SQL> select username, account_status, common, c.con_id, name from cdb_users cs, v$containers c 
+
+     where cs.con_id = c.con_id and account_status='OPEN' order by 4 asc;
+ 
+USERNAME                       ACCOUNT_STATUS                   COM     CON_ID NAME
+
+------------------------------ -------------------------------- --- ---------- --------------------
+
+SYSTEM                         OPEN                             YES          1 CDB$ROOT
+
+SYS                            OPEN                             YES          1 CDB$ROOT
+
+C##BACKUPOP2                   OPEN                             YES          1 CDB$ROOT
+
+C##BACKUPOP1                   OPEN                             YES          1 CDB$ROOT
+
+C##BACKUPOP2                   OPEN                             YES          3 PDBTECH
+
+DEV1                           OPEN                             NO           3 PDBTECH
+
+PDBADMIN                       OPEN                             NO           3 PDBTECH
+
+C##BACKUPOP1                   OPEN                             YES          3 PDBTECH
+
+DEV2                           OPEN                             NO           3 PDBTECH
+
+SYS                            OPEN                             YES          3 PDBTECH
+
+SYSTEM                         OPEN                             YES          3 PDBTECH
+
+SYS                            OPEN                             YES          4 PDBHR
+
+SYSTEM                         OPEN                             YES          4 PDBHR
+
+C##BACKUPOP1                   OPEN                             YES          4 PDBHR
+
+IRSHAD                         OPEN                             NO           4 PDBHR
+
+C##BACKUPOP2                   OPEN                             YES          4 PDBHR
+
+HARI                           OPEN                             NO           4 PDBHR
+
+PDBADMIN                       OPEN                             NO           4 PDBHR
+
+SYS                            OPEN                             YES          5 PDBSALES
+
+SYSTEM                         OPEN                             YES          5 PDBSALES
+
+JAI                            OPEN                             NO           5 PDBSALES
+
+PDBADMIN                       OPEN                             NO           5 PDBSALES
+
+C##BACKUPOP2                   OPEN                             YES          5 PDBSALES
+
+C##BACKUPOP1                   OPEN                             YES          5 PDBSALES
+ 
+24 rows selected.
+ 
+SQL>
+ 
+ 
+ 

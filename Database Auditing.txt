@@ -1,0 +1,359 @@
+
+
+
+
+
+#################
+Database Auditing
+#################s
+
+
+C:\Users\azureuser>set oracle_sid=cdblko
+
+C:\Users\azureuser>sqlplus sys/admin as sysdba
+
+SQL*Plus: Release 19.0.0.0.0 - Production on Thu Feb 12 14:55:12 2026
+Version 19.3.0.0.0
+
+Copyright (c) 1982, 2019, Oracle.  All rights reserved.
+
+
+Connected to:
+Oracle Database 19c Enterprise Edition Release 19.0.0.0.0 - Production
+Version 19.3.0.0.0
+
+SQL> set line 32000
+SQL> set pagesize 100
+
+SQL> col name format a20
+SQL> select name , open_mode from v$containers;
+
+NAME                 OPEN_MODE
+-------------------- ----------
+CDB$ROOT             READ WRITE
+PDB$SEED             READ ONLY
+PDBHR                MOUNTED
+PDBSALES             MOUNTED
+
+
+
+SQL> alter pluggable database all open;
+
+Pluggable database altered.
+
+SQL> select name , open_mode from v$containers;
+
+NAME                 OPEN_MODE
+-------------------- ----------
+CDB$ROOT             READ WRITE
+PDB$SEED             READ ONLY
+PDBHR                READ WRITE
+PDBSALES             READ WRITE
+
+
+SQL> select username, account_status, common, c.name from cdb_users cu, v$containers c  
+where cu.con_id = c.con_id and account_status='OPEN' order by 2 desc;
+
+USERNAME             ACCOUNT_STATUS                   COM NAME
+-------------------- -------------------------------- --- --------------------
+SYS                  OPEN                             YES CDB$ROOT
+SYSTEM               OPEN                             YES CDB$ROOT
+C##BACKUPOP1         OPEN                             YES CDB$ROOT
+C##BACKUPOP2         OPEN                             YES CDB$ROOT
+SYS                  OPEN                             YES PDBSALES
+SYSTEM               OPEN                             YES PDBSALES
+C##BACKUPOP1         OPEN                             YES PDBSALES
+PDBADMIN             OPEN                             NO  PDBSALES
+C##BACKUPOP2         OPEN                             YES PDBSALES
+JAI                  OPEN                             NO  PDBSALES
+SYS                  OPEN                             YES PDBHR
+SYSTEM               OPEN                             YES PDBHR
+C##BACKUPOP1         OPEN                             YES PDBHR
+PDBADMIN             OPEN                             NO  PDBHR
+C##BACKUPOP2         OPEN                             YES PDBHR
+HARI                 OPEN                             NO  PDBHR
+IRSHAD               OPEN                             NO  PDBHR
+
+
+
+
+
+
+
+C:\Users\azureuser>sqlplus sys/admin@cdblkopdbhr as sysdba
+
+SQL*Plus: Release 19.0.0.0.0 - Production on Thu Feb 12 15:17:20 2026
+Version 19.3.0.0.0
+
+Copyright (c) 1982, 2019, Oracle.  All rights reserved.
+
+
+Connected to:
+Oracle Database 19c Enterprise Edition Release 19.0.0.0.0 - Production
+Version 19.3.0.0.0
+
+SQL> show con_name
+
+CON_NAME
+------------------------------
+PDBHR
+
+
+SQL> col name format a20
+SQL> select name , open_mode from v$containers;
+
+NAME                 OPEN_MODE
+-------------------- ----------
+PDBHR                READ WRITE
+
+
+SQL> col username format a20
+SQL> select username, account_status, common, c.name from cdb_users cu, v$containers c
+  2  where cu.con_id = c.con_id and account_status='OPEN' order by 2 desc;
+
+USERNAME             ACCOUNT_STATUS                   COM NAME
+-------------------- -------------------------------- --- --------------------
+SYS                  OPEN                             YES PDBHR
+SYSTEM               OPEN                             YES PDBHR
+C##BACKUPOP1         OPEN                             YES PDBHR
+PDBADMIN             OPEN                             NO  PDBHR
+C##BACKUPOP2         OPEN                             YES PDBHR
+HARI                 OPEN                             NO  PDBHR
+IRSHAD               OPEN                             NO  PDBHR
+
+7 rows selected.
+
+SQL>
+
+
+CREATE USER ram IDENTIFIED BY admin QUOTA UNLIMITED ON users;
+GRANT CREATE SESSION, CREATE TABLE, CREATE SEQUENCE TO ram;
+
+CREATE USER dev IDENTIFIED BY admin QUOTA UNLIMITED ON users;
+GRANT CREATE SESSION TO dev;
+
+
+CREATE USER mark IDENTIFIED BY admin QUOTA UNLIMITED ON users;
+GRANT CREATE SESSION TO mark;
+
+GRANT UNLIMITED TABLESPACE TO ram, dev, mark;
+
+
+
+What are the priviliges can be audited?
+#######################################
+
+
+
+SELECT name FROM system_privilege_map
+ORDER BY name;
+
+NAME
+----------------------------------------
+ADMINISTER ANY SQL TUNING SET
+ADMINISTER DATABASE TRIGGER
+.
+.
+.
+UPDATE ANY TABLE
+USE ANY SQL TRANSLATION PROFILE
+
+256 rows selected.
+
+
+
+Create Policy
+
+SQL> conn sys/admin@cdblkopdbhr as sysdba
+Connected.
+
+
+SQL> CREATE AUDIT POLICY ram_audit_policy
+    PRIVILEGES
+    CREATE TABLE, CREATE SEQUENCE
+    WHEN 'SYS_CONTEXT(''USERENV'', ''SESSION_USER'') = ''RAM'''
+    EVALUATE PER SESSION
+    CONTAINER = CURRENT;
+
+Audit policy created.
+
+
+
+Enable the auditing policy.
+
+AUDIT POLICY ram_audit_policy;
+
+
+
+
+Display the configuration of the policy.
+
+SET LINESIZE 200
+COLUMN audit_option FORMAT A15
+COLUMN condition_eval_opt FORMAT A10
+COLUMN audit_condition FORMAT A50
+column POLICY_NAME format a20
+column AUDIT_OPTION_TYPE format a20
+column OBJECT_SCHEMA format a10
+column OBJECT_name format a10
+column OBJECT_type format a10
+
+SELECT policy_name, audit_option, audit_option_type, condition_eval_opt, audit_condition
+FROM audit_unified_policies
+WHERE policy_name = 'RAM_AUDIT_POLICY';
+
+POLICY_NAME          AUDIT_OPTION    AUDIT_OPTION_TYPE    CONDITION_ AUDIT_CONDITION
+-------------------- --------------- -------------------- ---------- --------------------------------------------------
+RAM_AUDIT_POLICY     CREATE SEQUENCE SYSTEM PRIVILEGE     SESSION    SYS_CONTEXT('USERENV', 'SESSION_USER') = 'RAM'
+RAM_AUDIT_POLICY     CREATE TABLE    SYSTEM PRIVILEGE     SESSION    SYS_CONTEXT('USERENV', 'SESSION_USER') = 'RAM'
+
+
+
+column user_name format a20
+column policy_name format a20
+column entity_name format a20
+select * from audit_unified_enabled_policies;
+
+POLICY_NAME          ENABLED_OPTION  ENTITY_NAME          ENTITY_ SUC FAI
+-------------------- --------------- -------------------- ------- --- ---
+ORA_SECURECONFIG     BY USER         ALL USERS            USER    YES YES
+ORA_LOGON_FAILURES   BY USER         ALL USERS            USER    NO  YES
+RAM_AUDIT_POLICY     BY USER         ALL USERS            USER    YES YES
+
+
+
+SQL> conn ram/admin@cdblkopdbhr
+Connected.
+
+SQL> show user
+USER is "RAM"
+
+
+
+CREATE TABLE EMP(
+EMPNO NUMBER,
+ENAME VARCHAR2(10),
+SALARY NUMBER,
+DEPTNO NUMBER(2));
+
+
+CREATE SEQUENCE seq
+START WITH 100
+INCREMENT BY 10
+MINVALUE 50
+MAXVALUE 200;
+
+
+
+Check the audit trail.
+
+SQL> conn sys/admin@cdblkopdbhr as sysdba
+Connected.
+
+
+
+COLUMN event_timestamp FORMAT A30
+COLUMN dbusername FORMAT A10
+COLUMN action_name FORMAT A20
+COLUMN object_schema FORMAT A10
+COLUMN object_name FORMAT A20
+
+SELECT event_timestamp,
+dbusername,
+action_name,
+object_schema,
+object_name
+FROM unified_audit_trail
+WHERE dbusername = 'RAM'
+ORDER BY event_timestamp;
+
+
+EVENT_TIMESTAMP                DBUSERNAME ACTION_NAME          OBJECT_SCH OBJECT_NAME
+------------------------------ ---------- -------------------- ---------- --------------------
+12-FEB-26 03.56.08.860000 PM   RAM        CREATE TABLE         RAM        EMP
+12-FEB-26 03.56.36.377000 PM   RAM        CREATE SEQUENCE      RAM        SEQ
+
+
+
+SQL> conn ram/admin@cdblkopdbhr
+Connected.
+
+SQL> CREATE TABLE DEPT(
+DEPTNO NUMBER(2),
+DNAME VARCHAR2(20),
+LOC VARCHAR2(20));
+
+Table created.
+
+SQL> conn sys/admin@cdblkopdbhr as sysdba
+Connected.
+
+SQL> SELECT event_timestamp,
+    dbusername,
+    action_name,
+    object_schema,
+    object_name
+    FROM unified_audit_trail
+    WHERE dbusername = 'RAM'
+    ORDER BY event_timestamp;
+
+EVENT_TIMESTAMP                DBUSERNAME ACTION_NAME          OBJECT_SCH OBJECT_NAME
+------------------------------ ---------- -------------------- ---------- --------------------
+12-FEB-26 03.56.08.860000 PM   RAM        CREATE TABLE         RAM        EMP
+12-FEB-26 03.56.36.377000 PM   RAM        CREATE SEQUENCE      RAM        SEQ
+12-FEB-26 04.02.24.523000 PM   RAM        CREATE TABLE         RAM        DEPT
+
+
+
+
+
+Disable the policy and drop it.
+
+SQL> column user_name format a20
+SQL> column policy_name format a20
+SQL> SELECT * FROM audit_unified_enabled_policies;
+
+POLICY_NAME          ENABLED_OPTION  ENTITY_NAME          ENTITY_ SUC FAI
+-------------------- --------------- -------------------- ------- --- ---
+ORA_SECURECONFIG     BY USER         ALL USERS            USER    YES YES
+ORA_LOGON_FAILURES   BY USER         ALL USERS            USER    NO  YES
+RAM_AUDIT_POLICY     BY USER         ALL USERS            USER    YES YES
+
+SQL> NOAUDIT POLICY ram_audit_policy;
+
+Noaudit succeeded.
+
+
+SQL> SELECT * FROM audit_unified_enabled_policies;
+
+POLICY_NAME          ENABLED_OPTION  ENTITY_NAME          ENTITY_ SUC FAI
+-------------------- --------------- -------------------- ------- --- ---
+ORA_SECURECONFIG     BY USER         ALL USERS            USER    YES YES
+ORA_LOGON_FAILURES   BY USER         ALL USERS            USER    NO  YES
+
+
+
+
+
+
+SQL> SELECT policy_name, audit_option, audit_option_type, condition_eval_opt, audit_condition
+     FROM audit_unified_policies
+     WHERE policy_name = 'RAM_AUDIT_POLICY';
+
+POLICY_NAME          AUDIT_OPTION    AUDIT_OPTION_TYPE    CONDITION_ AUDIT_CONDITION
+-------------------- --------------- -------------------- ---------- --------------------------------------------------
+RAM_AUDIT_POLICY     CREATE SEQUENCE SYSTEM PRIVILEGE     SESSION    SYS_CONTEXT('USERENV', 'SESSION_USER') = 'RAM'
+RAM_AUDIT_POLICY     CREATE TABLE    SYSTEM PRIVILEGE     SESSION    SYS_CONTEXT('USERENV', 'SESSION_USER') = 'RAM'
+
+
+SQL> DROP AUDIT POLICY ram_audit_policy;
+
+Audit Policy dropped.
+
+
+SQL> SELECT policy_name, audit_option, audit_option_type, condition_eval_opt, audit_condition
+     FROM audit_unified_policies
+     WHERE policy_name = 'RAM_AUDIT_POLICY';
+
+no rows selected
+ WHEN 'SYS_CONTEXT(''USERENV'', ''SESSION_USER'') = ''RAM''
